@@ -358,11 +358,13 @@
             },
             "Sellers":{
                 "type":"object",
-                "items":{
-                    "type":"array",
+                "properties":{
                     "items":{
-                        "$ref":"#/components/schemas/SellerInfo"
-                    }
+                            "type":"array",
+                            "items":{
+                                "$ref":"#/components/schemas/SellerInfo"
+                            }
+                        }
                 }
             },
             "SellerInfo":{

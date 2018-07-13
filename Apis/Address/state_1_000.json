@@ -46,7 +46,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "description":"Operação realizada com suscesso",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -68,7 +68,7 @@
                 "tags":[
                  "State"   
                 ],
-                "summary":"Retorna estado pelo seu cÃ³digo",
+                "summary":"Retorna estado pelo seu código",
                 "operationId":"getstateId",
                 "parameters":[
                     {
@@ -80,7 +80,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "description":"Operação realizada com suscesso",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -111,7 +111,7 @@
                     "State"
                 ],
                 "summary":"Inclui um estado",
-                "description":"Inclui um estado conforme dados enviados na requisiÃ§Ã£o",
+                "description":"Inclui um estado conforme dados enviados na requsição",
                 "operationId":"poststateId",
                 "parameters":[
                     {
@@ -133,7 +133,7 @@
                 },
                 "responses":{
                     "200":{
-                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "description":"Operação realizada com suscesso",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -164,7 +164,7 @@
                     "State"
                 ],
                 "summary":"Altera um estado",
-                "description":"Atualiza cadastro de estado conforme dados enviados na requisiÃ§Ã£o",
+                "description":"Atualiza cadastro de estado conforme dados enviados na requsição",
                 "operationId":"putstateId",
                 "parameters":[
                     {
@@ -186,7 +186,7 @@
                 },
                 "responses":{
                     "200":{
-                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "description":"Operação realizada com suscesso",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -217,7 +217,7 @@
                     "State"
                 ],
                 "summary":"Exclui um estado",
-                "description":"Exclui cadastro de estado conforme dados enviados na requisiÃ§Ã£o",
+                "description":"Exclui cadastro de estado conforme dados enviados na requsição",
                 "operationId":"deletestateId",
                 "parameters":[
                     {
@@ -229,7 +229,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "description":"Operação realizada com suscesso",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -239,7 +239,7 @@
                         }
                     },
                     "400":{
-                        "description":"Erro durante a exclusÃ£o do estado",
+                        "description":"Erro durante a exclusão do estado",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -263,7 +263,7 @@
                 "name":"stateId",
                 "in":"path",
                 "required":true,
-                "description":"Identificador Ãºnico do Estado",
+                "description":"Identificador único do Estado",
                 "schema":{
                     "type": "string"
                 }   
@@ -272,7 +272,7 @@
                 "name":"authorization",
                 "in":"header",
                 "required":true,
-                "description":"CabeÃ§alho usado para autorizaÃ§Ã£o das requisiÃ§Ãµes",
+                "description":"Cabeçalho usado para autorização das requisições",
                 "schema":{
                     "type": "string"
                 }
@@ -280,7 +280,7 @@
             "Order":{
                 "name":"order",
                 "in":"query",
-                "description":"OrdenaÃ§Ã£o da coleÃ§Ã£o",
+                "description":"Ordenação da coleção",
                 "required":false,
                 "schema":{
                     "type":"array",
@@ -293,7 +293,7 @@
             "Page":{
                 "name":"page",
                 "in":"query",
-                "description":"PaginaÃ§Ã£o da coleÃ§Ã£o",
+                "description":"Paginação da coleção",
                 "required":false,
                 "schema":{
                     "type":"integer",
@@ -306,7 +306,7 @@
             "PageSize":{
                 "name":"pageSize",
                 "in":"query",
-                "description":"Quantidade de itens por pÃ¡gina",
+                "description":"Quantidade de itens por página",
                 "required":false,
                 "schema":{
                     "type":"integer",
@@ -341,11 +341,11 @@
                 "properties":{
                     "stateId":{
                         "type":"string",
-                        "description":"CÃ³digo do estado"
+                        "description":"código do estado"
                     },
                     "stateDescription":{
                         "type":"string",
-                        "description":"descriÃ§Ã£o do estado"
+                        "description":"Descrição do estado"
                     }
                 }
             },
@@ -368,21 +368,21 @@
                 "properties":{
                     "code":{
                         "type":"string",
-                        "description":"CÃ³digo indentificador do erro."
+                        "description":"código indentificador do erro."
                     },
                     "message":{
                         "type":"string",
-                        "description":"Literal no idioma da requisiÃ§Ã£o descrevendo o erro para o usuário."
+                        "description":"Literal no idioma da requsição descrevendo o erro para o usuário."
                     },
                     "detailedMessage":{
                         "type":"string",
                         "format":"uri",
-                        "description":"Mensagem tÃ©cnica e mais detalhada do erro."
+                        "description":"Mensagem técnoca e mais detalhada do erro."
                     },
                     "help":{
                         "type":"string",
                         "format":"uri",
-                        "description":"URI para documentaÃ§Ã£o do erro."
+                        "description":"URI para documentação do erro."
                     }
                 }
 
