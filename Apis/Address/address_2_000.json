@@ -1,0 +1,195 @@
+{
+
+    "openapi": "3.0.1",
+
+    "servers": [
+
+      {
+        "description": "API para cadastro de endereÃ§os nos produtos TOTVS",    
+        "url": "api.totvs.com.br"
+      }
+
+    ],
+
+    "info": {
+        "description": "API para cadastro de endereÃ§o(address) para uso dos produtos TOTVS",
+        "version":"1.000",
+        "title":"Address",
+        "contact":{
+            "name":"T-Talk",
+            "url": "api.totvs.com.br",
+            "email":"comiteintegracao@totvs.com.br"
+        }
+    },
+    "components":{
+        "parameters":{
+            "Authorization":{
+                "name":"authorization",
+                "in":"header",
+                "required":true,
+                "description":"CabeÃ§alho usado para autorizaÃ§Ã£o das requisiÃ§Ãµes",
+                "schema":{
+                    "type": "string"
+                }
+            },
+            "Order":{
+                "name":"order",
+                "in":"query",
+                "description":"OrdenaÃ§Ã£o da coleÃ§Ã£o",
+                "required":false,
+                "schema":{
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    },
+                    "uniqueItems":true
+                }
+            }
+        },
+        "schemas":{
+            "PagedAddresses":{
+                "type":"object",
+                "allOf":[
+                    {
+                        "$ref":"#/components/schemas/Paging"
+                    },
+                    {
+                        "$ref":"#/components/schemas/Addresses"
+                    }
+                ]
+            },
+            "Addresses":{
+               "type":"object",
+               "properties":{
+                   "type":"array",
+                   "items":{
+                    "$ref":"#/components/schemas/AddressInfo"
+                   }
+                } 
+            },
+            "AddressInfo":{
+                "type":"object",
+                "properties":{
+                    "address":{
+                        "type":"string",
+                        "description":"endereÃ§o",
+                        "example":"Rua, Avenida, Rodovia, etc. Ex.: Avenida Braz Leme"
+                    },
+                    "number":{
+                        "type":"string",
+                        "description":"NÃºmero do endereÃ§o"
+                    },
+                    "complement":{
+                        "type":"string",
+                        "description":"informaÃ§Ãµes complementares do endereÃ§o"
+                    },
+                    "city":{
+                        "type":"object",
+                        "properties":{
+                            "items":{
+                                "type":"array",
+                                "items":{
+                                    "$ref":"city_2_000.json#/components/schemas/CityInfo"
+                               }    
+                            } 
+                        }
+                    },
+                    "district":{
+                        "type":"string",
+                        "description":"Bairro",
+                        "example":"Casa Verde"
+                    },
+                    "state":{
+                        "type":"object",
+                        "properties":{
+                            "items":{
+                                "type":"array",
+                                "items":{
+                                    "$ref":"state_1_000.json#/components/schemas/StateInfo"
+                               }    
+                            } 
+                        }
+                    },
+                    "country":{
+                        "type":"object",
+                        "properties":{
+                            "items":{
+                                "type":"array",
+                                "items":{
+                                    "$ref":"country_1_000.json#/components/schemas/CountryInfo"
+                               }    
+                            } 
+                        }
+                    },
+                    "zipCode":{
+                        "type":"string",
+                        "description":"CEP",
+                        "example":"02022010"
+                    },
+                    "region":{
+                        "type":"string",
+                        "description":"RegiÃ£o",
+                        "example":"Zona Norte"
+                    },
+                    "poBox":{
+                        "type":"string",
+                        "description":"Caixa postal"
+                    },
+                    "mainAddress":{
+                        "type": "boolean",
+                        "description": "EndereÃ§o principal?",
+                        "example": true
+                    },
+                    "shippingAddress":{
+                        "type":"boolean",
+                        "description":"EndereÃ§o de entregas?",
+                        "example":false
+                    },
+                    "billingAddress":{
+                        "type":"boolean",
+                        "description":"EndereÃ§o de cobranÃ§a?",
+                        "example":true
+                    }
+                }
+            },
+            "Paging":{
+                "type":"object",
+                "properties":{
+                    "hasNext":{
+                        "type":"boolean",
+                        "example":false
+                    }
+                }
+            },
+            "ErrorModel":{
+                "type":"object",
+                "required":[
+                    "code",
+                    "message",
+                    "detailedMessage"
+                ],
+                "properties":{
+                    "code":{
+                        "type":"string",
+                        "description":"CÃ³digo indentificador do erro."
+                    },
+                    "message":{
+                        "type":"string",
+                        "description":"Literal no idioma da requisiÃ§Ã£o descrevendo o erro para o usuário."
+                    },
+                    "detailedMessage":{
+                        "type":"string",
+                        "format":"uri",
+                        "description":"Mensagem tÃ©cnica e mais detalhada do erro."
+                    },
+                    "help":{
+                        "type":"string",
+                        "format":"uri",
+                        "description":"URI para documentaÃ§Ã£o do erro."
+                    }
+                }
+
+            }
+        }
+    }
+}

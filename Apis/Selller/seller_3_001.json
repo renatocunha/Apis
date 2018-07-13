@@ -1,0 +1,623 @@
+{
+
+    "openapi": "3.0.1",
+
+    "servers": [
+
+      {
+        "description": "API para a entidade Vendedor (seller) para produtos TOTVS",    
+        "url": "api.totvs.com.br"
+      }
+
+    ],
+
+    "info": {
+        "description": "API para a entidade Vendedor (seller) para produtos TOTVS",
+        "version":"2.004",
+        "title":"Seller",
+        "contact":{
+            "name":"T-Talk",
+            "url": "api.totvs.com.br",
+            "email":"comiteintegracao@totvs.com.br"
+        },
+        "x-totvs": {
+            "messageDocumentation":{
+                "name":"Seller",
+                "description":"API para a entidade Vendedor (seller) para produtos TOTVS",
+                "segment":"Services"
+            },
+            "produtcInformation":{
+              "protheus":{
+                  "contact":"squad.crm@totvs.com.br",
+                  "description":"Cadastro de Vendedores",
+                  "adapter":"mats040.prw"
+              }  
+            }
+        }
+    },
+    "paths":{
+        "/seller":{
+            "get":{
+                "tags":[
+                    "Seller"
+                ],
+                "summary":"Retorna lista de Vendedores",
+                "x-totvs":{
+                    "produtcInformation":{
+                        "protheus":{
+                            "avaliable":true,
+                            "note":"Este verbo estÃ¡ disponÃ­vel com todos os parÃ¢metros",
+                            "minimalVersion":"12.1.21"
+                        }  
+                    }
+                },
+                "description":"Retorna lista completa de vendedores",
+                "operationId":"getseller",
+                "parameters":[
+                    {
+                        "$ref": "#/components/parameters/Authorization"
+                    },
+                    {
+                        "$ref": "#/components/parameters/Order"
+                    },
+                    {
+                        "$ref": "#/components/parameters/Page"
+                    },
+                    {
+                        "$ref": "#/components/parameters/PageSize"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/PagedSellers"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security":[
+                    {
+                        "api_key":[]
+                    }
+                ]
+            },
+            "post":{
+                "tags":[
+                    "Seller"
+                ],
+                "summary":"Inclui um vendedor",
+                "description":"Inclui um vendedor conforme dados enviados na requisiÃ§Ã£o",
+                "operationId":"postsellerId",
+                "parameters":[
+                    {
+                        "$ref": "#/components/parameters/Authorization"
+                    }
+                ],
+                "requestBody":{
+                    "description":"Vendedor a ser incluÃ­do",
+                    "content":{ 
+                        "application/json":{
+                            "schema":{
+                                "$ref":"#/components/schemas/SellerInfo"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/PagedSellers"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description":"Erro durante inclusÃ£o do vendedor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/ErrorModel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security":[
+                    {
+                        "api_key":[]
+                    }
+                ]
+            }    
+        },
+        "/seller/{sellerId}":{
+            "get":{
+                "tags":[
+                 "Seller"   
+                ],
+                "summary":"Retorna vendedor pelo seu cÃ³digo",
+                "operationId":"getsellerId",
+                "x-totvs":{
+                    "produtcInformation":{
+                        "protheus":{
+                            "avaliable":true,
+                            "note":"Este verbo estÃ¡ disponÃ­vel com todos os parÃ¢metros",
+                            "minimalVersion":"12.1.21"
+                        }  
+                    }
+                },
+                "parameters":[
+                    {
+                        "$ref": "#/components/parameters/Authorization"
+                    },
+                    {
+                        "$ref": "#/components/parameters/SellerId"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/PagedSellers"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description":"Vendedor nÃ£o localizado na base",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/ErrorModel"
+                                }
+                            }
+                        }
+                    }      
+                },
+                "security":[
+                    {
+                        "api_key":[]
+                    }
+                ]
+            },
+            "put":{
+                "tags":[
+                    "Seller"
+                ],
+                "summary":"Altera um vendedor",
+                "description":"Atualiza cadastro de vendedor conforme dados enviados na requisiÃ§Ã£o",
+                "operationId":"putsellerId",
+                "parameters":[
+                    {
+                        "$ref": "#/components/parameters/Authorization"
+                    },
+                    {
+                        "$ref": "#/components/parameters/SellerId"
+                    }
+                ],
+                "requestBody":{
+                    "description":"Vendedor a ser atualizado",
+                    "content":{ 
+                        "application/json":{
+                            "schema":{
+                                "$ref":"#/components/schemas/SellerInfo"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/PagedSellers"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description":"Erro durante a alteraÃ§Ã£o do vendedor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/ErrorModel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security":[
+                    {
+                        "api_key":[]
+                    }
+                ]   
+            },
+            "delete":{
+                "tags":[
+                    "Seller"
+                ],
+                "summary":"Exclui um vendedor",
+                "description":"Exclui cadastro de vendedor conforme dados enviados na requisiÃ§Ã£o",
+                "operationId":"deletesellerId",
+                "parameters":[
+                    {
+                        "$ref": "#/components/parameters/Authorization"
+                    },
+                    {
+                        "$ref": "#/components/parameters/SellerId"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/PagedSellers"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description":"Erro durante a exclusÃ£o do vendedor",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/ErrorModel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security":[
+                    {
+                        "api_key":[]
+                    }
+                ]   
+            }
+        }
+    },
+    "components":{
+        "parameters":{
+            "SellerId":{
+                "name":"sellerId",
+                "in":"path",
+                "required":true,
+                "description":"Identificador Ãºnico do Vendedor",
+                "schema":{
+                    "type": "string"
+                }   
+            },
+            "Authorization":{
+                "name":"authorization",
+                "in":"header",
+                "required":true,
+                "description":"CabeÃ§alho usado para autorizaÃ§Ã£o das requisiÃ§Ãµes",
+                "schema":{
+                    "type": "string"
+                }
+            },
+            "Order":{
+                "name":"order",
+                "in":"query",
+                "description":"OrdenaÃ§Ã£o da coleÃ§Ã£o",
+                "required":false,
+                "schema":{
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    },
+                    "uniqueItems":true
+                }
+            },
+            "Page":{
+                "name":"page",
+                "in":"query",
+                "description":"PaginaÃ§Ã£o da coleÃ§Ã£o",
+                "required":false,
+                "schema":{
+                    "type":"integer",
+                    "format":"int32",
+                    "default":1,
+                    "minimum":1,
+                    "exclusiveMinimum":false
+                }
+            },
+            "PageSize":{
+                "name":"pageSize",
+                "in":"query",
+                "description":"Quantidade de itens por pÃ¡gina",
+                "required":false,
+                "schema":{
+                    "type":"integer",
+                    "format":"int32",
+                    "default":20
+                } 
+            }
+        },
+        "schemas":{
+            "PagedSellers":{
+                "type":"object",
+                "allOf":[
+                    {
+                        "$ref":"#/components/schemas/Paging"
+                    },
+                    {
+                        "$ref":"#/components/schemas/Sellers"
+                    }
+                ]
+            },
+            "Sellers":{
+                "type":"object",
+                "items":{
+                    "type":"array",
+                    "items":{
+                        "$ref":"#/components/schemas/SellerInfo"
+                    }
+                }
+            },
+            "SellerInfo":{
+                "type":"object",
+                "properties":{
+                    "companyId":{
+                        "type":"string",
+                        "description":"Empresa",
+                        "x-totvs":{
+                            "rm":{
+                                "field":"TVEN.CODCOLIGADA",
+                                "required":true,
+                                "type":"integer",
+                                "lenght":"2",
+                                "available":true
+                            }
+                        }
+                    },
+                    "branchID":{
+                        "type":"string",
+                        "description":"Filial",
+                        "x-totvs":{
+                            "rm":{
+                                "field":"TVEN.CODFILIAL",
+                                "required":true,
+                                "type":"integer",
+                                "lenght":"2",
+                                "available":true
+                            },
+                            "protheus":{
+                                "field":"SA3.A3_FILIAL",
+                                "required":true,
+                                "type":"varchar",
+                                "lenght":"8",
+                                "available":true,
+                                "canUpdate":false
+                            }
+                        }
+                    },
+                    "sellerId":{
+                        "type":"string",
+                        "description":"CÃ³digo do vendedor",
+                        "maxLength":16,
+                        "x-totvs":{
+                            "rm":{
+                                "field":"TVEN.CODVEN",
+                                "description":"CÃ³digo do vendedor",
+                                "required":true,
+                                "type":"varchar",
+                                "lenght":"16",
+                                "available":true
+                            },
+                            "protheus":{
+                                "field":"SA3.A3_COD",
+                                "description":"CÃ³digo",
+                                "required":true,
+                                "type":"varchar",
+                                "lenght":"6",
+                                "available":true,
+                                "canUpdate":false
+                            }
+                        }
+                    },
+                    "name":{
+                        "type":"string",
+                        "description":"Nome do vendedor",
+                        "maxLength":80,
+                        "x-totvs":{
+                            "rm":{
+                                "field":"TVEN.NOME",
+                                "description":"Nome do vendedor",
+                                "required":true,
+                                "type":"varchar",
+                                "lenght":"80",
+                                "available":true
+                            },
+                            "protheus":{
+                                "field":"SA3.A3_NOME",
+                                "required":true,
+                                "type":"varchar",
+                                "lenght":"40",
+                                "available":true,
+                                "canUpdate":true
+                            }
+                        } 
+                    },
+                    "shortName":{
+                        "type":"string",
+                        "description":"login do vendedor",
+                        "maxLength":25,
+                        "x-totvs":{
+                            "rm":{
+                                "field":"TVEN.NOME",
+                                "description":"O RM considera os primeiros 25 caracteres do campo Nome do Vendedor",
+                                "required":false,
+                                "type":"varchar",
+                                "lenght":"80",
+                                "available":true
+                            },
+                            "protheus":{
+                                "field":"SA3.A3_NREDUZ",
+                                "required":false,
+                                "type":"varchar",
+                                "lenght":"25",
+                                "available":true,
+                                "canUpdate":true
+                            }
+                        } 
+                    },
+                    "personalId":{
+                        "type":"string",
+                        "description":"CPF do vendedor",
+                        "maxLength":25,
+                        "x-totvs":{
+                            "protheus":{
+                                "field":"SA3.A3_CGC",
+                                "required":false,
+                                "type":"varchar",
+                                "lenght":"14",
+                                "available":true,
+                                "canUpdate":true
+                            }
+                        } 
+                    },
+                    "sellerPw":{
+                        "type":"string",
+                        "description":"Senha do vendedor",
+                        "maxLength":6,
+                        "x-totvs":{
+                            "protheus":{
+                                "field":"SA3.A3_SENHA",
+                                "required":false,
+                                "type":"varchar",
+                                "lenght":"6",
+                                "available":true,
+                                "canUpdate":true
+                            }
+                        } 
+                    },
+                    "selllerPhoneDiallingCode":{
+                        "type":"string",
+                        "description":"DDD do vendedor",
+                        "maxLength":3,
+                        "x-totvs":{
+                            "protheus":{
+                                "field":"SA3.A3_DDTEL",
+                                "required":false,
+                                "type":"varchar",
+                                "lenght":"3",
+                                "available":true,
+                                "canUpdate":true
+                            }
+                        } 
+                    },
+                    "selllerPhone":{
+                        "type":"string",
+                        "description":"Telefone do vendedor",
+                        "maxLength":15,
+                        "x-totvs":{
+                            "protheus":{
+                                "field":"SA3.A3_TEL",
+                                "required":false,
+                                "type":"varchar",
+                                "lenght":"15",
+                                "available":true,
+                                "canUpdate":true
+                            }
+                        }  
+                    },
+                    "selllerEmail":{
+                        "type":"string",
+                        "description":"E-mail do vendedor",
+                        "maxLength":80,
+                        "x-totvs":{
+                            "protheus":{
+                                "field":"SA3.A3_EMAIL",
+                                "required":false,
+                                "type":"varchar",
+                                "lenght":"80",
+                                "available":true,
+                                "canUpdate":true
+                            }
+                        }  
+                    },
+                    "sellerAddress":{
+                        "type":"object",
+                        "description":"Endereço do vendedor",
+                        "properties":{
+                            "items":{
+                                "type":"array",
+                                "items":{
+                                    "$ref":"address_2_00.json#/components/schemas/AddressInfo"
+                               }    
+                            } 
+                        } 
+                    },
+                    "sallesChargeInformation":{
+                        "type":"object",
+                        "description":"InformaÃ§Ãµes de comissÃµes",
+                        "properties":{
+                            "sallesChargeInterface":{
+                                "type":"string",
+                                "description":"Formato de cobrança comissÃµes",
+                                "x-totvs":{
+                                   "protheus":{
+                                       "field":"SA3.A3_GERASE2",
+                                       "required":false,
+                                       "type":"varchar",
+                                       "lenght":"1",
+                                       "example":"S=Contas a Pagar;F=Folha de Pagamento;N=Sem Interface"
+                                    }
+                                }
+                            }  
+                        }
+                    }
+                }
+            },
+            "Paging":{
+                "type":"object",
+                "properties":{
+                    "hasNext":{
+                        "type":"boolean",
+                        "example":false
+                    }
+                }
+            },
+            "ErrorModel":{
+                "type":"object",
+                "required":[
+                    "code",
+                    "message",
+                    "detailedMessage"
+                ],
+                "properties":{
+                    "code":{
+                        "type":"string",
+                        "description":"CÃ³digo indentificador do erro."
+                    },
+                    "message":{
+                        "type":"string",
+                        "description":"Literal no idioma da requisiÃ§Ã£o descrevendo o erro para o usuário."
+                    },
+                    "detailedMessage":{
+                        "type":"string",
+                        "format":"uri",
+                        "description":"Mensagem tÃ©cnica e mais detalhada do erro."
+                    },
+                    "help":{
+                        "type":"string",
+                        "format":"uri",
+                        "description":"URI para documentaÃ§Ã£o do erro."
+                    }
+                }
+
+            }
+        }
+    }
+}

@@ -1,0 +1,392 @@
+{
+
+    "openapi": "3.0.1",
+
+    "servers": [
+
+      {
+        "description": "API para cadastro de paÃ­ss nos produtos TOTVS",    
+        "url": "api.totvs.com.br"
+      }
+
+    ],
+
+    "info": {
+        "description": "API para cadastro de paÃ­s(country) para uso dos produtos TOTVS",
+        "version":"1.000",
+        "title":"Country",
+        "contact":{
+            "name":"T-Talk",
+            "url": "api.totvs.com.br",
+            "email":"comiteintegracao@totvs.com.br"
+        }
+    },
+    "paths":{
+        "/Country":{
+            "get":{
+                "tags":[
+                    "Country"
+                ],
+                "summary":"Retorna lista de paÃ­ss",
+                "description":"Retorna lista completa de paÃ­ss",
+                "operationId":"getcountry",
+                "parameters":[
+                    {
+                        "$ref": "#/components/parameters/Authorization"
+                    },
+                    {
+                        "$ref": "#/components/parameters/Order"
+                    },
+                    {
+                        "$ref": "#/components/parameters/Page"
+                    },
+                    {
+                        "$ref": "#/components/parameters/PageSize"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/PagedCountries"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security":[
+                    {
+                        "api_key":[]
+                    }
+                ]
+            }    
+        },
+        "/city/{countryId}":{
+            "get":{
+                "tags":[
+                 "Country"   
+                ],
+                "summary":"Retorna paÃ­s pelo seu cÃ³digo",
+                "operationId":"getcountryId",
+                "parameters":[
+                    {
+                        "$ref": "#/components/parameters/Authorization"
+                    },
+                    {
+                        "$ref": "#/components/parameters/CountryId"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/PagedCountries"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description":"paÃ­s nÃ£o localizado na base",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/ErrorModel"
+                                }
+                            }
+                        }
+                    }      
+                },
+                "security":[
+                    {
+                        "api_key":[]
+                    }
+                ]
+            },
+            "post":{
+                "tags":[
+                    "Country"
+                ],
+                "summary":"Inclui um paÃ­s",
+                "description":"Inclui um paÃ­s conforme dados enviados na requisiÃ§Ã£o",
+                "operationId":"postcountryId",
+                "parameters":[
+                    {
+                        "$ref": "#/components/parameters/Authorization"
+                    },
+                    {
+                        "$ref": "#/components/parameters/CountryId"
+                    }
+                ],
+                "requestBody":{
+                    "description":"Vendedor a ser incluÃ­do",
+                    "content":{ 
+                        "application/json":{
+                            "schema":{
+                                "$ref":"#/components/schemas/PagedCountries"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/PagedCountries"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description":"Erro durante inclusÃ£o do paÃ­s",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/ErrorModel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security":[
+                    {
+                        "api_key":[]
+                    }
+                ]
+            },
+            "put":{
+                "tags":[
+                    "Country"
+                ],
+                "summary":"Altera um paÃ­s",
+                "description":"Atualiza cadastro de paÃ­s conforme dados enviados na requisiÃ§Ã£o",
+                "operationId":"putcountryId",
+                "parameters":[
+                    {
+                        "$ref": "#/components/parameters/Authorization"
+                    },
+                    {
+                        "$ref": "#/components/parameters/CountryId"
+                    }
+                ],
+                "requestBody":{
+                    "description":"paÃ­s a ser atualizado",
+                    "content":{ 
+                        "application/json":{
+                            "schema":{
+                                "$ref":"#/components/schemas/PagedCountries"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/PagedCountries"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description":"Erro durante a alteraÃ§Ã£o do paÃ­s",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/ErrorModel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security":[
+                    {
+                        "api_key":[]
+                    }
+                ]   
+            },
+            "delete":{
+                "tags":[
+                    "Country"
+                ],
+                "summary":"Exclui um paÃ­s",
+                "description":"Exclui cadastro de paÃ­s conforme dados enviados na requisiÃ§Ã£o",
+                "operationId":"deletecountryId",
+                "parameters":[
+                    {
+                        "$ref": "#/components/parameters/Authorization"
+                    },
+                    {
+                        "$ref": "#/components/parameters/CountryId"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/PagedCountries"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description":"Erro durante a exclusÃ£o do paÃ­s",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/ErrorModel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security":[
+                    {
+                        "api_key":[]
+                    }
+                ]   
+            }
+        }
+    },
+    "components":{
+        "parameters":{
+            "CountryId":{
+                "name":"countryId",
+                "in":"path",
+                "required":true,
+                "description":"Identificador Ãºnico do paÃ­s",
+                "schema":{
+                    "type": "string"
+                }   
+            },
+            "Authorization":{
+                "name":"authorization",
+                "in":"header",
+                "required":true,
+                "description":"CabeÃ§alho usado para autorizaÃ§Ã£o das requisiÃ§Ãµes",
+                "schema":{
+                    "type": "string"
+                }
+            },
+            "Order":{
+                "name":"order",
+                "in":"query",
+                "description":"OrdenaÃ§Ã£o da coleÃ§Ã£o",
+                "required":false,
+                "schema":{
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    },
+                    "uniqueItems":true
+                }
+            },
+            "Page":{
+                "name":"page",
+                "in":"query",
+                "description":"PaginaÃ§Ã£o da coleÃ§Ã£o",
+                "required":false,
+                "schema":{
+                    "type":"integer",
+                    "format":"int32",
+                    "default":1,
+                    "minimum":1,
+                    "exclusiveMinimum":false
+                }
+            },
+            "PageSize":{
+                "name":"pageSize",
+                "in":"query",
+                "description":"Quantidade de itens por Página",
+                "required":false,
+                "schema":{
+                    "type":"integer",
+                    "format":"int32",
+                    "default":20
+                } 
+            }
+        },
+        "schemas":{
+            "PagedCountries":{
+                "type":"object",
+                "allOf":[
+                    {
+                        "$ref":"#/components/schemas/Paging"
+                    },
+                    {
+                        "$ref":"#/components/schemas/Countries"
+                    }
+                ]
+            },
+            "Countries":{
+                "type":"object",
+                "items":{
+                    "type":"array",
+                    "items":{
+                        "$ref":"#/components/schemas/CountriesInfo"
+                    }
+                }
+            },
+            "CountriesInfo":{
+                "type":"object",
+                "properties":{
+                    "countryId":{
+                        "type":"string",
+                        "description":"CÃ³digo do paÃ­s"
+                    },
+                    "countryDescription":{
+                        "type":"string",
+                        "description":"descriÃ§Ã£o do paÃ­s"
+                    }
+                }
+            },
+            "Paging":{
+                "type":"object",
+                "properties":{
+                    "hasNext":{
+                        "type":"boolean",
+                        "example":false
+                    }
+                }
+            },
+            "ErrorModel":{
+                "type":"object",
+                "required":[
+                    "code",
+                    "message",
+                    "detailedMessage"
+                ],
+                "properties":{
+                    "code":{
+                        "type":"string",
+                        "description":"CÃ³digo indentificador do erro."
+                    },
+                    "message":{
+                        "type":"string",
+                        "description":"Literal no idioma da requisiÃ§Ã£o descrevendo o erro para o usuário."
+                    },
+                    "detailedMessage":{
+                        "type":"string",
+                        "format":"uri",
+                        "description":"Mensagem tÃ©cnica e mais detalhada do erro."
+                    },
+                    "help":{
+                        "type":"string",
+                        "format":"uri",
+                        "description":"URI para documentaÃ§Ã£o do erro."
+                    }
+                }
+
+            }
+        }
+    }
+}
