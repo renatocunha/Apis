@@ -21,6 +21,8 @@
             "email":"comiteintegracao@totvs.com.br"
         }
     },
+    "paths":{
+    },
     "components":{
         "parameters":{
             "Authorization":{
