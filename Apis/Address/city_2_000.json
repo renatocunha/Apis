@@ -330,10 +330,12 @@
             "Cities":{
                 "type":"object",
                 "properties":{
-                   "type":"array",
-                   "items":{
-                    "$ref":"#/components/schemas/CitiesInfo"
-                   }
+                    "Items":{
+                        "type":"array",
+                        "items":{
+                            "$ref":"#/components/schemas/CitiesInfo"
+                        }
+                    }
                 } 
             },
             "CitiesInfo":{
