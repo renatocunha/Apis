@@ -68,7 +68,7 @@
                 "tags":[
                  "City"   
                 ],
-                "summary":"Retorna cidade pelo seu código",
+                "summary":"Retorna cidade pelo seu código.",
                 "operationId":"getcityId",
                 "parameters":[
                     {
@@ -80,7 +80,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"Operação realizada com suscesso",
+                        "description":"Operação realizada com suscesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -90,7 +90,7 @@
                         }
                     },
                     "400":{
-                        "description":"Cidade não localizado na base",
+                        "description":"Cidade não localizado na base!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -111,7 +111,7 @@
                     "City"
                 ],
                 "summary":"Inclui uma cidade",
-                "description":"Inclui uma cidade conforme dados enviados na requisição",
+                "description":"Inclui uma cidade conforme dados enviados na requisição.",
                 "operationId":"postcityId",
                 "parameters":[
                     {
@@ -122,7 +122,7 @@
                     }
                 ],
                 "requestBody":{
-                    "description":"Vendedor a ser incluÃ­do",
+                    "description":"Vendedor a ser incluído.",
                     "content":{ 
                         "application/json":{
                             "schema":{
@@ -133,7 +133,7 @@
                 },
                 "responses":{
                     "200":{
-                        "description":"Operação realizada com suscesso",
+                        "description":"Operação realizada com suscesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -143,7 +143,7 @@
                         }
                     },
                     "400":{
-                        "description":"Erro durante inclusÃ£o da cidade",
+                        "description":"Erro durante inclusão da cidade!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -164,7 +164,7 @@
                     "City"
                 ],
                 "summary":"Altera um cidade",
-                "description":"Atualiza cadastro de cidade conforme dados enviados na requisição",
+                "description":"Atualiza cadastro de cidade conforme dados enviados na requisição.",
                 "operationId":"putcityId",
                 "parameters":[
                     {
@@ -186,7 +186,7 @@
                 },
                 "responses":{
                     "200":{
-                        "description":"Operação realizada com suscesso",
+                        "description":"Operação realizada com suscesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -196,7 +196,7 @@
                         }
                     },
                     "400":{
-                        "description":"Erro durante a alteração do cadastro da cidade",
+                        "description":"Erro durante a alteração do cadastro da cidade!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -217,7 +217,7 @@
                     "City"
                 ],
                 "summary":"Exclui uma cidade",
-                "description":"Exclui cadastro de cidade conforme dados enviados na requisição",
+                "description":"Exclui cadastro de cidade conforme dados enviados na requisição.",
                 "operationId":"deletecityId",
                 "parameters":[
                     {
@@ -229,7 +229,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"Operação realizada com suscesso",
+                        "description":"Operação realizada com suscesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -239,7 +239,7 @@
                         }
                     },
                     "400":{
-                        "description":"Erro durante a exclusão do cadastro de cidade",
+                        "description":"Erro durante a exclusão do cadastro de cidade!",
                         "content":{
                             "application/json":{
                                 "schema":{
