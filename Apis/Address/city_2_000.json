@@ -27,7 +27,7 @@
                 "tags":[
                     "City"
                 ],
-                "summary":"Retorna lista de Cidades",
+                "summary":"Retorna lista de cidades",
                 "description":"Retorna lista completa de cidades",
                 "operationId":"getcity",
                 "parameters":[
@@ -46,7 +46,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "description":"Operação realizada com suscesso",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -68,7 +68,7 @@
                 "tags":[
                  "City"   
                 ],
-                "summary":"Retorna cidade pelo seu cÃ³digo",
+                "summary":"Retorna cidade pelo seu código",
                 "operationId":"getcityId",
                 "parameters":[
                     {
@@ -80,7 +80,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "description":"Operação realizada com suscesso",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -90,7 +90,7 @@
                         }
                     },
                     "400":{
-                        "description":"Cidade nÃ£o localizado na base",
+                        "description":"Cidade não localizado na base",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -111,7 +111,7 @@
                     "City"
                 ],
                 "summary":"Inclui uma cidade",
-                "description":"Inclui uma cidade conforme dados enviados na requisiÃ§Ã£o",
+                "description":"Inclui uma cidade conforme dados enviados na requisição",
                 "operationId":"postcityId",
                 "parameters":[
                     {
@@ -133,7 +133,7 @@
                 },
                 "responses":{
                     "200":{
-                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "description":"Operação realizada com suscesso",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -164,7 +164,7 @@
                     "City"
                 ],
                 "summary":"Altera um cidade",
-                "description":"Atualiza cadastro de cidade conforme dados enviados na requisiÃ§Ã£o",
+                "description":"Atualiza cadastro de cidade conforme dados enviados na requisição",
                 "operationId":"putcityId",
                 "parameters":[
                     {
@@ -186,7 +186,7 @@
                 },
                 "responses":{
                     "200":{
-                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "description":"Operação realizada com suscesso",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -196,7 +196,7 @@
                         }
                     },
                     "400":{
-                        "description":"Erro durante a alteraÃ§Ã£o do cidade",
+                        "description":"Erro durante a alteração do cadastro da cidade",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -217,7 +217,7 @@
                     "City"
                 ],
                 "summary":"Exclui uma cidade",
-                "description":"Exclui cadastro de cidade conforme dados enviados na requisiÃ§Ã£o",
+                "description":"Exclui cadastro de cidade conforme dados enviados na requisição",
                 "operationId":"deletecityId",
                 "parameters":[
                     {
@@ -229,7 +229,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "description":"Operação realizada com suscesso",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -239,7 +239,7 @@
                         }
                     },
                     "400":{
-                        "description":"Erro durante a exclusÃ£o da cidade",
+                        "description":"Erro durante a exclusão do cadastro de cidade",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -263,7 +263,7 @@
                 "name":"cityId",
                 "in":"path",
                 "required":true,
-                "description":"Identificador Ãºnico da Cidade",
+                "description":"Identificador único da Cidade",
                 "schema":{
                     "type": "string"
                 }   
@@ -272,7 +272,7 @@
                 "name":"authorization",
                 "in":"header",
                 "required":true,
-                "description":"CabeÃ§alho usado para autorizaÃ§Ã£o das requisiÃ§Ãµes",
+                "description":"Cabeçalho usado para autorização das resquisições",
                 "schema":{
                     "type": "string"
                 }
@@ -280,7 +280,7 @@
             "Order":{
                 "name":"order",
                 "in":"query",
-                "description":"OrdenaÃ§Ã£o da coleÃ§Ã£o",
+                "description":"Ordenação da coleção",
                 "required":false,
                 "schema":{
                     "type":"array",
@@ -293,7 +293,7 @@
             "Page":{
                 "name":"page",
                 "in":"query",
-                "description":"PaginaÃ§Ã£o da coleÃ§Ã£o",
+                "description":"Paginação da coleção",
                 "required":false,
                 "schema":{
                     "type":"integer",
@@ -306,7 +306,7 @@
             "PageSize":{
                 "name":"pageSize",
                 "in":"query",
-                "description":"Quantidade de itens por pÃ¡gina",
+                "description":"Quantidade de itens por página",
                 "required":false,
                 "schema":{
                     "type":"integer",
@@ -341,11 +341,11 @@
                 "properties":{
                     "cityId":{
                         "type":"string",
-                        "description":"CÃ³digo do municÃ­pio"
+                        "description":"Código da cidade"
                     },
                     "cityDescription":{
                         "type":"string",
-                        "description":"descriÃ§Ã£o do municÃ­pio"
+                        "description":"Nome da cidade"
                     }
                 }
             },
@@ -368,21 +368,21 @@
                 "properties":{
                     "code":{
                         "type":"string",
-                        "description":"CÃ³digo indentificador do erro."
+                        "description":"Código indentificador do erro."
                     },
                     "message":{
                         "type":"string",
-                        "description":"Literal no idioma da requisiÃ§Ã£o descrevendo o erro para o usuário."
+                        "description":"Literal no idioma da requisição descrevendo o erro para o usuário."
                     },
                     "detailedMessage":{
                         "type":"string",
                         "format":"uri",
-                        "description":"Mensagem tÃ©cnica e mais detalhada do erro."
+                        "description":"Mensagem técnica e mais detalhada do erro."
                     },
                     "help":{
                         "type":"string",
                         "format":"uri",
-                        "description":"URI para documentaÃ§Ã£o do erro."
+                        "description":"URI para documentação do erro."
                     }
                 }
 
