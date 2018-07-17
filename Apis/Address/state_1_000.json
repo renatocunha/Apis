@@ -5,7 +5,7 @@
     "servers": [
 
       {
-        "description": "API para cadastro de estados nos produtos TOTVS",    
+        "description": "API para manutenção do cadastro de estados nos produtos TOTVS",    
         "url": "api.totvs.com.br"
       }
 
@@ -22,13 +22,13 @@
         }
     },
     "paths":{
-        "/State":{
+        "/state":{
             "get":{
                 "tags":[
                     "State"
                 ],
                 "summary":"Retorna lista de Estados",
-                "description":"Retorna lista completa de estados",
+                "description":"Retorna lista completa de estados.",
                 "operationId":"getstate",
                 "parameters":[
                     {
@@ -46,7 +46,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"Operação realizada com suscesso",
+                        "description":"Operação realizada com suscesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -68,7 +68,7 @@
                 "tags":[
                  "State"   
                 ],
-                "summary":"Retorna estado pelo seu código",
+                "summary":"Retorna estado pelo seu código.",
                 "operationId":"getstateId",
                 "parameters":[
                     {
@@ -80,7 +80,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"Operação realizada com suscesso",
+                        "description":"Operação realizada com suscesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -90,7 +90,7 @@
                         }
                     },
                     "400":{
-                        "description":"Estado nÃ£o localizado na base",
+                        "description":"Estado não localizado na base!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -111,7 +111,7 @@
                     "State"
                 ],
                 "summary":"Inclui um estado",
-                "description":"Inclui um estado conforme dados enviados na requsição",
+                "description":"Inclui um estado conforme dados enviados na requsição.",
                 "operationId":"poststateId",
                 "parameters":[
                     {
@@ -143,7 +143,7 @@
                         }
                     },
                     "400":{
-                        "description":"Erro durante inclusÃ£o do estado",
+                        "description":"Erro durante inclusão do estado",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -175,7 +175,7 @@
                     }
                 ],
                 "requestBody":{
-                    "description":"Estado a ser atualizado",
+                    "description":"Estado a ser atualizado.",
                     "content":{ 
                         "application/json":{
                             "schema":{
@@ -186,7 +186,7 @@
                 },
                 "responses":{
                     "200":{
-                        "description":"Operação realizada com suscesso",
+                        "description":"Operação realizada com suscesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -196,7 +196,7 @@
                         }
                     },
                     "400":{
-                        "description":"Erro durante a alteraÃ§Ã£o do estado",
+                        "description":"Erro durante a alteração do estado!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -217,7 +217,7 @@
                     "State"
                 ],
                 "summary":"Exclui um estado",
-                "description":"Exclui cadastro de estado conforme dados enviados na requsição",
+                "description":"Exclui cadastro de estado conforme dados enviados na requsição.",
                 "operationId":"deletestateId",
                 "parameters":[
                     {
@@ -229,7 +229,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"Operação realizada com suscesso",
+                        "description":"Operação realizada com suscesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -239,7 +239,7 @@
                         }
                     },
                     "400":{
-                        "description":"Erro durante a exclusão do estado",
+                        "description":"Erro durante a exclusão do estado!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -263,7 +263,7 @@
                 "name":"stateId",
                 "in":"path",
                 "required":true,
-                "description":"Identificador único do Estado",
+                "description":"Identificador único do Estado.",
                 "schema":{
                     "type": "string"
                 }   
@@ -272,7 +272,7 @@
                 "name":"authorization",
                 "in":"header",
                 "required":true,
-                "description":"Cabeçalho usado para autorização das requisições",
+                "description":"Cabeçalho usado para autorização das requisições.",
                 "schema":{
                     "type": "string"
                 }
@@ -280,7 +280,7 @@
             "Order":{
                 "name":"order",
                 "in":"query",
-                "description":"Ordenação da coleção",
+                "description":"Ordenação da coleção.",
                 "required":false,
                 "schema":{
                     "type":"array",
@@ -293,7 +293,7 @@
             "Page":{
                 "name":"page",
                 "in":"query",
-                "description":"Paginação da coleção",
+                "description":"Paginação da coleção.",
                 "required":false,
                 "schema":{
                     "type":"integer",
@@ -306,7 +306,7 @@
             "PageSize":{
                 "name":"pageSize",
                 "in":"query",
-                "description":"Quantidade de itens por página",
+                "description":"Quantidade de itens por página.",
                 "required":false,
                 "schema":{
                     "type":"integer",
@@ -328,24 +328,26 @@
                 ]
             },
             "States":{
-                "type":"object",
-                "properties":{
-                   "type":"array",
-                   "items":{
-                    "$ref":"#/components/schemas/StatesInfo"
-                   }
-                } 
+				"type":"object",
+				"properties":{
+					"items":{
+						"type":"array",
+						"items":{
+							"$ref":"#/components/schemas/StatesInfo"
+						}
+					}
+				} 
             },
             "StatesInfo":{
                 "type":"object",
                 "properties":{
                     "stateId":{
                         "type":"string",
-                        "description":"código do estado"
+                        "description":"Código do estado"
                     },
                     "stateDescription":{
                         "type":"string",
-                        "description":"Descrição do estado"
+                        "description":"Nome do estado"
                     }
                 }
             },
@@ -377,7 +379,7 @@
                     "detailedMessage":{
                         "type":"string",
                         "format":"uri",
-                        "description":"Mensagem técnoca e mais detalhada do erro."
+                        "description":"Mensagem técnica e mais detalhada do erro."
                     },
                     "help":{
                         "type":"string",

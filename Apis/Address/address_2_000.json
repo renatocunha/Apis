@@ -58,13 +58,15 @@
                 ]
             },
             "Address":{
-               "type":"object",
-               "properties":{
-                   "type":"array",
-                   "items":{
-                        "$ref":"#/components/schemas/AddressInfo"
-                   }
-                } 
+				"type":"object",
+				"properties":{
+					"items":{
+						"type":"array",
+						"items":{
+							"$ref":"#/components/schemas/AddressInfo"
+						}
+					}
+				} 
             },
             "AddressInfo":{
                 "type":"object",

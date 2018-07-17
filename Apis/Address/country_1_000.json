@@ -5,14 +5,14 @@
     "servers": [
 
       {
-        "description": "API para cadastro de paÃ­ss nos produtos TOTVS",    
+        "description": "API para cadastro de país nos produtos TOTVS",    
         "url": "api.totvs.com.br"
       }
 
     ],
 
     "info": {
-        "description": "API para cadastro de paÃ­s(country) para uso dos produtos TOTVS",
+        "description": "API para manutenção cadastro de país(country) para uso dos produtos TOTVS",
         "version":"1.000",
         "title":"Country",
         "contact":{
@@ -27,8 +27,8 @@
                 "tags":[
                     "Country"
                 ],
-                "summary":"Retorna lista de paÃ­ss",
-                "description":"Retorna lista completa de paÃ­ss",
+                "summary":"Retorna lista de país",
+                "description":"Retorna lista completa de país.",
                 "operationId":"getcountry",
                 "parameters":[
                     {
@@ -46,7 +46,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "description":"Operação realizada com suscesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -63,12 +63,12 @@
                 ]
             }    
         },
-        "/city/{countryId}":{
+        "/country/{countryId}":{
             "get":{
                 "tags":[
                  "Country"   
                 ],
-                "summary":"Retorna paÃ­s pelo seu cÃ³digo",
+                "summary":"Retorna país pelo seu código",
                 "operationId":"getcountryId",
                 "parameters":[
                     {
@@ -80,7 +80,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "description":"Operação realizada com suscesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -90,7 +90,7 @@
                         }
                     },
                     "400":{
-                        "description":"paÃ­s nÃ£o localizado na base",
+                        "description":"País não localizado na base",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -110,8 +110,8 @@
                 "tags":[
                     "Country"
                 ],
-                "summary":"Inclui um paÃ­s",
-                "description":"Inclui um paÃ­s conforme dados enviados na requisiÃ§Ã£o",
+                "summary":"Inclui um país",
+                "description":"Inclui um país conforme dados enviados na requisição.",
                 "operationId":"postcountryId",
                 "parameters":[
                     {
@@ -122,7 +122,7 @@
                     }
                 ],
                 "requestBody":{
-                    "description":"Vendedor a ser incluÃ­do",
+                    "description":"País a ser incluído.",
                     "content":{ 
                         "application/json":{
                             "schema":{
@@ -133,7 +133,7 @@
                 },
                 "responses":{
                     "200":{
-                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "description":"Operação realizada com suscesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -143,7 +143,7 @@
                         }
                     },
                     "400":{
-                        "description":"Erro durante inclusÃ£o do paÃ­s",
+                        "description":"Erro durante inclusão do país!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -163,8 +163,8 @@
                 "tags":[
                     "Country"
                 ],
-                "summary":"Altera um paÃ­s",
-                "description":"Atualiza cadastro de paÃ­s conforme dados enviados na requisiÃ§Ã£o",
+                "summary":"Altera um país",
+                "description":"Atualiza cadastro de país conforme dados enviados na requisição.",
                 "operationId":"putcountryId",
                 "parameters":[
                     {
@@ -175,7 +175,7 @@
                     }
                 ],
                 "requestBody":{
-                    "description":"paÃ­s a ser atualizado",
+                    "description":"Cadastro de país a ser atualizado.",
                     "content":{ 
                         "application/json":{
                             "schema":{
@@ -186,7 +186,7 @@
                 },
                 "responses":{
                     "200":{
-                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "description":"Operação realizada com suscesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -196,7 +196,7 @@
                         }
                     },
                     "400":{
-                        "description":"Erro durante a alteraÃ§Ã£o do paÃ­s",
+                        "description":"Erro durante a alteração do cadastro de país!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -216,8 +216,8 @@
                 "tags":[
                     "Country"
                 ],
-                "summary":"Exclui um paÃ­s",
-                "description":"Exclui cadastro de paÃ­s conforme dados enviados na requisiÃ§Ã£o",
+                "summary":"Exclui um país",
+                "description":"Exclui cadastro de país conforme dados enviados na requisição.",
                 "operationId":"deletecountryId",
                 "parameters":[
                     {
@@ -229,7 +229,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"OperaÃ§Ã£o realizada com suscesso",
+                        "description":"Operação realizada com suscesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -239,7 +239,7 @@
                         }
                     },
                     "400":{
-                        "description":"Erro durante a exclusÃ£o do paÃ­s",
+                        "description":"Erro durante a exclusão do país!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -263,7 +263,7 @@
                 "name":"countryId",
                 "in":"path",
                 "required":true,
-                "description":"Identificador Ãºnico do paÃ­s",
+                "description":"Identificador único do país",
                 "schema":{
                     "type": "string"
                 }   
@@ -272,7 +272,7 @@
                 "name":"authorization",
                 "in":"header",
                 "required":true,
-                "description":"CabeÃ§alho usado para autorizaÃ§Ã£o das requisiÃ§Ãµes",
+                "description":"Cabeçalho usado para autorização das requisições",
                 "schema":{
                     "type": "string"
                 }
@@ -280,7 +280,7 @@
             "Order":{
                 "name":"order",
                 "in":"query",
-                "description":"OrdenaÃ§Ã£o da coleÃ§Ã£o",
+                "description":"Ordenação da coleção",
                 "required":false,
                 "schema":{
                     "type":"array",
@@ -293,7 +293,7 @@
             "Page":{
                 "name":"page",
                 "in":"query",
-                "description":"PaginaÃ§Ã£o da coleÃ§Ã£o",
+                "description":"Paginação da coleção",
                 "required":false,
                 "schema":{
                     "type":"integer",
@@ -341,11 +341,11 @@
                 "properties":{
                     "countryId":{
                         "type":"string",
-                        "description":"CÃ³digo do paÃ­s"
+                        "description":"Código do país"
                     },
                     "countryDescription":{
                         "type":"string",
-                        "description":"descriÃ§Ã£o do paÃ­s"
+                        "description":"Nome do país"
                     }
                 }
             },
@@ -368,21 +368,21 @@
                 "properties":{
                     "code":{
                         "type":"string",
-                        "description":"CÃ³digo indentificador do erro."
+                        "description":"Código indentificador do erro."
                     },
                     "message":{
                         "type":"string",
-                        "description":"Literal no idioma da requisiÃ§Ã£o descrevendo o erro para o usuário."
+                        "description":"Literal no idioma da requisição descrevendo o erro para o usuário."
                     },
                     "detailedMessage":{
                         "type":"string",
                         "format":"uri",
-                        "description":"Mensagem tÃ©cnica e mais detalhada do erro."
+                        "description":"Mensagem técnica e mais detalhada do erro."
                     },
                     "help":{
                         "type":"string",
                         "format":"uri",
-                        "description":"URI para documentaÃ§Ã£o do erro."
+                        "description":"URI para documentação do erro."
                     }
                 }
 
