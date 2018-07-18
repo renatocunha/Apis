@@ -22,7 +22,7 @@
         }
     },
     "paths":{
-        "/Country":{
+        "/country":{
             "get":{
                 "tags":[
                     "Country"
@@ -46,7 +46,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"Operação realizada com suscesso!",
+                        "description":"Operação realizada com sucesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -80,7 +80,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"Operação realizada com suscesso!",
+                        "description":"Operação realizada com sucesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -133,7 +133,7 @@
                 },
                 "responses":{
                     "200":{
-                        "description":"Operação realizada com suscesso!",
+                        "description":"Operação realizada com sucesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -186,7 +186,7 @@
                 },
                 "responses":{
                     "200":{
-                        "description":"Operação realizada com suscesso!",
+                        "description":"Operação realizada com sucesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -229,7 +229,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"Operação realizada com suscesso!",
+                        "description":"Operação realizada com sucesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -343,6 +343,10 @@
                         "type":"string",
                         "description":"Código do país"
                     },
+                    "countrInternalId":{
+                        "type":"string",
+                        "description":"InternalId do país no ERP"
+                    },
                     "countryDescription":{
                         "type":"string",
                         "description":"Nome do país"
@@ -357,6 +361,17 @@
                         "example":false
                     }
                 }
+            },
+            "Error":{
+                "type":"object",
+                "allOf":[
+                    {
+                        "$ref":"#/components/schemas/ErrorModel" 
+                    },
+                    {
+                        "$ref":"#/components/schemas/ErrorDetail" 
+                    }
+                ]
             },
             "ErrorModel":{
                 "type":"object",
@@ -379,13 +394,24 @@
                         "format":"uri",
                         "description":"Mensagem técnica e mais detalhada do erro."
                     },
-                    "help":{
+                    "helpUrl":{
                         "type":"string",
                         "format":"uri",
                         "description":"URI para documentação do erro."
                     }
                 }
 
+            },
+            "ErrorDetail":{
+                "type":"object",
+                "properties":{
+                    "details":{
+                        "type":"array",
+                        "items":{
+                            "$ref":"#/components/schemas/ErrorModel"   
+                        }
+                    }
+                }
             }
         }
     }

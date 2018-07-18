@@ -90,7 +90,7 @@
                             "items":{
                                 "type":"array",
                                 "items":{
-                                    "$ref":"https://raw.githubusercontent.com/renatocunha/Apis/master/Apis/Address/city_2_000.json#/components/schemas/CityInfo"
+                                    "$ref":"https://raw.githubusercontent.com/renatocunha/Apis/master/Apis/Address/city_2_000.json#/components/schemas/CitiesInfo"
                                }    
                             } 
                         }
@@ -106,7 +106,7 @@
                             "items":{
                                 "type":"array",
                                 "items":{
-                                    "$ref":"https://raw.githubusercontent.com/renatocunha/Apis/master/Apis/Address/state_1_000.json#/components/schemas/StateInfo"
+                                    "$ref":"https://raw.githubusercontent.com/renatocunha/Apis/master/Apis/Address/state_1_000.json#/components/schemas/StatesInfo"
                                }    
                             } 
                         }
@@ -117,7 +117,7 @@
                             "items":{
                                 "type":"array",
                                 "items":{
-                                    "$ref":"https://raw.githubusercontent.com/renatocunha/Apis/master/Apis/Address/country_1_000.json#/components/schemas/CountryInfo"
+                                    "$ref":"https://raw.githubusercontent.com/renatocunha/Apis/master/Apis/Address/country_1_000.json#/components/schemas/CountriesInfo"
                                }    
                             } 
                         }
@@ -153,7 +153,7 @@
                     }
                 }
             
-        }
+            }
         }
     }
 }

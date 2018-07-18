@@ -46,7 +46,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"Operação realizada com suscesso!",
+                        "description":"Operação realizada com sucesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -80,7 +80,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"Operação realizada com suscesso!",
+                        "description":"Operação realizada com sucesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -133,7 +133,7 @@
                 },
                 "responses":{
                     "200":{
-                        "description":"Operação realizada com suscesso!",
+                        "description":"Operação realizada com sucesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -186,7 +186,7 @@
                 },
                 "responses":{
                     "200":{
-                        "description":"Operação realizada com suscesso!",
+                        "description":"Operação realizada com sucesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -229,7 +229,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"Operação realizada com suscesso!",
+                        "description":"Operação realizada com sucesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -345,6 +345,10 @@
                         "type":"string",
                         "description":"Código da cidade"
                     },
+                    "cityInternalId":{
+                        "type":"string",
+                        "description":"InternalId da Cidade no ERP"
+                    },
                     "cityDescription":{
                         "type":"string",
                         "description":"Nome da cidade"
@@ -360,6 +364,17 @@
                     }
                 }
             },
+            "Error":{
+                "type":"object",
+                "allOf":[
+                    {
+                        "$ref":"#/components/schemas/ErrorModel" 
+                    },
+                    {
+                        "$ref":"#/components/schemas/ErrorDetail" 
+                    }
+                ]
+            },
             "ErrorModel":{
                 "type":"object",
                 "required":[
@@ -370,7 +385,7 @@
                 "properties":{
                     "code":{
                         "type":"string",
-                        "description":"Código indentificador do erro."
+                        "description":"Código identificador do erro."
                     },
                     "message":{
                         "type":"string",
@@ -381,13 +396,24 @@
                         "format":"uri",
                         "description":"Mensagem técnica e mais detalhada do erro."
                     },
-                    "help":{
+                    "helpUrl":{
                         "type":"string",
                         "format":"uri",
                         "description":"URI para documentação do erro."
                     }
                 }
 
+            },
+            "ErrorDetail":{
+                "type":"object",
+                "properties":{
+                    "details":{
+                        "type":"array",
+                        "items":{
+                            "$ref":"#/components/schemas/ErrorModel"   
+                        }
+                    }
+                }
             }
         }
     }
