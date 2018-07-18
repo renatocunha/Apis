@@ -343,7 +343,7 @@
                         "type":"string",
                         "description":"Código do país"
                     },
-                    "countrInternalId":{
+                    "countryInternalId":{
                         "type":"string",
                         "description":"InternalId do país no ERP"
                     },
