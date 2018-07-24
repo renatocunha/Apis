@@ -381,7 +381,7 @@
                             }
                         },
                         "400":{
-                            "description":"Erro durante a alteração da tabela de preço!",
+                            "description":"Erro durante a alteração da tabela de preço! ",
                             "content":{
                                 "application/json":{
                                     "schema":{
