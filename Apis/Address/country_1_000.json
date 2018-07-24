@@ -111,7 +111,7 @@
                     "Country"
                 ],
                 "summary":"Inclui um país",
-                "description":"Inclui um país conforme dados enviados na requisição.",
+                "description":"Inclui um país conforme dados enviados na requisição. ",
                 "operationId":"postcountryId",
                 "parameters":[
                     {

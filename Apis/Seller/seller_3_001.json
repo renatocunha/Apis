@@ -268,7 +268,7 @@
                         }
                     },
                     "400":{
-                        "description":"Erro durante a exclusão do vendedor! ",
+                        "description":"Erro durante a exclusão do vendedor!",
                         "content":{
                             "application/json":{
                                 "schema":{
