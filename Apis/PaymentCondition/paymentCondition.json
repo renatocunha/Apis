@@ -1,0 +1,558 @@
+{
+
+    "openapi": "3.0.1",
+
+    "server":[
+
+        {
+            "description": "API para a entidade Condição de Pagamento (paymentCondition) para produtos TOTVS",    
+            "url": "api.totvs.com.br"
+        }
+
+    ],
+
+    "info": {
+        "description": "API para a entidade Condição de Pagamento (paymentCondition) para produtos TOTVS",
+        "version":"2.004",
+        "title":"PaymentCondition",
+        "contact":{
+            "name":"T-Talk",
+            "url": "api.totvs.com.br",
+            "email":"comiteintegracao@totvs.com.br"
+        },
+        "x-totvs": {
+            "messageDocumentation":{
+                "name":"PaymentCondition",
+                "description":"API para a entidade Condição de Pagamento (paymentCondition) para produtos TOTVS",
+                "segment":"Services"
+            },
+            "produtcInformation":{
+              "protheus":{
+                  "contact":"squad.crm@totvs.com.br",
+                  "description":"Cadastro de Vendedores",
+                  "adapter":"mats360.prx"
+              }  
+            }
+        }
+    },
+    "patch":{
+        "/paymentcondition":{
+            "get":{
+                "tags":[
+                    "PaymentCondition"
+                ],
+                "summary":"Retorna lista de Condições de pagamento",
+                "x-totvs":{
+                    "produtcInformation":{
+                        "protheus":{
+                            "avaliable":true,
+                            "note":"Este verbo está disponível com todos os parâmetros",
+                            "minimalVersion":"12.1.21"
+                        }  
+                    }
+                },
+                "description":"Retorna lista completa das condições de pagamento",
+                "operationId":"getpaymentcondition",
+                "parameters":[
+                    {
+                        "$ref": "#/components/parameters/Authorization"
+                    },
+                    {
+                        "$ref": "#/components/parameters/Order"
+                    },
+                    {
+                        "$ref": "#/components/parameters/Page"
+                    },
+                    {
+                        "$ref": "#/components/parameters/PageSize"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"operação realizada com sucesso!",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/PagedPaymentCondition"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security":[
+                    {
+                        "api_key":[]
+                    }
+                ]
+            },
+            "post":{
+                "tags":[
+                    "PaymentCondition"
+                ],
+                "summary":"Inclui uma Condição de Pagamento",
+                "description":"Inclui uma condição de pagamento conforme dados enviados na requisição.",
+                "operationId":"postpaymentConditionId",
+                "parameters":[
+                    {
+                        "$ref": "#/components/parameters/Authorization"
+                    }
+                ],
+                "requestBody":{
+                    "description":"Preço de lista.",
+                    "content":{ 
+                        "application/json":{
+                            "schema":{
+                                "$ref":"#/components/schemas/PaymentConditionInfo"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"Operação realizada com sucesso!",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/PagedPaymentCondition"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description":"Erro durante inclusão do vendedor!",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/ErrorModel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security":[
+                    {
+                        "api_key":[]
+                    }
+                ]
+            }    
+        },
+        "/paymentecondition/{Code}":{
+            "get":{
+                "tags":[
+                    "PaymentCondition"   
+                ],
+                "summary":"Retorna a condição de pagamento pelo Código",
+                "operationId":"getpaymentConditionId",
+                "x-totvs":{
+                    "produtcInformation":{
+                        "protheus":{
+                            "avaliable":true,
+                            "note":"Este verbo está disponí­vel com os parâmetros Authorization e PaymentConditionId.",
+                            "minimalVersion":"12.1.21"
+                        }  
+                    }
+                },
+                "parameters":[
+                    {
+                        "$ref": "#/components/parameters/Authorization"
+                    },
+                    {
+                        "$ref": "#/components/parameters/PaymentConditionId"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"Operação realizada com sucesso!",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/PagedPaymentCondition"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description":"Condição de pagamento não localizada na base!",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/ErrorModel"
+                                }
+                            }
+                        }
+                    }      
+                },
+                "security":[
+                    {
+                        "api_key":[]
+                    }
+                ]
+            },
+            "put":{
+                "tags":[
+                    "PaymentCondition"
+                ],
+                "summary":"Altera uma condição de pagamento",
+                "description":"Atualiza a condição de pagamento conforme dados enviados na requisição",
+                "operationId":"putpaymentConditionId",
+                "parameters":[
+                    {
+                        "$ref": "#/components/parameters/Authorization"
+                    },
+                    {
+                        "$ref": "#/components/parameters/PaymentConditionId"
+                    }
+                ],
+                "requestBody":{
+                    "description":"Condição de pagamento a ser atualizada.",
+                    "content":{ 
+                        "application/json":{
+                            "schema":{
+                                "$ref":"#/components/schemas/PaymentConditionInfo"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"Operação realizada com sucesso!",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/PagedPaymentCondition"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description":"Erro durante a alteração da condição de pagamento!",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/ErrorModel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security":[
+                    {
+                        "api_key":[]
+                    }
+                ]   
+            },
+            "delete":{
+                "tags":[
+                    "PaymentCondition"
+                ],
+                "summary":"Exclui uma condição de pagamento",
+                "description":"Exclui a condição de pagamento conforme dados enviados na requisição.",
+                "operationId":"deletepaymentConditionId",
+                "parameters":[
+                    {
+                        "$ref": "#/components/parameters/Authorization"
+                    },
+                    {
+                        "$ref": "#/components/parameters/PaymentConditionId"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"Operação realizada com sucesso!",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/PagedPaymentCondition"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description":"Erro durante a exclusão do vendedor!",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/ErrorModel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security":[
+                    {
+                        "api_key":[]
+                    }
+                ]   
+            }
+        }
+    },
+    "components":{
+        "parameters":{
+            "PaymentConditionId":{
+                "name":"Code",
+                "in":"path",
+                "required":true,
+                "description":"Identificador único da condição de pagamento",
+                "schema":{
+                    "type": "string"
+                }   
+            },
+            "Authorization":{
+                "name":"authorization",
+                "in":"header",
+                "required":true,
+                "description":"Cabe�alho usado para autorização das requisições",
+                "schema":{
+                    "type": "string"
+                }
+            },
+            "Order":{
+                "name":"order",
+                "in":"query",
+                "description":"Ordenação da coleção",
+                "required":false,
+                "schema":{
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    },
+                    "uniqueItems":true
+                }
+            },
+            "Page":{
+                "name":"page",
+                "in":"query",
+                "description":"Paginação da coleção",
+                "required":false,
+                "schema":{
+                    "type":"integer",
+                    "format":"int32",
+                    "default":1,
+                    "minimum":1,
+                    "exclusiveMinimum":false
+                }
+            },
+            "PageSize":{
+                "name":"pageSize",
+                "in":"query",
+                "description":"Quantidade de itens por página",
+                "required":false,
+                "schema":{
+                    "type":"integer",
+                    "format":"int32",
+                    "default":20
+                } 
+            }            
+        },
+        "schemas:":{
+            "PagedPaymentCondition":{
+                "type":"object",
+                "allOf":[
+                    {
+                        "$ref":"#/components/schemas/Paging"
+                    },
+                    {
+                        "$ref":"#/components/schemas/PaymentConditions"
+                    }
+                ]
+            },
+            "PaymentConditions":{
+                "type":"object",
+                "properties":{
+                    "items":{
+                        "type":"array",
+                        "items":{
+                            "$ref":"#/components/schemas/PaymentConditionInfo"
+                        }
+                    }
+                }
+            }, 
+            "PaymentConditionInfo":{
+                "type":"object",
+                "properties":{
+                    "companyId":{
+                        "type":"string",
+                        "description":"Empresa",
+                        "maxLength":3
+                    },
+                    "branchId":{
+                       "type":"string",
+                       "description":"Código da Filial",
+                       "maxLength":12,
+                       "x-totvs":{
+                           "protheus":{
+                               "field":"SE4.E4_FILIAL",
+                               "required":true,                               
+                               "length":"8",
+                               "available":true,
+                               "canUpdate":false
+                           }
+                       }
+                    },
+                    "CompanyInternalId":{
+                       "type":"string",
+                       "description":"Código da Empresa",
+                       "x-totvs":{
+                           "protheus":{
+                                "note":"InternalID da tabela de preço utilizado na integração EAI-TOTVS formado por EMPRESA|E4_FILIAL|E4_CODIGO"
+                           }
+                       }
+                    },
+                    "Code":{
+                       "type":"string",
+                       "description":"Código da Condição de Pagamento.",
+                       "maxLength":3,
+                       "x-totvs":{
+                           "protheus:":{
+                               "field":"SE4.E4_CODIGO",                               
+                               "type":"varchar",
+                               "description":"Código",
+                               "required":true,
+                               "avaliable":true
+                           }
+                       }
+                    },
+                    "InternalId":{
+                        "type":"string",
+                        "description":"InternalId da condição de pagamento no ERP",
+                        "x-totvs":{
+                            "protheus":{
+                                "note":"O internalID do Vendedor é formado por SE4.E4_FILIAL|E4.E4_CODIGO",
+                                "type":"varchar"
+                            }
+                        }
+                    },
+                    "Description":{
+                        "type":"string",
+                        "description":"Descrição da Condição de Pagamento",
+                        "maxLength":50,
+                        "x-totvs":{
+                            "field":"SE4.E4_DESCRI",
+                            "description":"Descrição",
+                            "type":"varchar",
+                            "length":"15"
+                        }
+                    },
+                    "MeanTime":{
+                        "type":"integer",
+                        "description":"Número Médio de Dias",
+                        "minimum":0,
+                        "maximum":99
+                    },
+                    "DaysFirstDue":{
+                        "type":"integer",
+                        "description":"Quantidade de dias para o vencimento da primeira parcela (0 a 99)",
+                        "minimum":0,
+                        "maximum":99
+                    },
+                    "QuantityPlots":{
+                        "type":"integer",
+                        "description":"Quantidade de parcelas (1 a 99).",
+                        "minimum":1,
+                        "maximum":99
+                    },
+                    "RangePlots":{
+                        "type":"integer",
+                        "description":"Intervalo entre cada parcela, em dias (0 a 999).",
+                        "minimum":1,
+                        "maximum":999
+                    },
+                    "WeekDayFixed":{
+                        "type":"integer",
+                        "description":"Define um dia da semana fixo para o vencimento das parcelas. 1 - Domingo 2 - Segunda 3 - Terça 4 - Quarta 5 - Quinta 6 - Sexta 7 - Sábado.",
+                        "minimum":1,
+                        "maximum":7
+                    },
+                    "DayMonthFixed":{
+                        "type":"integer",
+                        "description":"Define um dia do mês fixo para o vencimento das parcelas (1 a 31).",
+                        "minimum":1,
+                        "maximum":31
+                    },
+                    "DaysCondition":{
+                        "type":"integer",
+                        "description":"Define como será a contagem dos dias do intervalo de cada parcela. 1 - Data do Dia 2 - Fora o Dia 3 - Fora Semana 4 - Fora Quinzena 5 - Fora Mês 6 - Fora Dezena.",
+                        "minimum":1,
+                        "maximum":6
+                    },
+                    "FinancialDiscountDays":{
+                        "type":"integer",
+                        "description":"Quantidade de dias para o desconto financeiro (1 a 99).",
+                        "minimum":1,
+                        "maximum":31
+                    },
+                    "PercentageDiscountDays":{
+                        "type":"number",
+                        "description":"Percentual do desconto financeiro para a condição",
+                        "maxLenth":7
+                    },
+                    "PercentageIncrease":{
+                        "type":"number",
+                        "description":"Percentual do acréscimo financeiro para a condição.",
+                        "maxLenth":8
+                    }                    
+                }
+            },
+            "Paging":{
+                "type":"object",
+                "properties":{
+                    "hasNext":{
+                        "type":"boolean",
+                        "example":false
+                    }
+                }
+            },
+            "Error":{
+                "type":"object",
+                "allOf":[
+                    {
+                        "$ref":"#/components/schemas/ErrorModel" 
+                    },
+                    {
+                        "$ref":"#/components/schemas/ErrorDetail" 
+                    }
+                ]
+            },
+            "ErrorModel":{
+                "type":"object",
+                "required":[
+                    "code",
+                    "message",
+                    "detailedMessage"
+                ],
+                "properties":{
+                    "code":{
+                        "type":"string",
+                        "description":"Código identificador do erro."
+                    },
+                    "message":{
+                        "type":"string",
+                        "description":"Literal no idioma da requisição descrevendo o erro para o usuário."
+                    },
+                    "detailedMessage":{
+                        "type":"string",
+                        "format":"uri",
+                        "description":"Mensagem técnica e mais detalhada do erro."
+                    },
+                    "helpUrl":{
+                        "type":"string",
+                        "format":"uri",
+                        "description":"URI para documentação do erro."
+                    }
+                }
+            },
+            "ErrorDetail":{
+                "type":"object",
+                "properties":{
+                    "details":{
+                        "type":"array",
+                        "items":{
+                            "$ref":"#/components/schemas/ErrorModel"   
+                        }
+                    }
+                }
+            }            
+        }
+    }
+
+}
