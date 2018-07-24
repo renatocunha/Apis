@@ -2,17 +2,17 @@
 
     "openapi": "3.0.1",
 
-    "server":[
 
-        {
-            "description": "API para a entidade Condi√ß√£o de Pagamento (paymentCondition) para produtos TOTVS",    
-            "url": "api.totvs.com.br"
-        }
-
+    "servers": [
+        
+              {
+                "description": "API para a entidade CondiÁ„o de Pagamento (paymentCondition) para produtos TOTVS",    
+                "url": "api.totvs.com.br"
+              }
     ],
 
     "info": {
-        "description": "API para a entidade Condi√ß√£o de Pagamento (paymentCondition) para produtos TOTVS",
+        "description": "API para a entidade CondiÁ„o de Pagamento (paymentCondition) para produtos TOTVS",
         "version":"2.004",
         "title":"PaymentCondition",
         "contact":{
@@ -23,7 +23,7 @@
         "x-totvs": {
             "messageDocumentation":{
                 "name":"PaymentCondition",
-                "description":"API para a entidade Condi√ß√£o de Pagamento (paymentCondition) para produtos TOTVS",
+                "description":"API para a entidade CondiÁ„o de Pagamento (paymentCondition) para produtos TOTVS",
                 "segment":"Services"
             },
             "produtcInformation":{
@@ -35,23 +35,23 @@
             }
         }
     },
-    "patch":{
+    "paths":{
         "/paymentcondition":{
             "get":{
                 "tags":[
                     "PaymentCondition"
                 ],
-                "summary":"Retorna lista de Condi√ß√µes de pagamento",
+                "summary":"Retorna lista de CondiÁıes de pagamento",
                 "x-totvs":{
                     "produtcInformation":{
                         "protheus":{
                             "avaliable":true,
-                            "note":"Este verbo est√° dispon√≠vel com todos os par√¢metros",
+                            "note":"Este verbo est· disponÌvel com todos os par‚metros",
                             "minimalVersion":"12.1.21"
                         }  
                     }
                 },
-                "description":"Retorna lista completa das condi√ß√µes de pagamento",
+                "description":"Retorna lista completa das condiÁıes de pagamento",
                 "operationId":"getpaymentcondition",
                 "parameters":[
                     {
@@ -69,11 +69,11 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"opera√ß√£o realizada com sucesso!",
+                        "description":"operaÁ„o realizada com sucesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
-                                    "$ref":"#/components/schemas/PagedPaymentCondition"
+                                    "$ref":"#/components/schemas/PagedPaymentConditions"
                                 }
                             }
                         }
@@ -89,8 +89,8 @@
                 "tags":[
                     "PaymentCondition"
                 ],
-                "summary":"Inclui uma Condi√ß√£o de Pagamento",
-                "description":"Inclui uma condi√ß√£o de pagamento conforme dados enviados na requisi√ß√£o.",
+                "summary":"Inclui uma CondiÁ„o de Pagamento",
+                "description":"Inclui uma condiÁ„o de pagamento conforme dados enviados na requisiÁ„o.",
                 "operationId":"postpaymentConditionId",
                 "parameters":[
                     {
@@ -98,7 +98,7 @@
                     }
                 ],
                 "requestBody":{
-                    "description":"Pre√ßo de lista.",
+                    "description":"PreÁo de lista.",
                     "content":{ 
                         "application/json":{
                             "schema":{
@@ -109,17 +109,17 @@
                 },
                 "responses":{
                     "200":{
-                        "description":"Opera√ß√£o realizada com sucesso!",
+                        "description":"OperaÁ„o realizada com sucesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
-                                    "$ref":"#/components/schemas/PagedPaymentCondition"
+                                    "$ref":"#/components/schemas/PagedPaymentConditions"
                                 }
                             }
                         }
                     },
                     "400":{
-                        "description":"Erro durante inclus√£o do vendedor!",
+                        "description":"Erro durante inclus„o do vendedor!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -136,18 +136,18 @@
                 ]
             }    
         },
-        "/paymentecondition/{Code}":{
+        "/paymentcondition/{Code}":{
             "get":{
                 "tags":[
                     "PaymentCondition"   
                 ],
-                "summary":"Retorna a condi√ß√£o de pagamento pelo C√≥digo",
+                "summary":"Retorna a condiÁ„o de pagamento pelo CÛdigo",
                 "operationId":"getpaymentConditionId",
                 "x-totvs":{
                     "produtcInformation":{
                         "protheus":{
                             "avaliable":true,
-                            "note":"Este verbo est√° dispon√≠¬≠vel com os par√¢metros Authorization e PaymentConditionId.",
+                            "note":"Este verbo est· disponÌ≠vel com os par‚metros Authorization e PaymentConditionId.",
                             "minimalVersion":"12.1.21"
                         }  
                     }
@@ -162,17 +162,17 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"Opera√ß√£o realizada com sucesso!",
+                        "description":"OperaÁ„o realizada com sucesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
-                                    "$ref":"#/components/schemas/PagedPaymentCondition"
+                                    "$ref":"#/components/schemas/PagedPaymentConditions"
                                 }
                             }
                         }
                     },
                     "400":{
-                        "description":"Condi√ß√£o de pagamento n√£o localizada na base!",
+                        "description":"CondiÁ„o de pagamento n„o localizada na base!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -192,8 +192,8 @@
                 "tags":[
                     "PaymentCondition"
                 ],
-                "summary":"Altera uma condi√ß√£o de pagamento",
-                "description":"Atualiza a condi√ß√£o de pagamento conforme dados enviados na requisi√ß√£o",
+                "summary":"Altera uma condiÁ„o de pagamento",
+                "description":"Atualiza a condiÁ„o de pagamento conforme dados enviados na requisiÁ„o",
                 "operationId":"putpaymentConditionId",
                 "parameters":[
                     {
@@ -204,7 +204,7 @@
                     }
                 ],
                 "requestBody":{
-                    "description":"Condi√ß√£o de pagamento a ser atualizada.",
+                    "description":"CondiÁ„o de pagamento a ser atualizada.",
                     "content":{ 
                         "application/json":{
                             "schema":{
@@ -215,17 +215,17 @@
                 },
                 "responses":{
                     "200":{
-                        "description":"Opera√ß√£o realizada com sucesso!",
+                        "description":"OperaÁ„o realizada com sucesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
-                                    "$ref":"#/components/schemas/PagedPaymentCondition"
+                                    "$ref":"#/components/schemas/PagedPaymentConditions"
                                 }
                             }
                         }
                     },
                     "400":{
-                        "description":"Erro durante a altera√ß√£o da condi√ß√£o de pagamento!",
+                        "description":"Erro durante a alteraÁ„o da condiÁ„o de pagamento!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -245,8 +245,8 @@
                 "tags":[
                     "PaymentCondition"
                 ],
-                "summary":"Exclui uma condi√ß√£o de pagamento",
-                "description":"Exclui a condi√ß√£o de pagamento conforme dados enviados na requisi√ß√£o.",
+                "summary":"Exclui uma condiÁ„o de pagamento",
+                "description":"Exclui a condiÁ„o de pagamento conforme dados enviados na requisiÁ„o.",
                 "operationId":"deletepaymentConditionId",
                 "parameters":[
                     {
@@ -258,17 +258,17 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"Opera√ß√£o realizada com sucesso!",
+                        "description":"OperaÁ„o realizada com sucesso!",
                         "content":{
                             "application/json":{
                                 "schema":{
-                                    "$ref":"#/components/schemas/PagedPaymentCondition"
+                                    "$ref":"#/components/schemas/PagedPaymentConditions"
                                 }
                             }
                         }
                     },
                     "400":{
-                        "description":"Erro durante a exclus√£o do vendedor!",
+                        "description":"Erro durante a exclus„o do vendedor!",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -292,7 +292,7 @@
                 "name":"Code",
                 "in":"path",
                 "required":true,
-                "description":"Identificador √∫nico da condi√ß√£o de pagamento",
+                "description":"Identificador ˙nico da condiÁ„o de pagamento",
                 "schema":{
                     "type": "string"
                 }   
@@ -301,7 +301,7 @@
                 "name":"authorization",
                 "in":"header",
                 "required":true,
-                "description":"CabeÔøΩalho usado para autoriza√ß√£o das requisi√ß√µes",
+                "description":"Cabeùalho usado para autorizaÁ„o das requisiÁıes",
                 "schema":{
                     "type": "string"
                 }
@@ -309,7 +309,7 @@
             "Order":{
                 "name":"order",
                 "in":"query",
-                "description":"Ordena√ß√£o da cole√ß√£o",
+                "description":"OrdenaÁ„o da coleÁ„o",
                 "required":false,
                 "schema":{
                     "type":"array",
@@ -322,7 +322,7 @@
             "Page":{
                 "name":"page",
                 "in":"query",
-                "description":"Pagina√ß√£o da cole√ß√£o",
+                "description":"PaginaÁ„o da coleÁ„o",
                 "required":false,
                 "schema":{
                     "type":"integer",
@@ -335,7 +335,7 @@
             "PageSize":{
                 "name":"pageSize",
                 "in":"query",
-                "description":"Quantidade de itens por p√°gina",
+                "description":"Quantidade de itens por p·gina",
                 "required":false,
                 "schema":{
                     "type":"integer",
@@ -344,8 +344,8 @@
                 } 
             }            
         },
-        "schemas:":{
-            "PagedPaymentCondition":{
+        "schemas":{
+            "PagedPaymentConditions":{
                 "type":"object",
                 "allOf":[
                     {
@@ -377,7 +377,7 @@
                     },
                     "branchId":{
                        "type":"string",
-                       "description":"C√≥digo da Filial",
+                       "description":"CÛdigo da Filial",
                        "maxLength":12,
                        "x-totvs":{
                            "protheus":{
@@ -391,22 +391,22 @@
                     },
                     "CompanyInternalId":{
                        "type":"string",
-                       "description":"C√≥digo da Empresa",
+                       "description":"CÛdigo da Empresa",
                        "x-totvs":{
                            "protheus":{
-                                "note":"InternalID da tabela de pre√ßo utilizado na integra√ß√£o EAI-TOTVS formado por EMPRESA|E4_FILIAL|E4_CODIGO"
+                                "note":"InternalID da tabela de preÁo utilizado na integraÁ„o EAI-TOTVS formado por EMPRESA|E4_FILIAL|E4_CODIGO"
                            }
                        }
                     },
                     "Code":{
                        "type":"string",
-                       "description":"C√≥digo da Condi√ß√£o de Pagamento.",
+                       "description":"CÛdigo da CondiÁ„o de Pagamento.",
                        "maxLength":3,
                        "x-totvs":{
                            "protheus:":{
                                "field":"SE4.E4_CODIGO",                               
                                "type":"varchar",
-                               "description":"C√≥digo",
+                               "description":"CÛdigo",
                                "required":true,
                                "avaliable":true
                            }
@@ -414,28 +414,28 @@
                     },
                     "InternalId":{
                         "type":"string",
-                        "description":"InternalId da condi√ß√£o de pagamento no ERP",
+                        "description":"InternalId da condiÁ„o de pagamento no ERP",
                         "x-totvs":{
                             "protheus":{
-                                "note":"O internalID do Vendedor √© formado por SE4.E4_FILIAL|E4.E4_CODIGO",
+                                "note":"O internalID do Vendedor È formado por SE4.E4_FILIAL|E4.E4_CODIGO",
                                 "type":"varchar"
                             }
                         }
                     },
                     "Description":{
                         "type":"string",
-                        "description":"Descri√ß√£o da Condi√ß√£o de Pagamento",
+                        "description":"DescriÁ„o da CondiÁ„o de Pagamento",
                         "maxLength":50,
                         "x-totvs":{
                             "field":"SE4.E4_DESCRI",
-                            "description":"Descri√ß√£o",
+                            "description":"DescriÁ„o",
                             "type":"varchar",
                             "length":"15"
                         }
                     },
                     "MeanTime":{
                         "type":"integer",
-                        "description":"N√∫mero M√©dio de Dias",
+                        "description":"N˙mero MÈdio de Dias",
                         "minimum":0,
                         "maximum":99
                     },
@@ -459,19 +459,19 @@
                     },
                     "WeekDayFixed":{
                         "type":"integer",
-                        "description":"Define um dia da semana fixo para o vencimento das parcelas. 1 - Domingo 2 - Segunda 3 - Ter√ßa 4 - Quarta 5 - Quinta 6 - Sexta 7 - S√°bado.",
+                        "description":"Define um dia da semana fixo para o vencimento das parcelas. 1 - Domingo 2 - Segunda 3 - TerÁa 4 - Quarta 5 - Quinta 6 - Sexta 7 - S·bado.",
                         "minimum":1,
                         "maximum":7
                     },
                     "DayMonthFixed":{
                         "type":"integer",
-                        "description":"Define um dia do m√™s fixo para o vencimento das parcelas (1 a 31).",
+                        "description":"Define um dia do mÍs fixo para o vencimento das parcelas (1 a 31).",
                         "minimum":1,
                         "maximum":31
                     },
                     "DaysCondition":{
                         "type":"integer",
-                        "description":"Define como ser√° a contagem dos dias do intervalo de cada parcela. 1 - Data do Dia 2 - Fora o Dia 3 - Fora Semana 4 - Fora Quinzena 5 - Fora M√™s 6 - Fora Dezena.",
+                        "description":"Define como ser· a contagem dos dias do intervalo de cada parcela. 1 - Data do Dia 2 - Fora o Dia 3 - Fora Semana 4 - Fora Quinzena 5 - Fora MÍs 6 - Fora Dezena.",
                         "minimum":1,
                         "maximum":6
                     },
@@ -483,13 +483,41 @@
                     },
                     "PercentageDiscountDays":{
                         "type":"number",
-                        "description":"Percentual do desconto financeiro para a condi√ß√£o",
-                        "maxLenth":7
+                        "description":"Percentual do desconto financeiro para a condiÁ„o",
+                        "maxLength":7
                     },
                     "PercentageIncrease":{
                         "type":"number",
-                        "description":"Percentual do acr√©scimo financeiro para a condi√ß√£o.",
-                        "maxLenth":8
+                        "description":"Percentual do acrÈscimo financeiro para a condiÁ„o.",
+                        "maxLength":8
+                    },
+                    "Plots":{
+                        "type":"object",
+                        "description":"Define as parcelas da condiÁ„o de pagamento quando o intervalo n„o for regular ou o valor das parcelas n„o for dividido de forma igual.",
+                        "properties":{
+                            "PlotsType":{
+                                "type":"array",
+                                "items":{
+                                    "$ref":"#/components/schemas/DueType"
+                                }
+                            }
+                        }
+                    }                    
+                }
+            },
+            "DueType":{
+                "type":"object",
+                "properties":{
+                    "DueDay":{
+                        "type":"number",
+                        "description":"Quantidade de dias para o vencimento da parcela (0 a 999).",
+                        "minimum":0,
+                        "maximum":999                        
+                    },
+                    "Percentage":{
+                        "type":"number",
+                        "description":"Indica se o valor da parcela dever· ser um percentual do total.",
+                        "maxLength":8
                     }                    
                 }
             },
@@ -523,21 +551,21 @@
                 "properties":{
                     "code":{
                         "type":"string",
-                        "description":"C√≥digo identificador do erro."
+                        "description":"CÛdigo identificador do erro."
                     },
                     "message":{
                         "type":"string",
-                        "description":"Literal no idioma da requisi√ß√£o descrevendo o erro para o usu√°rio."
+                        "description":"Literal no idioma da requisiÁ„o descrevendo o erro para o usu·rio."
                     },
                     "detailedMessage":{
                         "type":"string",
                         "format":"uri",
-                        "description":"Mensagem t√©cnica e mais detalhada do erro."
+                        "description":"Mensagem tÈcnica e mais detalhada do erro."
                     },
                     "helpUrl":{
                         "type":"string",
                         "format":"uri",
-                        "description":"URI para documenta√ß√£o do erro."
+                        "description":"URI para documentaÁ„o do erro."
                     }
                 }
             },
