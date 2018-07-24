@@ -123,7 +123,7 @@
                             "content":{
                                 "application/json":{
                                     "schema":{
-                                        "$ref":"#/components/schemas/ErrorModel"
+                                        "$ref":"#/components/schemas/ErrorDetails"
                                     }
                                 }
                             }
@@ -176,7 +176,7 @@
                             "content":{
                                 "application/json":{
                                     "schema":{
-                                        "$ref":"#/components/schemas/ErrorModel"
+                                        "$ref":"#/components/schemas/ErrorDetails"
                                     }
                                 }
                             }
@@ -229,7 +229,7 @@
                             "content":{
                                 "application/json":{
                                     "schema":{
-                                        "$ref":"#/components/schemas/ErrorModel"
+                                        "$ref":"#/components/schemas/ErrorDetails"
                                     }
                                 }
                             }
@@ -272,7 +272,7 @@
                             "content":{
                                 "application/json":{
                                     "schema":{
-                                        "$ref":"#/components/schemas/ErrorModel"
+                                        "$ref":"#/components/schemas/ErrorDetails"
                                     }
                                 }
                             }
@@ -327,7 +327,7 @@
                             "content":{
                                 "application/json":{
                                     "schema":{
-                                        "$ref":"#/components/schemas/ErrorModel"
+                                        "$ref":"#/components/schemas/ErrorDetails"
                                     }
                                 }
                             }
@@ -381,11 +381,11 @@
                             }
                         },
                         "400":{
-                            "description":"Erro durante a alteração da tabela de preço! ",
+                            "description":"Erro durante a alteração da tabela de preço!",
                             "content":{
                                 "application/json":{
                                     "schema":{
-                                        "$ref":"#/components/schemas/ErrorModel"
+                                        "$ref":"#/components/schemas/ErrorDetails"
                                     }
                                 }
                             }
@@ -427,11 +427,11 @@
                             }
                         },
                         "400":{
-                            "description":"Erro durante a exclusão da tabela de preço!",
+                            "description":"Erro durante a exclusão da tabela de preço! ",
                             "content":{
                                 "application/json":{
                                     "schema":{
-                                        "$ref":"#/components/schemas/ErrorModel"
+                                        "$ref":"#/components/schemas/ErrorDetails"
                                     }
                                 }
                             }
@@ -841,7 +841,7 @@
                         }
                     }
                 },
-                "Error":{
+                "ErrorDetails":{
                     "type":"object",
                     "allOf":[
                         {

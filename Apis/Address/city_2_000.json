@@ -80,7 +80,7 @@
                 ],
                 "responses":{
                     "200":{
-                        "description":"Operação realizada com sucesso!",
+                        "description":"Operação realizada com sucesso! ",
                         "content":{
                             "application/json":{
                                 "schema":{
@@ -94,7 +94,7 @@
                         "content":{
                             "application/json":{
                                 "schema":{
-                                    "$ref":"#/components/schemas/ErrorModel"
+                                    "$ref":"#/components/schemas/ErrorDetails"
                                 }
                             }
                         }
@@ -147,7 +147,7 @@
                         "content":{
                             "application/json":{
                                 "schema":{
-                                    "$ref":"#/components/schemas/ErrorModel"
+                                    "$ref":"#/components/schemas/ErrorDetails"
                                 }
                             }
                         }
@@ -200,7 +200,7 @@
                         "content":{
                             "application/json":{
                                 "schema":{
-                                    "$ref":"#/components/schemas/ErrorModel"
+                                    "$ref":"#/components/schemas/ErrorDetails"
                                 }
                             }
                         }
@@ -243,7 +243,7 @@
                         "content":{
                             "application/json":{
                                 "schema":{
-                                    "$ref":"#/components/schemas/ErrorModel"
+                                    "$ref":"#/components/schemas/ErrorDetails"
                                 }
                             }
                         }
@@ -364,7 +364,7 @@
                     }
                 }
             },
-            "Error":{
+            "ErrorDetails":{
                 "type":"object",
                 "allOf":[
                     {
