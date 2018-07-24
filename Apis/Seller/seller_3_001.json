@@ -510,6 +510,7 @@
                         "x-totvs":{
                             "protheus":{
                                 "field":"SA3.A3_SENHA",
+                                "description":"Senha do Vendedor no Portal do Vendedor",
                                 "required":false,
                                 "type":"varchar",
                                 "lenght":"6",
@@ -518,7 +519,7 @@
                             }
                         } 
                     },
-                    "selllerPhoneDiallingCode":{
+                    "sellerPhoneDiallingCode":{
                         "type":"string",
                         "description":"DDD do vendedor",
                         "maxLength":3,
@@ -533,7 +534,7 @@
                             }
                         } 
                     },
-                    "selllerPhone":{
+                    "sellerPhone":{
                         "type":"string",
                         "description":"Telefone do vendedor",
                         "maxLength":15,
@@ -548,7 +549,7 @@
                             }
                         }  
                     },
-                    "selllerEmail":{
+                    "sellerEmail":{
                         "type":"string",
                         "description":"E-mail do vendedor",
                         "maxLength":80,
@@ -575,7 +576,7 @@
                             } 
                         } 
                     },
-                    "sallesChargeInformation":{
+                    "salesChargeInformation":{
                         "type":"object",
                         "description":"Informações de comissões", 
                         "properties":{
@@ -593,7 +594,7 @@
                                     }
                                 }        
                             },
-                            "sallesChargeInterface":{
+                            "salesChargeInterface":{
                                 "type":"string",
                                 "description":"Formato de cobrança de comissões",
                                 "x-totvs":{
@@ -621,7 +622,7 @@
                             } 
                         }
                     },
-                    "selllerStatus":{
+                    "sellerStatus":{
                         "type":"boolean",
                         "description":"Vendedor ativo?",
                         "example":true
