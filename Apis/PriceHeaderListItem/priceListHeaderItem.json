@@ -73,7 +73,7 @@
                             "content":{
                                 "application/json":{
                                     "schema":{
-                                        "$ref":"#/components/schemas/PriceListHeaderItems"
+                                        "$ref":"#/components/schemas/PagedPriceListHeaderItems"
                                     }
                                 }
                             }
@@ -289,7 +289,7 @@
                     ]   
                 }
             },
-            "/priceList/{priceListId}/pricelistitens/":{
+            "/priceList/{priceListId}/pricelistitems/":{
                 "get":{
                     "tags":[
                      "priceListItemCode"   
@@ -322,7 +322,7 @@
                             "content":{
                                 "application/json":{
                                     "schema":{
-                                        "$ref":"#/components/schemas/PriceListItems"
+                                        "$ref":"#/components/schemas/PagedPriceListItems"
                                     }
                                 }
                             }
@@ -380,7 +380,7 @@
                             "content":{
                                 "application/json":{
                                     "schema":{
-                                        "$ref":"#/components/schemas/PriceListItems"
+                                        "$ref":"#/components/schemas/PagedPriceListItems"
                                     }
                                 }
                             }
@@ -436,7 +436,7 @@
                             "content":{
                                 "application/json":{
                                     "schema":{
-                                        "$ref":"#/components/schemas/PriceListItems"
+                                        "$ref":"#/components/schemas/PagedPriceListItems"
                                     }
                                 }
                             }
@@ -722,6 +722,17 @@
                          }
                     }
                 },
+                "PagedPriceListItems":{
+                    "type":"object",
+                    "allOf":[
+                        {
+                            "$ref":"#/components/schemas/Paging"
+                        },
+                        {
+                            "$ref":"#/components/schemas/PriceListItems"
+                        }
+                    ]
+                },                  
                 "PriceListItems":{
                     "type":"object",
                     "properties":{
