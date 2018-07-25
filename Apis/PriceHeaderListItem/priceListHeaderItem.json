@@ -73,7 +73,7 @@
                             "content":{
                                 "application/json":{
                                     "schema":{
-                                        "$ref":"#/components/schemas/PagedPriceListHeaderItems"
+                                        "$ref":"#/components/schemas/PriceListHeaderItems"
                                     }
                                 }
                             }
@@ -174,7 +174,7 @@
                             }
                         },
                         "400":{
-                            "description":"Vendedor não localizado na base!",
+                            "description":"Tabela de Preço não localizada na base!",
                             "content":{
                                 "application/json":{
                                     "schema":{
@@ -212,7 +212,7 @@
                         "content":{ 
                             "application/json":{
                                 "schema":{
-                                    "$ref":"#/components/schemas/PriceListHeaderInfo"
+                                    "$ref":"#/components/schemas/PagedPriceListHeaderItems"
                                 }
                             }
                         }
@@ -223,7 +223,7 @@
                             "content":{
                                 "application/json":{
                                     "schema":{
-                                        "$ref":"#/components/schemas/PagedPriceListHeader"
+                                        "$ref":"#/components/schemas/PagedPriceListHeaderItems"
                                     }
                                 }
                             }
@@ -289,21 +289,80 @@
                     ]   
                 }
             },
-            "/priceList/pricelistid/":{
-                "post":{
+            "/priceList/{priceListId}/pricelistitens/":{
+                "get":{
                     "tags":[
-                        "priceListItemId"
+                     "priceListItemCode"   
                     ],
-                    "summary":"Inclui um item na Tabela de Preço",
-                    "description":"Inclui um novo item na tabela de preço conforme dados enviados.",
-                    "operationId":"postListItemId",
+                    "summary":"Retorna a tabela de preço de acordo com o seu código",
+                    "operationId":"getpriceListItemCode",
+                    "x-totvs":{
+                        "produtcInformation":{
+                            "protheus":{
+                                "avaliable":true,
+                                "note":"Este verbo está disponível com os parâmetros Authorization e priceListId.",
+                                "minimalVersion":"12.1.21"
+                            }  
+                        }
+                    },
                     "parameters":[
                         {
                             "$ref": "#/components/parameters/Authorization"
                         },
                         {
                             "$ref": "#/components/parameters/priceListId"
-                        }                        
+                        },
+                        {
+                            "$ref": "#/components/parameters/itemCode"
+                        }     
+                    ],
+                    "responses":{
+                        "200":{
+                            "description":"Operação realizada com sucesso!",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+                                        "$ref":"#/components/schemas/PriceListItems"
+                                    }
+                                }
+                            }
+                        },
+                        "400":{
+                            "description":"Tabela de Preço não localizada na base!",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+
+                                        "$ref":"#/components/schemas/ErrorDetails"
+
+                                    }
+                                }
+                            }
+                        }      
+                    },
+                    "security":[
+                        {
+                            "api_key":[]
+                        }
+                    ]
+                },
+                "post":{
+                    "tags":[
+                        "priceListItemCode"
+                    ],
+                    "summary":"Inclui um item na Tabela de Preço",
+                    "description":"Inclui um novo item na tabela de preço conforme dados enviados.",
+                    "operationId":"postpriceListItemCode",
+                    "parameters":[
+                        {
+                            "$ref": "#/components/parameters/Authorization"
+                        },
+                        {
+                            "$ref": "#/components/parameters/priceListId"
+                        },
+                        {
+                            "$ref": "#/components/parameters/itemCode"
+                        }                       
                     ],
                     "requestBody":{
                         "description":"Tabela de preço a ser incluída.",
@@ -321,7 +380,7 @@
                             "content":{
                                 "application/json":{
                                     "schema":{
-                                        "$ref":"#/components/schemas/PagedPriceListHeaderItems"
+                                        "$ref":"#/components/schemas/PriceListItems"
                                     }
                                 }
                             }
@@ -342,9 +401,7 @@
                             "api_key":[]
                         }
                     ]
-                }
-            },
-            "/priceList/{priceListId}/pricelistid/{itemCode}":{
+                },
                 "put":{
                     "tags":[
                         "priceListItemCode"
@@ -368,7 +425,7 @@
                         "content":{ 
                             "application/json":{
                                 "schema":{
-                                    "$ref":"#/components/schemas/PriceListItemInfo"
+                                    "$ref":"#/components/schemas/PriceListItems"
                                 }
                             }
                         }
@@ -379,7 +436,7 @@
                             "content":{
                                 "application/json":{
                                     "schema":{
-                                        "$ref":"#/components/schemas/PagedPriceListHeaderItems"
+                                        "$ref":"#/components/schemas/PriceListItems"
                                     }
                                 }
                             }
@@ -462,11 +519,11 @@
                 },
                 "itemCode":{
                     "name":"itemCode",
-                    "in":"path",
-                    "required":true,
+                    "in":"query",
+                    "required":false,
                     "description":"Identificador do item da tabela de preço",
                     "schema":{
-                        "type": "string"
+                        "$ref":"#/components/schemas/PriceListItemInfo"
                     }
                 },                
                 "Authorization":{
@@ -524,36 +581,22 @@
                             "$ref":"#/components/schemas/Paging"
                         },
                         {
-                            "$ref":"#/components/schemas/PriceListHeaders"
-                        },
-                        {
-                            "$ref":"#/components/schemas/PriceListItems"                            
+                            "$ref":"#/components/schemas/PriceListHeaderItems"
                         }
                     ]
-                },
-                "PagedPriceListHeader":{
-                    "type":"object",
-                    "allOf":[
-                        {
-                            "$ref":"#/components/schemas/Paging"
-                        },
-                        {
-                            "$ref":"#/components/schemas/PriceListHeaders"
-                        }
-                    ]
-                },                
-                "PriceListHeaders":{
+                },           
+                "PriceListHeaderItems":{
                     "type":"object",
                     "properties":{
                         "items":{
                             "type":"array",
                             "items":{
-                                "$ref":"#/components/schemas/PriceListHeaderInfo"
+                                "$ref":"#/components/schemas/PriceListHeaderItemsInfo"
                             }
                         }
                     }
                 },
-                "PriceListHeaderInfo":{
+                "PriceListHeaderItemsInfo":{
                     "type":"object",
                     "properties":{
                         "priceListId":{
@@ -665,7 +708,18 @@
                                     "length":"1"
                                 }
                             }
-                        }
+                        },
+                        "PriceListItems":{
+                            "type":"object",
+                            "properties":{
+                                "itemCodes":{
+                                    "type":"array",
+                                    "items":{
+                                        "$ref":"#/components/schemas/PriceListItemInfo"   
+                                    }
+                                }
+                            }                          
+                         }
                     }
                 },
                 "PriceListItems":{
