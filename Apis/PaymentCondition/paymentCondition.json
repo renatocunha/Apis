@@ -1,25 +1,25 @@
 {
 
     "openapi": "3.0.1",
-
-    "server":[
-
-        {
-            "description": "API para a entidade Condição de Pagamento (paymentCondition) para produtos TOTVS",    
+    
+        "servers": [
+    
+          {
+            "description": "API para cadastro tabela de preços dos produtos TOTVS",    
             "url": "api.totvs.com.br"
-        }
-
-    ],
-
-    "info": {
-        "description": "API para a entidade Condição de Pagamento (paymentCondition) para produtos TOTVS",
-        "version":"2.004",
-        "title":"PaymentCondition",
-        "contact":{
-            "name":"T-Talk",
-            "url": "api.totvs.com.br",
-            "email":"comiteintegracao@totvs.com.br"
-        },
+          }
+    
+        ], 
+        
+        "info": {
+            "description": "API para manutenção de tabela de preço para os produtos TOTVS",
+            "version":"2.004",
+            "title":"PriceList",
+            "contact":{
+                "name":"T-Talk",
+                "url": "api.totvs.com.br",
+                "email":"comiteintegracao@totvs.com.br"
+            },
         "x-totvs": {
             "messageDocumentation":{
                 "name":"PaymentCondition",
@@ -35,7 +35,7 @@
             }
         }
     },
-    "patch":{
+    "paths":{
         "/paymentcondition":{
             "get":{
                 "tags":[
@@ -139,7 +139,7 @@
         "/paymentecondition/{Code}":{
             "get":{
                 "tags":[
-                    "PaymentCondition"   
+                    "PaymentConditionId"   
                 ],
                 "summary":"Retorna a condição de pagamento pelo Código",
                 "operationId":"getpaymentConditionId",
@@ -190,7 +190,7 @@
             },
             "put":{
                 "tags":[
-                    "PaymentCondition"
+                    "PaymentConditionId"
                 ],
                 "summary":"Altera uma condição de pagamento",
                 "description":"Atualiza a condição de pagamento conforme dados enviados na requisição",
@@ -243,7 +243,7 @@
             },
             "delete":{
                 "tags":[
-                    "PaymentCondition"
+                    "PaymentConditionId"
                 ],
                 "summary":"Exclui uma condição de pagamento",
                 "description":"Exclui a condição de pagamento conforme dados enviados na requisição.",
@@ -344,7 +344,7 @@
                 } 
             }            
         },
-        "schemas:":{
+        "schemas":{
             "PagedPaymentCondition":{
                 "type":"object",
                 "allOf":[
@@ -484,15 +484,43 @@
                     "PercentageDiscountDays":{
                         "type":"number",
                         "description":"Percentual do desconto financeiro para a condição",
-                        "maxLenth":7
+                        "maxLength":7
                     },
                     "PercentageIncrease":{
                         "type":"number",
                         "description":"Percentual do acréscimo financeiro para a condição.",
-                        "maxLenth":8
-                    }                    
+                        "maxLength":8
+                    },
+                    "PlotsType":{
+                        "type":"object",
+                        "description":"Define as parcelas da condição de pagamento quando o intervalo não for regular ou o valor das parcelas não for dividido de forma igual.",
+                        "properties":{
+                            "DueType":{
+                                "type":"array",
+                                "items":{
+                                    "$ref":"#/components/schemas/DueType"
+                                }
+                            }
+                        }
+                    }                                  
                 }
             },
+            "DueType":{
+                "type":"object",
+                "properties":{
+                    "DueDay":{
+                        "type":"number",
+                        "description":"Quantidade de dias para o vencimento da parcela (0 a 999).",
+                        "minimum":0,
+                        "maximum":999
+                    },
+                    "Percentage":{
+                        "type":"number",
+                        "description":"Indica se o valor da parcela deverá ser um percentual do total.",
+                        "maxLength":8
+                    }
+                }
+            },            
             "Paging":{
                 "type":"object",
                 "properties":{
