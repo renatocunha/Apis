@@ -301,7 +301,7 @@
                 "name":"authorization",
                 "in":"header",
                 "required":true,
-                "description":"Cabe�alho usado para autorização das requisições",
+                "description":"Cabeçalho usado para autorização das requisições",
                 "schema":{
                     "type": "string"
                 }
