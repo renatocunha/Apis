@@ -61,6 +61,9 @@
                             "$ref": "#/components/parameters/Order"
                         },
                         {
+                            "$ref": "#/components/parameters/Fields"
+                        },                        
+                        {
                             "$ref": "#/components/parameters/Page"
                         },
                         {
@@ -95,7 +98,10 @@
                     "parameters":[
                         {
                             "$ref": "#/components/parameters/Authorization"
-                        }
+                        },
+                        {
+                            "$ref": "#/components/parameters/Fields"
+                        }                                                
                     ],
                     "requestBody":{
                         "description":"Tabela de preço a ser incluída.",
@@ -160,7 +166,13 @@
                         },
                         {
                             "$ref": "#/components/parameters/priceListId"
-                        }
+                        },
+                        {
+                            "$ref": "#/components/parameters/Order"
+                        },                        
+                        {
+                            "$ref": "#/components/parameters/Fields"
+                        }                                                
                     ],
                     "responses":{
                         "200":{
@@ -173,8 +185,8 @@
                                 }
                             }
                         },
-                        "400":{
-                            "description":"Tabela de Preço não localizada na base!",
+                        "404":{
+                            "description":"Registro não encontrado!",
                             "content":{
                                 "application/json":{
                                     "schema":{
@@ -184,7 +196,7 @@
                                     }
                                 }
                             }
-                        }      
+                        }                                                            
                     },
                     "security":[
                         {
@@ -205,7 +217,10 @@
                         },
                         {
                             "$ref": "#/components/parameters/priceListId"
-                        }                           
+                        },
+                        {
+                            "$ref": "#/components/parameters/Fields"
+                        }                                                   
                     ],
                     "requestBody":{
                         "description":"Tabela de preço a ser atualizada.",
@@ -237,7 +252,19 @@
                                     }
                                 }
                             }
-                        }
+                        },
+                        "404":{
+                            "description":"Registro não encontrado!",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+
+                                        "$ref":"#/components/schemas/ErrorDetails"
+
+                                    }
+                                }
+                            }
+                        }                                                      
                     },
                     "security":[
                         {
@@ -258,7 +285,10 @@
                         },
                         {
                             "$ref": "#/components/parameters/priceListId"
-                        }
+                        },
+                        {
+                            "$ref": "#/components/parameters/Fields"
+                        }                        
                     ],
                     "responses":{
                         "200":{
@@ -280,7 +310,19 @@
                                     }
                                 }
                             }
-                        }
+                        },
+                        "404":{
+                            "description":"Registro não encontrado!",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+
+                                        "$ref":"#/components/schemas/ErrorDetails"
+
+                                    }
+                                }
+                            }
+                        }                                                      
                     },
                     "security":[
                         {
@@ -314,7 +356,13 @@
                         },
                         {
                             "$ref": "#/components/parameters/itemCode"
-                        }     
+                        },
+                        {
+                            "$ref": "#/components/parameters/Order"
+                        },                        
+                        {
+                            "$ref": "#/components/parameters/Fields"
+                        }                             
                     ],
                     "responses":{
                         "200":{
@@ -327,8 +375,8 @@
                                 }
                             }
                         },
-                        "400":{
-                            "description":"Tabela de Preço não localizada na base!",
+                        "404":{
+                            "description":"Registro não encontrado!",
                             "content":{
                                 "application/json":{
                                     "schema":{
@@ -338,7 +386,7 @@
                                     }
                                 }
                             }
-                        }      
+                        }                              
                     },
                     "security":[
                         {
@@ -362,7 +410,10 @@
                         },
                         {
                             "$ref": "#/components/parameters/itemCode"
-                        }                       
+                        },
+                        {
+                            "$ref": "#/components/parameters/Fields"
+                        }                        
                     ],
                     "requestBody":{
                         "description":"Tabela de preço a ser incluída.",
@@ -418,7 +469,10 @@
                         },
                         {
                             "$ref": "#/components/parameters/itemCode"
-                        }                            
+                        },
+                        {
+                            "$ref": "#/components/parameters/Fields"
+                        }                        
                     ],
                     "requestBody":{
                         "description":"Tabela de preço a ser atualizada.",
@@ -442,15 +496,29 @@
                             }
                         },
                         "400":{
-                            "description":"Erro durante a alteração da tabela de preço!",
+                            "description":"Erro ao alterar a tabela de preço!",
                             "content":{
                                 "application/json":{
                                     "schema":{
+
                                         "$ref":"#/components/schemas/ErrorDetails"
+
                                     }
                                 }
                             }
-                        }
+                        },                        
+                        "404":{
+                            "description":"Registro não encontrado!",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+
+                                        "$ref":"#/components/schemas/ErrorDetails"
+
+                                    }
+                                }
+                            }
+                        }                              
                     },
                     "security":[
                         {
@@ -474,7 +542,10 @@
                         },
                         {
                             "$ref": "#/components/parameters/itemCode"
-                        }                            
+                        },
+                        {
+                            "$ref": "#/components/parameters/Fields"
+                        }
                     ],
                     "responses":{
                         "200":{
@@ -496,7 +567,19 @@
                                     }
                                 }
                             }
-                        }
+                        },
+                        "404":{
+                            "description":"Registro não encontrado!",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+
+                                        "$ref":"#/components/schemas/ErrorDetails"
+
+                                    }
+                                }
+                            }
+                        }                                                      
                     },
                     "security":[
                         {
@@ -548,6 +631,19 @@
                         "uniqueItems":true
                     }
                 },
+                "Fields":{
+                    "name":"fields",
+                    "in":"query",
+                    "description":"Campos apresentados no retorno das operações",
+                    "required":false,
+                    "schema":{
+                        "type":"array",
+                        "items":{
+                            "type":"string"
+                        },
+                        "uniqueItems":true
+                    }
+                },                
                 "Page":{
                     "name":"page",
                     "in":"query",
@@ -760,16 +856,31 @@
                                 }
                             }
                         },                                
+                        "itemList":{
+                            "type":"string",
+                            "description":"Item da Tabela",
+                            "maxLength":4,
+                            "x-totvs":{
+                                "protheus":{
+                                    "type":"varchar",
+                                    "field":"DA1.DA1_ITEM",
+                                    "description":"Item da Tabela de Preço",
+                                    "length":"4"
+                                }
+                            }
+                        },                        
                         "itemCode":{
                             "type":"string",
                             "description":"Código do Produto",
                             "maxLength":30,
                             "x-totvs":{
-                                "type":"varchar",
-                                "field":"",
-                                "description":"",
-                                "length":""
+                                "protheus":{
+                                    "type":"varchar",
+                                    "field":"DA1.DA1_CODPRO",
+                                    "description":"",
+                                    "length":"15"
                                 }
+                            }
                         },
                         "itemInternalId":{
                             "type":"string",
@@ -779,7 +890,7 @@
                                     "required":true,
                                     "type":"varchar",
                                     "length":"50",
-                                    "note":"InternalID do produto formado por EMPRESA|B1_FILIAL|B1_COD"
+                                    "note":"InternalID do produto formado por EMPRESA|DA1_FILIAL|DA1_CODPRO|DA1_CODTAB|DA1_ITEM"
                                 }
                             }
                         },
@@ -813,7 +924,15 @@
                             "type":"number",
                             "format":"double",
                             "description":"Preco mínimo de venda do produto - Valor Sem Frete",
-                            "maxLength":12
+                            "maxLength":12,
+                            "x-totvs":{
+                                "protheus":{
+                                    "field":"DA1.DA1_PRCVEN",
+                                    "length":"12",
+                                    "description":"Preco Venda",
+                                    "note":"Campo com duas casas decimais"
+                                }
+                            }
                         },
                         "minimumSalesPriceFOB":{
                             "type":"number",
@@ -839,7 +958,7 @@
                             "description":"Fator de Acresc./Desconto%",
                             "maxLength":11,
                             "x-totvs":{
-                                "field":"DA1.DA1_FRETE",
+                                "field":"DA1.DA1_PERDES",
                                 "length":"6",
                                 "description":"Fator",
                                 "note":"Campo com quatro casas decimais"
@@ -850,14 +969,14 @@
                             "format":"double",
                             "description":"Quantidade Mínima",
                             "maxLength":11
-                        },                                                                                                                                                                                                          
+                        },                                              
                         "cifPrice":{
                             "type":"number",
                             "format":"double",
                             "description":"Preco CIF",
                             "maxLength":11
                         },                                        
-                        "fifPrice":{
+                        "fobPrice":{
                             "type":"number",
                             "format":"double",
                             "description":"Preco FOB",
