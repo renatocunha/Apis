@@ -832,7 +832,7 @@
                 "PriceListItems":{
                     "type":"object",
                     "properties":{
-                        "items":{
+                        "PriceListItems":{
                             "type":"array",
                             "items":{
                                 "$ref":"#/components/schemas/PriceListItemInfo"
