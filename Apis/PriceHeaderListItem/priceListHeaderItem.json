@@ -684,7 +684,7 @@
                 "PriceListHeaderItems":{
                     "type":"object",
                     "properties":{
-                        "items":{
+                        "priceListHeader":{
                             "type":"array",
                             "items":{
                                 "$ref":"#/components/schemas/PriceListHeaderItemsInfo"
@@ -808,7 +808,7 @@
                         "PriceListItems":{
                             "type":"object",
                             "properties":{
-                                "itemCodes":{
+                                "priceListItems":{
                                     "type":"array",
                                     "items":{
                                         "$ref":"#/components/schemas/PriceListItemInfo"   
