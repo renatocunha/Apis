@@ -684,7 +684,7 @@
                 "PriceListHeaderItems":{
                     "type":"object",
                     "properties":{
-                        "priceListHeader":{
+                        "PriceListHeaderItems":{
                             "type":"array",
                             "items":{
                                 "$ref":"#/components/schemas/PriceListHeaderItemsInfo"
