@@ -149,7 +149,7 @@
                     "tags":[
                      "priceListId"   
                     ],
-                    "summary":"Retorna a tabela de preço de acordo com o seu código",
+                    "summary":"Retorna a tabela de preço e todos os seus itens de acordo com o seu código",
                     "operationId":"getpricelistId",
                     "x-totvs":{
                         "produtcInformation":{
@@ -331,9 +331,126 @@
             "/priceList/{priceListId}/priceListItems/":{
                 "get":{
                     "tags":[
-                     "priceListItemCode"   
+                     "priceListItems"   
                     ],
                     "summary":"Retorna a tabela de preço de acordo com o seu código",
+                    "operationId":"getpriceListItemCode",
+                    "x-totvs":{
+                        "produtcInformation":{
+                            "protheus":{
+                                "avaliable":true,
+                                "note":"Este verbo está disponível com os parâmetros Authorization e priceListId.",
+                                "minimalVersion":"12.1.21"
+                            }  
+                        }
+                    },
+                    "parameters":[
+                        {
+                            "$ref": "#/components/parameters/Authorization"
+                        },
+                        {
+                            "$ref": "#/components/parameters/priceListId"
+                        },
+                        {
+                            "$ref": "#/components/parameters/Order"
+                        },                        
+                        {
+                            "$ref": "#/components/parameters/Fields"
+                        }                             
+                    ],
+                    "responses":{
+                        "200":{
+                            "description":"Operação realizada com sucesso!",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+                                        "$ref":"#/components/schemas/PagedPriceListItems"
+                                    }
+                                }
+                            }
+                        },
+                        "404":{
+                            "description":"Registro não encontrado!",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+
+                                        "$ref":"#/components/schemas/ErrorDetails"
+
+                                    }
+                                }
+                            }
+                        }                              
+                    },
+                    "security":[
+                        {
+                            "api_key":[]
+                        }
+                    ]
+                },
+                "post":{
+                    "tags":[
+                        "priceListItems"
+                    ],
+                    "summary":"Inclui um item na Tabela de Preço",
+                    "description":"Inclui um novo item na tabela de preço conforme dados enviados.",
+                    "operationId":"postpriceListItemCode",
+                    "parameters":[
+                        {
+                            "$ref": "#/components/parameters/Authorization"
+                        },
+                        {
+                            "$ref": "#/components/parameters/priceListId"
+                        },
+                        {
+                            "$ref": "#/components/parameters/Fields"
+                        }                        
+                    ],
+                    "requestBody":{
+                        "description":"Tabela de preço a ser incluída.",
+                        "content":{ 
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/PriceListItems"
+                                }
+                            }
+                        }
+                    },
+                    "responses":{
+                        "200":{
+                            "description":"Operação realizada com sucesso!",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+                                        "$ref":"#/components/schemas/PagedPriceListItems"
+                                    }
+                                }
+                            }
+                        },
+                        "400":{
+                            "description":"Erro durante inclusão da tabela de preço!",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+                                        "$ref":"#/components/schemas/ErrorDetails"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "security":[
+                        {
+                            "api_key":[]
+                        }
+                    ]
+                }
+            },
+            "/priceList/{priceListId}/priceListItems/{ItemList}":{
+                "get":{
+                    "tags":[
+                     "priceListItemCode"   
+                    ],
+                    "summary":"Retorna a tabela e um item específico de preço de acordo com o seu código",
                     "operationId":"getpriceListItemCode",
                     "x-totvs":{
                         "produtcInformation":{
@@ -384,65 +501,6 @@
                                 }
                             }
                         }                              
-                    },
-                    "security":[
-                        {
-                            "api_key":[]
-                        }
-                    ]
-                },
-                "post":{
-                    "tags":[
-                        "priceListItemCode"
-                    ],
-                    "summary":"Inclui um item na Tabela de Preço",
-                    "description":"Inclui um novo item na tabela de preço conforme dados enviados.",
-                    "operationId":"postpriceListItemCode",
-                    "parameters":[
-                        {
-                            "$ref": "#/components/parameters/Authorization"
-                        },
-                        {
-                            "$ref": "#/components/parameters/priceListId"
-                        },
-                        {
-                            "$ref": "#/components/parameters/ItemList"
-                        },
-                        {
-                            "$ref": "#/components/parameters/Fields"
-                        }                        
-                    ],
-                    "requestBody":{
-                        "description":"Tabela de preço a ser incluída.",
-                        "content":{ 
-                            "application/json":{
-                                "schema":{
-                                    "$ref":"#/components/schemas/PriceListItems"
-                                }
-                            }
-                        }
-                    },
-                    "responses":{
-                        "200":{
-                            "description":"Operação realizada com sucesso!",
-                            "content":{
-                                "application/json":{
-                                    "schema":{
-                                        "$ref":"#/components/schemas/PagedPriceListItems"
-                                    }
-                                }
-                            }
-                        },
-                        "400":{
-                            "description":"Erro durante inclusão da tabela de preço!",
-                            "content":{
-                                "application/json":{
-                                    "schema":{
-                                        "$ref":"#/components/schemas/ErrorDetails"
-                                    }
-                                }
-                            }
-                        }
                     },
                     "security":[
                         {
@@ -584,7 +642,7 @@
                         }
                     ]   
                 }                
-            }    
+            }                
         },
         "components":{
             "parameters":{
@@ -599,11 +657,11 @@
                 },
                 "ItemList":{
                     "name":"itemList",
-                    "in":"query",
-                    "required":false,
+                    "in":"path",
+                    "required":true,
                     "description":"Identificador do item da tabela de preço",
                     "schema":{
-                        "$ref":"#/components/schemas/PriceListItemInfo"
+                        "$ref":"#/components/schemas/priceListItemInfo"
                     }
                 },                
                 "Authorization":{
@@ -808,7 +866,7 @@
                                 "priceListItems":{
                                     "type":"array",
                                     "items":{
-                                        "$ref":"#/components/schemas/PriceListItemInfo"   
+                                        "$ref":"#/components/schemas/priceListItemInfo"   
                                     }
                                 }
                             }                          
@@ -832,7 +890,7 @@
                         "PriceListItems":{
                             "type":"array",
                             "items":{
-                                "$ref":"#/components/schemas/PriceListItemInfo"
+                                "$ref":"#/components/schemas/priceListItemInfo"
                             }
                         }
                     }
