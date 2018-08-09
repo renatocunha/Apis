@@ -285,10 +285,7 @@
                         },
                         {
                             "$ref": "#/components/parameters/priceListId"
-                        },
-                        {
-                            "$ref": "#/components/parameters/Fields"
-                        }                        
+                        }
                     ],
                     "responses":{
                         "200":{
@@ -331,7 +328,7 @@
                     ]   
                 }
             },
-            "/priceList/{priceListId}/pricelistitems/":{
+            "/priceList/{priceListId}/priceListItems/":{
                 "get":{
                     "tags":[
                      "priceListItemCode"   
@@ -355,7 +352,7 @@
                             "$ref": "#/components/parameters/priceListId"
                         },
                         {
-                            "$ref": "#/components/parameters/itemCode"
+                            "$ref": "#/components/parameters/ItemList"
                         },
                         {
                             "$ref": "#/components/parameters/Order"
@@ -409,7 +406,7 @@
                             "$ref": "#/components/parameters/priceListId"
                         },
                         {
-                            "$ref": "#/components/parameters/itemCode"
+                            "$ref": "#/components/parameters/ItemList"
                         },
                         {
                             "$ref": "#/components/parameters/Fields"
@@ -468,7 +465,7 @@
                             "$ref": "#/components/parameters/priceListId"
                         },
                         {
-                            "$ref": "#/components/parameters/itemCode"
+                            "$ref": "#/components/parameters/ItemList"
                         },
                         {
                             "$ref": "#/components/parameters/Fields"
@@ -541,7 +538,7 @@
                             "$ref": "#/components/parameters/priceListId"
                         },
                         {
-                            "$ref": "#/components/parameters/itemCode"
+                            "$ref": "#/components/parameters/ItemList"
                         },
                         {
                             "$ref": "#/components/parameters/Fields"
@@ -600,8 +597,8 @@
                         "type": "string"
                     }
                 },
-                "itemCode":{
-                    "name":"itemCode",
+                "ItemList":{
+                    "name":"itemList",
                     "in":"query",
                     "required":false,
                     "description":"Identificador do item da tabela de preço",
@@ -805,7 +802,7 @@
                                 }
                             }
                         },
-                        "PriceListItems":{
+                        "priceListItems":{
                             "type":"object",
                             "properties":{
                                 "priceListItems":{
@@ -840,7 +837,7 @@
                         }
                     }
                 },                
-                "PriceListItemInfo":{
+                "priceListItemInfo":{
                     "type":"object",
                     "properties":{
                         "priceListId":{
@@ -907,7 +904,7 @@
                                 }
                             }
                         },
-                        "UnitOfMeasureCode":{
+                        "unitOfMeasureCode":{
                             "type":"string",
                             "description":"Código da Unidade de Medida de Venda",
                             "maxLength":2,
