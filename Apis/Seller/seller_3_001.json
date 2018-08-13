@@ -566,14 +566,13 @@
                     },
                     "sellerAddress": {
                         "type": "object",
-                        "description":"Endereços do vendedor",
-                        "$ref":"https://cdn.rawgit.com/nairansilva/Apis/b724cc84/Apis/Address/address_2_000.json"
+                        "$ref": "https://rawgit.com/nairansilva/Apis/master/Apis/Seller/address_2_000.json"
                     },
                     "salesChargeInformation":{
                         "type":"object",
                         "description":"Informações de comissões", 
                         "properties":{
-                            "customerVendorInternalId":{
+                            "CustomerVendorInternalId":{
                                 "type":"string",
                                 "description":"Código de fornecedor do vendedor para processamento de comissões",
                                 "x-totvs":{
