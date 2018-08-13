@@ -14,7 +14,7 @@
         "info": {
             "description": "API para manutenção de tabela de preço para os produtos TOTVS",
             "version":"2.004",
-            "title":"PriceList",
+            "title":"PriceListHeaderItem",
             "contact":{
                 "name":"T-Talk",
                 "url": "api.totvs.com.br",
@@ -22,7 +22,7 @@
             },
             "x-totvs":{
                 "messageDocumentation":{
-                    "name":"PriceList",
+                    "name":"PriceListHeaderItem",
                     "descriotion":"API para entidade Tabela de Preço para produtos TOTVS",
                     "segment":"Services"
                 },
@@ -52,7 +52,7 @@
                         }
                     },
                     "description":"Retorna lista completa de vendedores",
-                    "operationId":"getpricelistheaderitem",
+                    "operationId":"getpriceListHeaderItem",
                     "parameters":[
                         {
                             "$ref": "#/components/parameters/Authorization"
@@ -94,7 +94,7 @@
                     ],
                     "summary":"Inclui uma Tabela de Preço",
                     "description":"Inclui uma tabela de preço conforme dados enviados na requisição.",
-                    "operationId":"postpricelistId",
+                    "operationId":"postpriceListHeaderItem",
                     "parameters":[
                         {
                             "$ref": "#/components/parameters/Authorization"
@@ -144,18 +144,18 @@
                     ]
                 }
             },
-            "/priceList/{priceListId}":{
+            "/priceList/{priceListCode}":{
                 "get":{
                     "tags":[
-                     "priceListId"   
+                     "priceListCode"   
                     ],
                     "summary":"Retorna a tabela de preço e todos os seus itens de acordo com o seu código",
-                    "operationId":"getpricelistId",
+                    "operationId":"getpriceListCode",
                     "x-totvs":{
                         "produtcInformation":{
                             "protheus":{
                                 "avaliable":true,
-                                "note":"Este verbo está disponível com os parâmetros Authorization e priceListId.",
+                                "note":"Este verbo está disponível com os parâmetros Authorization e priceListCode.",
                                 "minimalVersion":"12.1.21"
                             }  
                         }
@@ -165,7 +165,7 @@
                             "$ref": "#/components/parameters/Authorization"
                         },
                         {
-                            "$ref": "#/components/parameters/priceListId"
+                            "$ref": "#/components/parameters/priceListCode"
                         },
                         {
                             "$ref": "#/components/parameters/Order"
@@ -206,17 +206,17 @@
                 },
                 "put":{
                     "tags":[
-                        "priceListId"
+                        "priceListCode"
                     ],
                     "summary":"Altera o Cabeçalho da tabela de preço",
                     "description":"Atualiza o cadastro da tabela de preço conforme dados enviados na requisição",
-                    "operationId":"putpricelistId",
+                    "operationId":"putpriceListCode",
                     "parameters":[
                         {
                             "$ref": "#/components/parameters/Authorization"
                         },
                         {
-                            "$ref": "#/components/parameters/priceListId"
+                            "$ref": "#/components/parameters/priceListCode"
                         },
                         {
                             "$ref": "#/components/parameters/Fields"
@@ -274,17 +274,17 @@
                 },
                 "delete":{
                     "tags":[
-                        "priceListId"
+                        "priceListCode"
                     ],
                     "summary":"Exclui uma tabela de preço",
                     "description":"Exclui a tabela de preço conforme dados enviados na requisição.",
-                    "operationId":"deletepricelistId",
+                    "operationId":"deletepriceListCode",
                     "parameters":[
                         {
                             "$ref": "#/components/parameters/Authorization"
                         },
                         {
-                            "$ref": "#/components/parameters/priceListId"
+                            "$ref": "#/components/parameters/priceListCode"
                         }
                     ],
                     "responses":{
@@ -328,18 +328,18 @@
                     ]   
                 }
             },
-            "/priceList/{priceListId}/priceListItems/":{
+            "/priceList/{priceListCode}/priceListItems/":{
                 "get":{
                     "tags":[
                      "priceListItems"   
                     ],
                     "summary":"Retorna a tabela de preço de acordo com o seu código",
-                    "operationId":"getpriceListItemCode",
+                    "operationId":"getpriceListItems",
                     "x-totvs":{
                         "produtcInformation":{
                             "protheus":{
                                 "avaliable":true,
-                                "note":"Este verbo está disponível com os parâmetros Authorization e priceListId.",
+                                "note":"Este verbo está disponível com os parâmetros Authorization e priceListCode.",
                                 "minimalVersion":"12.1.21"
                             }  
                         }
@@ -349,7 +349,7 @@
                             "$ref": "#/components/parameters/Authorization"
                         },
                         {
-                            "$ref": "#/components/parameters/priceListId"
+                            "$ref": "#/components/parameters/priceListCode"
                         },
                         {
                             "$ref": "#/components/parameters/Order"
@@ -394,13 +394,13 @@
                     ],
                     "summary":"Inclui um item na Tabela de Preço",
                     "description":"Inclui um novo item na tabela de preço conforme dados enviados.",
-                    "operationId":"postpriceListItemCode",
+                    "operationId":"postpriceListItems",
                     "parameters":[
                         {
                             "$ref": "#/components/parameters/Authorization"
                         },
                         {
-                            "$ref": "#/components/parameters/priceListId"
+                            "$ref": "#/components/parameters/priceListCode"
                         },
                         {
                             "$ref": "#/components/parameters/Fields"
@@ -445,18 +445,18 @@
                     ]
                 }
             },
-            "/priceList/{priceListId}/priceListItems/{ItemList}":{
+            "/priceList/{priceListCode}/priceListItems/{itemList}":{
                 "get":{
                     "tags":[
-                     "priceListItemCode"   
+                     "priceListItemList"   
                     ],
                     "summary":"Retorna a tabela e um item específico de preço de acordo com o seu código",
-                    "operationId":"getpriceListItemCode",
+                    "operationId":"getpriceListItemList",
                     "x-totvs":{
                         "produtcInformation":{
                             "protheus":{
                                 "avaliable":true,
-                                "note":"Este verbo está disponível com os parâmetros Authorization e priceListId.",
+                                "note":"Este verbo está disponível com os parâmetros Authorization e priceListCode.",
                                 "minimalVersion":"12.1.21"
                             }  
                         }
@@ -466,10 +466,10 @@
                             "$ref": "#/components/parameters/Authorization"
                         },
                         {
-                            "$ref": "#/components/parameters/priceListId"
+                            "$ref": "#/components/parameters/priceListCode"
                         },
                         {
-                            "$ref": "#/components/parameters/ItemList"
+                            "$ref": "#/components/parameters/itemList"
                         },
                         {
                             "$ref": "#/components/parameters/Order"
@@ -510,20 +510,20 @@
                 },
                 "put":{
                     "tags":[
-                        "priceListItemCode"
+                        "priceListItemList"
                     ],
                     "summary":"Altera um item da tabela de preço",
                     "description":"Atualiza um item da tabela de preço conforme dados enviados na requisição",
-                    "operationId":"priceListItemCode",
+                    "operationId":"putpriceListItemList",
                     "parameters":[
                         {
                             "$ref": "#/components/parameters/Authorization"
                         },
                         {
-                            "$ref": "#/components/parameters/priceListId"
+                            "$ref": "#/components/parameters/priceListCode"
                         },
                         {
-                            "$ref": "#/components/parameters/ItemList"
+                            "$ref": "#/components/parameters/itemList"
                         },
                         {
                             "$ref": "#/components/parameters/Fields"
@@ -583,20 +583,20 @@
                 },
                 "delete":{
                     "tags":[
-                        "priceListItemCode"
+                        "priceListItemList"
                     ],
                     "summary":"Exclui um item da tabela de preço",
                     "description":"Exclui um item da tabela de preço conforme dados enviados na requisição.",
-                    "operationId":"deletepriceListItemCode",
+                    "operationId":"deletepriceListItemList",
                     "parameters":[
                         {
                             "$ref": "#/components/parameters/Authorization"
                         },
                         {
-                            "$ref": "#/components/parameters/priceListId"
+                            "$ref": "#/components/parameters/priceListCode"
                         },
                         {
-                            "$ref": "#/components/parameters/ItemList"
+                            "$ref": "#/components/parameters/itemList"
                         },
                         {
                             "$ref": "#/components/parameters/Fields"
@@ -646,8 +646,8 @@
         },
         "components":{
             "parameters":{
-                "priceListId":{
-                    "name":"priceListId",
+                "priceListCode":{
+                    "name":"priceListCode",
                     "in":"path",
                     "required":true,
                     "description":"Identificador único da tabela de preço",
@@ -655,7 +655,7 @@
                         "type": "string"
                     }
                 },
-                "ItemList":{
+                "itemList":{
                     "name":"itemList",
                     "in":"path",
                     "required":true,
@@ -750,7 +750,7 @@
                 "PriceListHeaderItemsInfo":{
                     "type":"object",
                     "properties":{
-                        "priceListId":{
+                        "priceListCode":{
                             "type":"string",
                             "description":"Código da tabela de preço",
                             "x-totvs":{
@@ -854,7 +854,8 @@
                                     "decription":"Tabela Ativa",
                                     "type":"varchar",
                                     "enum":[
-                                        "1 = Sim; 2 = Nao"
+                                        "1",
+                                        "2"
                                     ],
                                     "length":"1"
                                 }
@@ -898,7 +899,7 @@
                 "priceListItemInfo":{
                     "type":"object",
                     "properties":{
-                        "priceListId":{
+                        "priceListCode":{
                             "type":"string",
                             "description":"Código da tabela de preço",
                             "x-totvs":{
@@ -1068,7 +1069,8 @@
                                     "description":"",
                                     "note":"1 = Sim; 2 = Nao",
                                     "enum":[
-                                        "1 = Sim; 2 = Nao"
+                                        "1",
+                                        "2"
                                     ]
                                 }
                             }

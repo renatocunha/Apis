@@ -25,7 +25,7 @@
         "/country":{
             "get":{
                 "tags":[
-                    "Country"
+                    "country"
                 ],
                 "summary":"Retorna lista de país",
                 "description":"Retorna lista completa de país.",
@@ -61,64 +61,20 @@
                         "api_key":[]
                     }
                 ]
-            }    
-        },
-        "/country/{countryId}":{
-            "get":{
-                "tags":[
-                 "Country"   
-                ],
-                "summary":"Retorna país pelo seu código",
-                "operationId":"getcountryId",
-                "parameters":[
-                    {
-                        "$ref": "#/components/parameters/Authorization"
-                    },
-                    {
-                        "$ref": "#/components/parameters/CountryId"
-                    }
-                ],
-                "responses":{
-                    "200":{
-                        "description":"Operação realizada com sucesso!",
-                        "content":{
-                            "application/json":{
-                                "schema":{
-                                    "$ref":"#/components/schemas/PagedCountries"
-                                }
-                            }
-                        }
-                    },
-                    "400":{
-                        "description":"País não localizado na base",
-                        "content":{
-                            "application/json":{
-                                "schema":{
-                                    "$ref":"#/components/schemas/ErrorDetails"
-                                }
-                            }
-                        }
-                    }      
-                },
-                "security":[
-                    {
-                        "api_key":[]
-                    }
-                ]
             },
             "post":{
                 "tags":[
-                    "Country"
+                    "country"
                 ],
                 "summary":"Inclui um país",
                 "description":"Inclui um país conforme dados enviados na requisição. ",
-                "operationId":"postcountryId",
+                "operationId":"postcountryCode",
                 "parameters":[
                     {
                         "$ref": "#/components/parameters/Authorization"
                     },
                     {
-                        "$ref": "#/components/parameters/CountryId"
+                        "$ref": "#/components/parameters/countryCode"
                     }
                 ],
                 "requestBody":{
@@ -158,20 +114,65 @@
                         "api_key":[]
                     }
                 ]
-            },
-            "put":{
+            }    
+        },
+        "/country/{countryCode}":{
+            "get":{
                 "tags":[
-                    "Country"
+                 "countryCode"   
                 ],
-                "summary":"Altera um país",
-                "description":"Atualiza cadastro de país conforme dados enviados na requisição.",
-                "operationId":"putcountryId",
+                "summary":"Retorna país pelo seu código",
+                "operationId":"getcountryCode",
                 "parameters":[
                     {
                         "$ref": "#/components/parameters/Authorization"
                     },
                     {
-                        "$ref": "#/components/parameters/CountryId"
+                        "$ref": "#/components/parameters/countryCode"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"Operação realizada com sucesso!",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/PagedCountries"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description":"País não localizado na base",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/ErrorDetails"
+                                }
+                            }
+                        }
+                    }      
+                },
+                "security":[
+                    {
+                        "api_key":[]
+                    }
+                ]
+            },
+
+            "put":{
+                "tags":[
+                    "countryCode"
+                ],
+                "summary":"Altera um país",
+                "description":"Atualiza cadastro de país conforme dados enviados na requisição.",
+                "operationId":"putcountryCode",
+                "parameters":[
+                    {
+                        "$ref": "#/components/parameters/Authorization"
+                    },
+                    {
+                        "$ref": "#/components/parameters/countryCode"
                     }
                 ],
                 "requestBody":{
@@ -214,17 +215,17 @@
             },
             "delete":{
                 "tags":[
-                    "Country"
+                    "countryCode"
                 ],
                 "summary":"Exclui um país",
                 "description":"Exclui cadastro de país conforme dados enviados na requisição.",
-                "operationId":"deletecountryId",
+                "operationId":"deletecountryCode",
                 "parameters":[
                     {
                         "$ref": "#/components/parameters/Authorization"
                     },
                     {
-                        "$ref": "#/components/parameters/CountryId"
+                        "$ref": "#/components/parameters/countryCode"
                     }
                 ],
                 "responses":{
@@ -259,8 +260,8 @@
     },
     "components":{
         "parameters":{
-            "CountryId":{
-                "name":"countryId",
+            "countryCode":{
+                "name":"countryCode",
                 "in":"path",
                 "required":true,
                 "description":"Identificador único do país",
@@ -339,7 +340,7 @@
             "CountriesInfo":{
                 "type":"object",
                 "properties":{
-                    "countryId":{
+                    "countryCode":{
                         "type":"string",
                         "description":"Código do país"
                     },

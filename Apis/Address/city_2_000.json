@@ -63,19 +63,19 @@
                 ]
             }    
         },
-        "/city/{cityId}":{
+        "/city/{cityCode}":{
             "get":{
                 "tags":[
                  "City"   
                 ],
                 "summary":"Retorna cidade pelo seu código.",
-                "operationId":"getcityId",
+                "operationId":"getcityCode",
                 "parameters":[
                     {
                         "$ref": "#/components/parameters/Authorization"
                     },
                     {
-                        "$ref": "#/components/parameters/CityId"
+                        "$ref": "#/components/parameters/cityCode"
                     }
                 ],
                 "responses":{
@@ -112,13 +112,13 @@
                 ],
                 "summary":"Inclui uma cidade",
                 "description":"Inclui uma cidade conforme dados enviados na requisição.",
-                "operationId":"postcityId",
+                "operationId":"postcityCode",
                 "parameters":[
                     {
                         "$ref": "#/components/parameters/Authorization"
                     },
                     {
-                        "$ref": "#/components/parameters/CityId"
+                        "$ref": "#/components/parameters/cityCode"
                     }
                 ],
                 "requestBody":{
@@ -165,13 +165,13 @@
                 ],
                 "summary":"Altera uma cidade",
                 "description":"Atualiza cadastro de cidade conforme dados enviados na requisição.",
-                "operationId":"putcityId",
+                "operationId":"putcityCode",
                 "parameters":[
                     {
                         "$ref": "#/components/parameters/Authorization"
                     },
                     {
-                        "$ref": "#/components/parameters/CityId"
+                        "$ref": "#/components/parameters/cityCode"
                     }
                 ],
                 "requestBody":{
@@ -218,13 +218,13 @@
                 ],
                 "summary":"Exclui uma cidade",
                 "description":"Exclui cadastro de cidade conforme dados enviados na requisição.",
-                "operationId":"deletecityId",
+                "operationId":"deletecityCode",
                 "parameters":[
                     {
                         "$ref": "#/components/parameters/Authorization"
                     },
                     {
-                        "$ref": "#/components/parameters/CityId"
+                        "$ref": "#/components/parameters/cityCode"
                     }
                 ],
                 "responses":{
@@ -259,8 +259,8 @@
     },
     "components":{
         "parameters":{
-            "CityId":{
-                "name":"cityId",
+            "cityCode":{
+                "name":"cityCode",
                 "in":"path",
                 "required":true,
                 "description":"Identificador único da Cidade",
@@ -341,7 +341,7 @@
             "CitiesInfo":{
                 "type":"object",
                 "properties":{
-                    "cityId":{
+                    "cityCode":{
                         "type":"string",
                         "description":"Código da cidade"
                     },

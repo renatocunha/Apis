@@ -139,7 +139,7 @@
         "/seller/{sellerId}":{
             "get":{
                 "tags":[
-                 "Seller"   
+                 "SellerId"   
                 ],
                 "summary":"Retorna vendedor pelo seu Código",
                 "operationId":"getsellerId",
@@ -190,7 +190,7 @@
             },
             "put":{
                 "tags":[
-                    "Seller"
+                    "SellerId"
                 ],
                 "summary":"Altera um vendedor",
                 "description":"Atualiza cadastro de vendedor conforme dados enviados na requisição",
@@ -243,7 +243,7 @@
             },
             "delete":{
                 "tags":[
-                    "Seller"
+                    "SellerId"
                 ],
                 "summary":"Exclui um vendedor",
                 "description":"Exclui cadastro de vendedor conforme dados enviados na requisição.",
@@ -564,23 +564,16 @@
                             }
                         }  
                     },
-                    "sellerAddress":{
-                        "type":"object",
+                    "sellerAddress": {
+                        "type": "object",
                         "description":"Endereços do vendedor",
-                        "properties":{
-                            "items":{
-                                "type":"array",
-                                "items":{
-                                    "$ref":"https://raw.githubusercontent.com/renatocunha/Apis/master/Apis/Address/address_2_000.json#/components/schemas/AddressInfo"
-                               }    
-                            } 
-                        } 
+                        "$ref":"https://cdn.rawgit.com/nairansilva/Apis/b724cc84/Apis/Address/address_2_000.json"
                     },
                     "salesChargeInformation":{
                         "type":"object",
                         "description":"Informações de comissões", 
                         "properties":{
-                            "sellerCustomerVendorId":{
+                            "customerVendorInternalId":{
                                 "type":"string",
                                 "description":"Código de fornecedor do vendedor para processamento de comissões",
                                 "x-totvs":{
@@ -629,7 +622,7 @@
                     },
                     "representativeType":{
                         "type":"string",
-                        "description":"Tipo de representate",
+                        "description":"Tipo de representate: I=Interno;E=Externo;P=Parceiro",
                         "x-totvs":{
                             "protheus":{
                                 "field":"SA3.A3_TIPO",
@@ -637,7 +630,9 @@
                                 "type":"varchar",
                                 "lenght":"1",
                                 "enum":[
-                                    "I=Interno;E=Externo;P=Parceiro"
+                                    "I",
+                                    "E",
+                                    "P"
                                 ]
                             }
                         } 

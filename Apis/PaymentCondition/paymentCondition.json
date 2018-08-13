@@ -466,48 +466,56 @@
                     },
                     "MeanTime":{
                         "type":"integer",
+                        "format":"int32",
                         "description":"Número Médio de Dias",
                         "minimum":0,
                         "maximum":99
                     },
                     "DaysFirstDue":{
                         "type":"integer",
+                        "format":"int32",
                         "description":"Quantidade de dias para o vencimento da primeira parcela (0 a 99)",
                         "minimum":0,
                         "maximum":99
                     },
                     "QuantityPlots":{
                         "type":"integer",
+                        "format":"int32",
                         "description":"Quantidade de parcelas (1 a 99).",
                         "minimum":1,
                         "maximum":99
                     },
                     "RangePlots":{
                         "type":"integer",
+                        "format":"int32",
                         "description":"Intervalo entre cada parcela, em dias (0 a 999).",
                         "minimum":1,
                         "maximum":999
                     },
                     "WeekDayFixed":{
                         "type":"integer",
+                        "format":"int32",
                         "description":"Define um dia da semana fixo para o vencimento das parcelas. 1 - Domingo 2 - Segunda 3 - Terça 4 - Quarta 5 - Quinta 6 - Sexta 7 - Sábado.",
                         "minimum":1,
                         "maximum":7
                     },
                     "DayMonthFixed":{
                         "type":"integer",
+                        "format":"int32",
                         "description":"Define um dia do mês fixo para o vencimento das parcelas (1 a 31).",
                         "minimum":1,
                         "maximum":31
                     },
                     "DaysCondition":{
                         "type":"integer",
+                        "format":"int32",
                         "description":"Define como será a contagem dos dias do intervalo de cada parcela. 1 - Data do Dia 2 - Fora o Dia 3 - Fora Semana 4 - Fora Quinzena 5 - Fora Mês 6 - Fora Dezena.",
                         "minimum":1,
                         "maximum":6
                     },
                     "FinancialDiscountDays":{
                         "type":"integer",
+                        "format":"int32",
                         "description":"Quantidade de dias para o desconto financeiro (1 a 99).",
                         "minimum":1,
                         "maximum":31
