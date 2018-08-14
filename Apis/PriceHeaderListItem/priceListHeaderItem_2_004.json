@@ -144,10 +144,10 @@
                     ]
                 }
             },
-            "/priceList/{priceListCode}":{
+            "/priceList/{code}":{
                 "get":{
                     "tags":[
-                     "priceListCode"   
+                     "code"   
                     ],
                     "summary":"Retorna a tabela de preço e todos os seus itens de acordo com o seu código",
                     "operationId":"getpriceListCode",
@@ -155,7 +155,7 @@
                         "produtcInformation":{
                             "protheus":{
                                 "avaliable":true,
-                                "note":"Este verbo está disponível com os parâmetros Authorization e priceListCode.",
+                                "note":"Este verbo está disponível com os parâmetros Authorization e code.",
                                 "minimalVersion":"12.1.21"
                             }  
                         }
@@ -165,7 +165,7 @@
                             "$ref": "#/components/parameters/Authorization"
                         },
                         {
-                            "$ref": "#/components/parameters/priceListCode"
+                            "$ref": "#/components/parameters/code"
                         },
                         {
                             "$ref": "#/components/parameters/Order"
@@ -206,7 +206,7 @@
                 },
                 "put":{
                     "tags":[
-                        "priceListCode"
+                        "code"
                     ],
                     "summary":"Altera o Cabeçalho da tabela de preço",
                     "description":"Atualiza o cadastro da tabela de preço conforme dados enviados na requisição",
@@ -216,7 +216,7 @@
                             "$ref": "#/components/parameters/Authorization"
                         },
                         {
-                            "$ref": "#/components/parameters/priceListCode"
+                            "$ref": "#/components/parameters/code"
                         },
                         {
                             "$ref": "#/components/parameters/Fields"
@@ -274,7 +274,7 @@
                 },
                 "delete":{
                     "tags":[
-                        "priceListCode"
+                        "code"
                     ],
                     "summary":"Exclui uma tabela de preço",
                     "description":"Exclui a tabela de preço conforme dados enviados na requisição.",
@@ -284,7 +284,7 @@
                             "$ref": "#/components/parameters/Authorization"
                         },
                         {
-                            "$ref": "#/components/parameters/priceListCode"
+                            "$ref": "#/components/parameters/code"
                         }
                     ],
                     "responses":{
@@ -328,10 +328,10 @@
                     ]   
                 }
             },
-            "/priceList/{priceListCode}/priceListItems/":{
+            "/priceList/{code}/itensTablePrice/":{
                 "get":{
                     "tags":[
-                     "priceListItems"   
+                     "itensTablePrice"   
                     ],
                     "summary":"Retorna a tabela de preço de acordo com o seu código",
                     "operationId":"getpriceListItems",
@@ -339,7 +339,7 @@
                         "produtcInformation":{
                             "protheus":{
                                 "avaliable":true,
-                                "note":"Este verbo está disponível com os parâmetros Authorization e priceListCode.",
+                                "note":"Este verbo está disponível com os parâmetros Authorization e code.",
                                 "minimalVersion":"12.1.21"
                             }  
                         }
@@ -349,7 +349,7 @@
                             "$ref": "#/components/parameters/Authorization"
                         },
                         {
-                            "$ref": "#/components/parameters/priceListCode"
+                            "$ref": "#/components/parameters/code"
                         },
                         {
                             "$ref": "#/components/parameters/Order"
@@ -364,7 +364,7 @@
                             "content":{
                                 "application/json":{
                                     "schema":{
-                                        "$ref":"#/components/schemas/PagedPriceListItems"
+                                        "$ref":"#/components/schemas/PagedItensTablePrice"
                                     }
                                 }
                             }
@@ -390,7 +390,7 @@
                 },
                 "post":{
                     "tags":[
-                        "priceListItems"
+                        "itensTablePrice"
                     ],
                     "summary":"Inclui um item na Tabela de Preço",
                     "description":"Inclui um novo item na tabela de preço conforme dados enviados.",
@@ -400,7 +400,7 @@
                             "$ref": "#/components/parameters/Authorization"
                         },
                         {
-                            "$ref": "#/components/parameters/priceListCode"
+                            "$ref": "#/components/parameters/code"
                         },
                         {
                             "$ref": "#/components/parameters/Fields"
@@ -411,7 +411,7 @@
                         "content":{ 
                             "application/json":{
                                 "schema":{
-                                    "$ref":"#/components/schemas/PriceListItems"
+                                    "$ref":"#/components/schemas/itensTablePrice"
                                 }
                             }
                         }
@@ -422,7 +422,7 @@
                             "content":{
                                 "application/json":{
                                     "schema":{
-                                        "$ref":"#/components/schemas/PagedPriceListItems"
+                                        "$ref":"#/components/schemas/PagedItensTablePrice"
                                     }
                                 }
                             }
@@ -445,10 +445,10 @@
                     ]
                 }
             },
-            "/priceList/{priceListCode}/priceListItems/{itemList}":{
+            "/priceList/{code}/itensTablePrice/{itemList}":{
                 "get":{
                     "tags":[
-                     "priceListItemList"   
+                     "itemTablePrice"   
                     ],
                     "summary":"Retorna a tabela e um item específico de preço de acordo com o seu código",
                     "operationId":"getpriceListItemList",
@@ -456,7 +456,7 @@
                         "produtcInformation":{
                             "protheus":{
                                 "avaliable":true,
-                                "note":"Este verbo está disponível com os parâmetros Authorization e priceListCode.",
+                                "note":"Este verbo está disponível com os parâmetros Authorization e code.",
                                 "minimalVersion":"12.1.21"
                             }  
                         }
@@ -466,7 +466,7 @@
                             "$ref": "#/components/parameters/Authorization"
                         },
                         {
-                            "$ref": "#/components/parameters/priceListCode"
+                            "$ref": "#/components/parameters/code"
                         },
                         {
                             "$ref": "#/components/parameters/itemList"
@@ -484,7 +484,7 @@
                             "content":{
                                 "application/json":{
                                     "schema":{
-                                        "$ref":"#/components/schemas/PagedPriceListItems"
+                                        "$ref":"#/components/schemas/PagedItensTablePrice"
                                     }
                                 }
                             }
@@ -510,7 +510,7 @@
                 },
                 "put":{
                     "tags":[
-                        "priceListItemList"
+                        "itemTablePrice"
                     ],
                     "summary":"Altera um item da tabela de preço",
                     "description":"Atualiza um item da tabela de preço conforme dados enviados na requisição",
@@ -520,7 +520,7 @@
                             "$ref": "#/components/parameters/Authorization"
                         },
                         {
-                            "$ref": "#/components/parameters/priceListCode"
+                            "$ref": "#/components/parameters/code"
                         },
                         {
                             "$ref": "#/components/parameters/itemList"
@@ -534,7 +534,7 @@
                         "content":{ 
                             "application/json":{
                                 "schema":{
-                                    "$ref":"#/components/schemas/PriceListItems"
+                                    "$ref":"#/components/schemas/itensTablePrice"
                                 }
                             }
                         }
@@ -545,7 +545,7 @@
                             "content":{
                                 "application/json":{
                                     "schema":{
-                                        "$ref":"#/components/schemas/PagedPriceListItems"
+                                        "$ref":"#/components/schemas/PagedItensTablePrice"
                                     }
                                 }
                             }
@@ -583,7 +583,7 @@
                 },
                 "delete":{
                     "tags":[
-                        "priceListItemList"
+                        "itemTablePrice"
                     ],
                     "summary":"Exclui um item da tabela de preço",
                     "description":"Exclui um item da tabela de preço conforme dados enviados na requisição.",
@@ -593,7 +593,7 @@
                             "$ref": "#/components/parameters/Authorization"
                         },
                         {
-                            "$ref": "#/components/parameters/priceListCode"
+                            "$ref": "#/components/parameters/code"
                         },
                         {
                             "$ref": "#/components/parameters/itemList"
@@ -646,8 +646,8 @@
         },
         "components":{
             "parameters":{
-                "priceListCode":{
-                    "name":"priceListCode",
+                "code":{
+                    "name":"code",
                     "in":"path",
                     "required":true,
                     "description":"Identificador único da tabela de preço",
@@ -661,7 +661,7 @@
                     "required":true,
                     "description":"Identificador do item da tabela de preço",
                     "schema":{
-                        "$ref":"#/components/schemas/priceListItemInfo"
+                        "$ref":"#/components/schemas/itensTablePriceInfo"
                     }
                 },                
                 "Authorization":{
@@ -750,7 +750,7 @@
                 "PriceListHeaderItemsInfo":{
                     "type":"object",
                     "properties":{
-                        "priceListCode":{
+                        "code":{
                             "type":"string",
                             "description":"Código da tabela de preço",
                             "x-totvs":{
@@ -861,45 +861,45 @@
                                 }
                             }
                         },
-                        "priceListItems":{
+                        "itensTablePrice":{
                             "type":"object",
                             "properties":{
-                                "priceListItems":{
+                                "itensTablePrice":{
                                     "type":"array",
                                     "items":{
-                                        "$ref":"#/components/schemas/priceListItemInfo"   
+                                        "$ref":"#/components/schemas/itensTablePriceInfo"   
                                     }
                                 }
                             }                          
                          }
                     }
                 },
-                "PagedPriceListItems":{
+                "PagedItensTablePrice":{
                     "type":"object",
                     "allOf":[
                         {
                             "$ref":"#/components/schemas/Paging"
                         },
                         {
-                            "$ref":"#/components/schemas/PriceListItems"
+                            "$ref":"#/components/schemas/itensTablePrice"
                         }
                     ]
                 },                  
-                "PriceListItems":{
+                "itensTablePrice":{
                     "type":"object",
                     "properties":{
-                        "PriceListItems":{
+                        "itensTablePrice":{
                             "type":"array",
                             "items":{
-                                "$ref":"#/components/schemas/priceListItemInfo"
+                                "$ref":"#/components/schemas/itensTablePriceInfo"
                             }
                         }
                     }
                 },                
-                "priceListItemInfo":{
+                "itensTablePriceInfo":{
                     "type":"object",
                     "properties":{
-                        "priceListCode":{
+                        "code":{
                             "type":"string",
                             "description":"Código da tabela de preço",
                             "x-totvs":{

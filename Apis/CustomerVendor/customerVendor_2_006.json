@@ -526,19 +526,61 @@
 			"CustomerVendorInfo":{
 				"type":"object",
 				"properties":{
-					"customerVendorId":{
+					"companyId":{
 						"type": "string",
-						"example": "00000101",
-						"description": "identificador único da Entidade",
+						"description":"Empresa"
+					},
+					"branchId":{
+						"type": "string",
+						"example": "D MG 01",
+						"description": "Filial",
 						"x-totvs":{
 							"protheus":{
-								"field": "SA1.A1_COD|SA1.A_LOJA / SA2.A2_COD|SA2.A2_LOJA",
+								"field": "SA1.A1_FILIAL / SA2.A2_FILIAL",
 								"required": true,
 								"type": "Char",
 								"length": "12",
 								"avialable": true,
 								"canUpdate": false
 							}
+						}
+					},
+					"companyInternalId":{
+						"type": "string",
+						"description":"InternalId da chave completa de empresa do produto",
+						"x-totvs":{
+							"protheus":{
+								"field": "EMPRESA|A1_FILIAL|SA1.A1_COD|SA1.A_LOJA / EMPRESA|A2_FILIAL|SA2.A2_COD|SA2.A2_LOJA",
+								"required": true,
+								"type": "Char",
+								"length": "12",
+								"avialable": true,
+								"canUpdate": false
+							}
+						}						
+					},					
+					"code":{
+						"type": "string",
+						"example": "000001",
+						"description": "Código do Cliente/Fornecedor",
+						"x-totvs":{
+							"protheus":{
+								"field": "SA1.A1_COD/SA2.A2_COD",
+								"required": true,
+								"type": "varChar",
+								"length": "6",
+								"avialable": true,
+								"canUpdate": false
+							},
+							"datasul":{
+								"field": "emitente.cod-emitente",
+								"required": true,
+								"type": "integer",
+								"length": "9",
+								"avialable": true,
+								"canUpdate": false,
+								"description":"Código do Cliente/Fornecedor Formato do Campo: >>>>>>>>9"
+							}							
 						}
 					},
 					"storeId":{
@@ -556,26 +598,41 @@
 							}
 						}
 					},
-					"branchId":{
+					"internalId":{
 						"type": "string",
-						"example": "D MG 01",
-						"description": "Filial",
+						"description":"InternalId da entidade"
+					},					
+					"shortName":{
+						"type": "string",
+						"example": "JOHN M. CO",
+						"description": "Nome reduzido ",
 						"x-totvs":{
 							"protheus":{
-								"field": "SA1.A1_FILIAL / SA2.A2_FILIAL",
-								"required": true,
-								"type": "Char",
-								"length": "12",
-								"avialable": true,
-								"canUpdate": false
+							"field": "SA1.A1_NREDUZ / SA2.A2_NREDUZ",
+							"required": false,
+							"type": "Char",
+							"length": "20",
+							"avialable": true,
+							"canUpdate": true
 							}
 						}
 					},
-					"companyId":{
+					"name":{
 						"type": "string",
-						"description":"Empresa"
-					},
-					"custumerVendorType":{
+						"example": "JOHN & MARY CO",
+						"description": "Nome da entidade",
+						"x-totvs":{
+							"protheus":{
+								"field": "SA1.A1_NOME / SA2.A2_NOME",
+								"required": true,
+								"type": "Char",
+								"length": "40",
+								"avialable": true,
+								"canUpdate": true
+							}
+						}
+					},					
+					"type":{
 						"type": "string",
 						"example": "1",
 						"description": "Tipo de Entidade 1=CUSTOMER;2=VENDOR;3=BOTH",
@@ -595,36 +652,28 @@
 							}
 						}
 					},
-					"name":{
+					"entityType":{
 						"type": "string",
-						"example": "JOHN & MARY CO",
-						"description": "Nome da entidade",
+						"example": "1-Company",
+						"description": "Situação Jurídica da Entidade",
+						"enum":[
+							"1",
+							"2",
+							"3",
+							"4"
+						],
 						"x-totvs":{
 							"protheus":{
-								"field": "SA1.A1_NOME / SA2.A2_NOME",
-								"required": true,
+								"field": "SA1.A1_PESSOA",
+								"required": false,
 								"type": "Char",
-								"length": "40",
+								"length": "1",
 								"avialable": true,
-								"canUpdate": true
+								"canUpdate": true,
+								"note": "1=Company;2=Person;3=Foreign;4-Trading"
 							}
 						}
-					},
-					"shortName":{
-						"type": "string",
-						"example": "JOHN M. CO",
-						"description": "Nome reduzido ",
-						"x-totvs":{
-							"protheus":{
-							"field": "SA1.A1_NREDUZ / SA2.A2_NREDUZ",
-							"required": false,
-							"type": "Char",
-							"length": "20",
-							"avialable": true,
-							"canUpdate": true
-							}
-						}
-					},
+					},					
 					"marketsegment":{
 						"type": "string",
 						"example": "000001",
@@ -658,7 +707,7 @@
 					"registerSituation":{
 						"type": "string",
 						"example": "active",
-						"description": "Status",
+						"description": "Status: Ativo, Inativo, Cancelado, Pendente, Suspenso",
 						"enum":[
 							"active",
 							"inactive",
@@ -680,7 +729,7 @@
 					"comments":{
 						"type": "string",
 						"example": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-						"description": "Comentários da Entidade",
+						"description": "Observações",
 						"x-totvs":{
 							"-datasul":{
 								"field": "emitente.observacoes",
@@ -693,28 +742,12 @@
 							}
 						}
 					},
-					"entityType":{
-						"type": "string",
-						"example": "1-Company",
-						"description": "Situação Jurídica da Entidade",
-						"enum":[
-							"1",
-							"2",
-							"3",
-							"4"
-						],
-						"x-totvs":{
-							"protheus":{
-								"field": "SA1.A1_PESSOA",
-								"required": false,
-								"type": "Char",
-								"length": "1",
-								"avialable": true,
-								"canUpdate": true,
-								"note": "1=Company;2=Person;3=Foreign;4-Trading"
-							}
-						}
-					},
+					"governmentalInformation":{
+						"type":"array",
+						"items":{
+							"$ref":"#/components/schemas/GovernmentalInformation"	
+  						}
+					},					
 					"strategicCustomerType":{
 						"type": "string",
 						"example": "3=Revendedor",
@@ -737,12 +770,6 @@
 								"note": "1=Cons.Final;2=ProdutorRural;3=Revendedor;4=Solidario;5=Exportação"
 							}
 						}
-					},
-					"governmentalInformation":{
-						"type":"array",
-						"items":{
-							"$ref":"#/components/schemas/GovernmentalInformation"	
-  						}
 					},
 					"address":{
 						"type":"array",

@@ -359,7 +359,7 @@
             "Sellers":{
                 "type":"object",
                 "properties":{
-                    "Seller":{
+                    "items":{
                         "type":"array",
                         "items":{
                             "$ref":"#/components/schemas/SellerInfo"
@@ -387,7 +387,7 @@
                                 "type":"varchar",
                                 "lenght":"5",
                                 "available":true,
-                                "description":"Codigo da empresa"
+                                "note":"Codigo da empresa"
                             }
                         }
                     },
@@ -424,14 +424,6 @@
                                 "available":true,
                                 "note":"Concatenação da coligada do registro e filial do contexto"
                             },
-                            "datasul":{
-                                "field":"representante.cod_empresa",
-                                "required":true,
-                                "type":"varchar",
-                                "lenght":"5",
-                                "available":true,
-                                "note":"Código da Empresa"
-                            },                            
                             "protheus":{
                                 "note":"Para o Protheus é esperado que com o cabeçalho da mensagem seja identificado empresa e filial já pelo Framework estando no ambiente (Empresa x Filial) correto"
                             }
@@ -450,14 +442,6 @@
                                 "lenght":"16",
                                 "available":true
                             },
-                            "datasul":{
-                                "field":"representante.cdn_repres",
-                                "description":"Código do vendedor",
-                                "required":true,
-                                "type":"integer",
-                                "lenght":"5",
-                                "available":true
-                            },                            
                             "protheus":{
                                 "field":"SA3.A3_COD",
                                 "description":"Código",
@@ -471,26 +455,16 @@
                     },
                     "internalId":{
                         "type":"string",
-                        "description":"InternalId da entidade",
+                        "description":"InternalId do vendedor no ERP",
                         "x-totvs":{
                             "rm":{
-                                "field":".",
-                                "required":true,
-                                "lenght":18,
-                                "description":"O internalID do Vendedor é formado por TVEN.CODCOLIGADA|TVEN.CODVEN",
+                                "note":"O internalID do Vendedor é formado por TVEN.CODCOLIGADA|TVEN.CODVEN",
                                 "type":"varchar"
                             },
                             "protheus":{
                                 "note":"O internalID do Vendedor é formado por SA3.A3_FILIAL|SA3.A3_COD",
                                 "type":"varchar"
-                            },
-                            "datasul":{
-                                "field":"representante.cod_empresa | string(representante.cdn_repres)",
-                                "required":true,
-                                "lenght":10,
-                                "description":"Empresa + Codigo do Representante",
-                                "type":"char"
-                            }                            
+                            }
                         }
                     },
                     "name":{
@@ -544,16 +518,7 @@
                                 "lenght":"25",
                                 "available":true,
                                 "canUpdate":true
-                            },
-                            "datasul":{
-                                "field":"representante.nom_abrev",
-                                "description":"Nome Abreviado do Representante",
-                                "required":true,
-                                "type":"char",
-                                "lenght":"12",
-                                "available":true,
-                                "canUpdate":true
-                            }                            
+                            }
                         } 
                     },
                     "personalIdentification":{
@@ -642,7 +607,6 @@
                     },
                     "address": {
                         "type": "object",
-                        "description": "Endereço do Vendedor",
                         "$ref": "https://rawgit.com/nairansilva/Apis/master/Apis/Seller/address_2_000.json#/components/schemas/AddressInfo"
                     },
                     "salesChargeInformation":{
@@ -676,7 +640,7 @@
                                     }
                                 }
                             },
-                            "IndirectSeller":{
+                            "indirectSellerInternalId":{
                                 "type":"string",
                                 "description":"Código do vendedor indireto",
                                 "x-totvs":{
@@ -688,20 +652,7 @@
                                         "lenght":"5"
                                     }
                                 }
-                            },
-                            "IndirectSellerInternalId":{
-                                "type":"string",
-                                "description":"InternalId do Vendedor Indireto",
-                                "x-totvs":{
-                                    "datasul":{
-                                        "description":"Empresa + Codigo do Representante Indireto",
-                                        "field":"repres_financ.cod_empresa|string(repres_financ.cdn_repres_indir)",
-                                        "required":false,
-                                        "type":"integer",
-                                        "lenght":"5"
-                                    }
-                                }                                
-                            }                            
+                            } 
                         }
                     },
                     "active":{
