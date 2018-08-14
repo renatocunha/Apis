@@ -517,7 +517,7 @@
                             "datasul":{
                                 "field":"representante.nom_pessoa",
                                 "required":true,
-                                "type":"varchar",
+                                "type":"char",
                                 "lenght":"80",
                                 "available":true,
                                 "canUpdate":true
@@ -622,7 +622,16 @@
                                 "lenght":"15",
                                 "available":true,
                                 "canUpdate":true
-                            }
+                            },
+                            "datasul":{
+                                "field":"pessoa_jurid.cod_telefone ou pessoa_fisic.cod_telefone",
+                                "required":false,
+                                "type":"char",
+                                "lenght":"20",
+                                "available":true,
+                                "canUpdate":true,
+                                "description":"Telefone da Pessoa do Representante"
+                            }                            
                         }  
                     },
                     "sellerEmail":{
@@ -637,7 +646,16 @@
                                 "lenght":"80",
                                 "available":true,
                                 "canUpdate":true
-                            }
+                            },
+                            "datasul":{
+                                "field":"pessoa_jurid.cod_e_mail ou pessoa_fisic.cod_e_mail",
+                                "required":false,
+                                "type":"char",
+                                "lenght":"80",
+                                "available":true,
+                                "canUpdate":true,
+                                "description":"E-mail da Pessoa do Representante"
+                            }                            
                         }  
                     },
                     "address": {
@@ -649,7 +667,7 @@
                         "type":"object",
                         "description":"Informações de comissões", 
                         "properties":{
-                            "CustomerVendorInternalId":{
+                            "customerVendorInternalId":{
                                 "type":"string",
                                 "description":"Código de fornecedor do vendedor para processamento de comissões",
                                 "x-totvs":{
@@ -666,6 +684,11 @@
                             "salesChargeInterface":{
                                 "type":"string",
                                 "description":"Formato de cobrança de comissões: S-Contas a Pagar;F-Folha de Pagamento;N-Sem Interface",
+                                "enum":[
+                                    "S",
+                                    "F",
+                                    "N"
+                                ],
                                 "x-totvs":{
                                     "protheus":{
                                         "field":"SA3.A3_GERASE2",
@@ -676,9 +699,10 @@
                                     }
                                 }
                             },
-                            "IndirectSeller":{
+                            "indirectSeller":{
                                 "type":"string",
                                 "description":"Código do vendedor indireto",
+                                "maxLength":16,
                                 "x-totvs":{
                                     "datasul":{
                                         "description":"Código do Representante Indireto",
@@ -689,7 +713,7 @@
                                     }
                                 }
                             },
-                            "IndirectSellerInternalId":{
+                            "indirectSellerInternalId":{
                                 "type":"string",
                                 "description":"InternalId do Vendedor Indireto",
                                 "x-totvs":{
@@ -697,8 +721,8 @@
                                         "description":"Empresa + Codigo do Representante Indireto",
                                         "field":"repres_financ.cod_empresa|string(repres_financ.cdn_repres_indir)",
                                         "required":false,
-                                        "type":"integer",
-                                        "lenght":"5"
+                                        "type":"char",
+                                        "lenght":"10"
                                     }
                                 }                                
                             }                            
@@ -709,28 +733,43 @@
                         "description":"Vendedor ativo?",
                         "example":true,
                         "x-totvs":{
-                            "field": "A3_MSBLQL",
-                            "required": false,
-                            "type": "char",
-                            "avialable": true,
-                            "canUpdate": true,
-                            "note": "No Protheus Status active/inactive serão convertidos em: active='2',inactive='1'"
+                            "protheus":{
+                                "field": "A3_MSBLQL",
+                                "required": false,
+                                "type": "char",
+                                "avialable": true,
+                                "canUpdate": true,
+                                "description": "No Protheus Status active/inactive serão convertidos em: active='2',inactive='1'"
+                            },
+                            "rm":{
+                                "field": "TVEN.INATIVO",
+                                "required": false,
+                                "type": "boolean",
+                                "description": "Status do Vendedor: 0-Ativo 1-Inativo"                                   
+                            },
+                            "datasul":{
+                                "field": "representante.ind_sit_repres = 'Ativo'",
+                                "required": false,
+                                "type": "char",
+                                "lenght":"10",
+                                "description": "Situação do Representante"                                                                   
+                            }
                         }                         
                     },
                     "representativeType":{
                         "type":"string",
                         "description":"Tipo de representate: I=Interno;E=Externo;P=Parceiro",
+                        "enum":[
+                            "I",
+                            "E",
+                            "P"
+                        ],                        
                         "x-totvs":{
                             "protheus":{
                                 "field":"SA3.A3_TIPO",
                                 "required":false,
                                 "type":"varchar",
-                                "lenght":"1",
-                                "enum":[
-                                    "I",
-                                    "E",
-                                    "P"
-                                ]
+                                "lenght":"1"
                             }
                         } 
                     }

@@ -863,14 +863,7 @@
                         },
                         "itensTablePrice":{
                             "type":"object",
-                            "properties":{
-                                "itensTablePrice":{
-                                    "type":"array",
-                                    "items":{
-                                        "$ref":"#/components/schemas/itensTablePriceInfo"   
-                                    }
-                                }
-                            }                          
+                             "$ref":"#/components/schemas/itensTablePriceInfo"   
                          }
                     }
                 },
@@ -881,200 +874,197 @@
                             "$ref":"#/components/schemas/Paging"
                         },
                         {
-                            "$ref":"#/components/schemas/itensTablePrice"
+                            "$ref":"#/components/schemas/itensTablePrices"
                         }
                     ]
                 },                  
-                "itensTablePrice":{
-                    "type":"object",
-                    "properties":{
-                        "itensTablePrice":{
-                            "type":"array",
-                            "items":{
-                                "$ref":"#/components/schemas/itensTablePriceInfo"
-                            }
-                        }
+                "itensTablePrices":{
+                    "type":"array",
+                    "items":{
+                        "$ref":"#/components/schemas/itensTablePriceInfo"
                     }
                 },                
                 "itensTablePriceInfo":{
-                    "type":"object",
-                    "properties":{
-                        "code":{
-                            "type":"string",
-                            "description":"Código da tabela de preço",
-                            "x-totvs":{
-                                "protheus":{
-                                    "field":"DA1.DA1_CODTAB",
-                                    "required":true,
-                                    "type":"varchar",
-                                    "length":"6",
-                                    "available":true
+                    "type":"array",
+                    "items":{
+                        "properties":{
+                            "code":{
+                                "type":"string",
+                                "description":"Código da tabela de preço",
+                                "x-totvs":{
+                                    "protheus":{
+                                        "field":"DA1.DA1_CODTAB",
+                                        "required":true,
+                                        "type":"varchar",
+                                        "length":"6",
+                                        "available":true
+                                    }
                                 }
-                            }
-                        },                                
-                        "itemList":{
-                            "type":"string",
-                            "description":"Item da Tabela",
-                            "maxLength":4,
-                            "x-totvs":{
-                                "protheus":{
-                                    "type":"varchar",
-                                    "field":"DA1.DA1_ITEM",
-                                    "description":"Item da Tabela de Preço",
-                                    "length":"4"
+                            },                                
+                            "itemList":{
+                                "type":"string",
+                                "description":"Item da Tabela",
+                                "maxLength":4,
+                                "x-totvs":{
+                                    "protheus":{
+                                        "type":"varchar",
+                                        "field":"DA1.DA1_ITEM",
+                                        "description":"Item da Tabela de Preço",
+                                        "length":"4"
+                                    }
                                 }
-                            }
-                        },                        
-                        "itemCode":{
-                            "type":"string",
-                            "description":"Código do Produto",
-                            "maxLength":30,
-                            "x-totvs":{
-                                "protheus":{
-                                    "type":"varchar",
-                                    "field":"DA1.DA1_CODPRO",
-                                    "description":"",
-                                    "length":"15"
+                            },                        
+                            "itemCode":{
+                                "type":"string",
+                                "description":"Código do Produto",
+                                "maxLength":30,
+                                "x-totvs":{
+                                    "protheus":{
+                                        "type":"varchar",
+                                        "field":"DA1.DA1_CODPRO",
+                                        "description":"",
+                                        "length":"15"
+                                    }
                                 }
-                            }
-                        },
-                        "itemInternalId":{
-                            "type":"string",
-                            "description":"InternalId da chave completa do Item",
-                            "x-totvs":{
-                                "protheus":{
-                                    "required":true,
-                                    "type":"varchar",
-                                    "length":"50",
-                                    "note":"InternalID do produto formado por EMPRESA|DA1_FILIAL|DA1_CODPRO|DA1_CODTAB|DA1_ITEM"
+                            },
+                            "itemInternalId":{
+                                "type":"string",
+                                "description":"InternalId da chave completa do Item",
+                                "x-totvs":{
+                                    "protheus":{
+                                        "required":true,
+                                        "type":"varchar",
+                                        "length":"50",
+                                        "note":"InternalID do produto formado por EMPRESA|DA1_FILIAL|DA1_CODPRO|DA1_CODTAB|DA1_ITEM"
+                                    }
                                 }
-                            }
-                        },
-                        "referenceCode":{
-                            "type":"string",
-                            "description":"Código da Referência do Produto",
-                            "maxLength":8,
-                            "x-totvs":{
-                                "datasul":{
-                                    "field":"cod-refer",
-                                    "required":true,
-                                    "type":"string",
-                                    "length":"8"
+                            },
+                            "referenceCode":{
+                                "type":"string",
+                                "description":"Código da Referência do Produto",
+                                "maxLength":8,
+                                "x-totvs":{
+                                    "datasul":{
+                                        "field":"cod-refer",
+                                        "required":true,
+                                        "type":"string",
+                                        "length":"8"
+                                    }
                                 }
-                            }
-                        },
-                        "unitOfMeasureCode":{
-                            "type":"string",
-                            "description":"Código da Unidade de Medida de Venda",
-                            "maxLength":2,
-                            "x-totvs":{
-                                "datasul":{
-                                    "field":"cod-unid-med",
-                                    "required":true,
-                                    "type":"string",
-                                    "length":"2"
+                            },
+                            "unitOfMeasureCode":{
+                                "type":"string",
+                                "description":"Código da Unidade de Medida de Venda",
+                                "maxLength":2,
+                                "x-totvs":{
+                                    "datasul":{
+                                        "field":"cod-unid-med",
+                                        "required":true,
+                                        "type":"string",
+                                        "length":"2"
+                                    }
+                                }                                            
+                            },
+                            "minimumSalesPrice":{
+                                "type":"number",
+                                "format":"double",
+                                "description":"Preco mínimo de venda do produto - Valor Sem Frete",
+                                "maxLength":12,
+                                "x-totvs":{
+                                    "protheus":{
+                                        "field":"DA1.DA1_PRCVEN",
+                                        "length":"12",
+                                        "description":"Preco Venda",
+                                        "note":"Campo com duas casas decimais"
+                                    }
                                 }
-                            }                                            
-                        },
-                        "minimumSalesPrice":{
-                            "type":"number",
-                            "format":"double",
-                            "description":"Preco mínimo de venda do produto - Valor Sem Frete",
-                            "maxLength":12,
-                            "x-totvs":{
-                                "protheus":{
-                                    "field":"DA1.DA1_PRCVEN",
-                                    "length":"12",
-                                    "description":"Preco Venda",
+                            },
+                            "minimumSalesPriceFOB":{
+                                "type":"number",
+                                "format":"double",
+                                "description":"Preco de minimo de venda do produto - FOB",
+                                "maxLength":12
+                            },
+                            "discountValue":{
+                                "type":"number",
+                                "format":"double",
+                                "description":"Valor de Desconto em reais",
+                                "maxLength":12,
+                                "x-totvs":{
+                                    "field":"DA1.DA1_VLRDES",
+                                    "length":"9",
+                                    "description":"Vlr.Desconto",
                                     "note":"Campo com duas casas decimais"
                                 }
-                            }
-                        },
-                        "minimumSalesPriceFOB":{
-                            "type":"number",
-                            "format":"double",
-                            "description":"Preco de minimo de venda do produto - FOB",
-                            "maxLength":12
-                        },
-                        "discountValue":{
-                            "type":"number",
-                            "format":"double",
-                            "description":"Valor de Desconto em reais",
-                            "maxLength":12,
-                            "x-totvs":{
-                                "field":"DA1.DA1_VLRDES",
-                                "length":"9",
-                                "description":"Vlr.Desconto",
-                                "note":"Campo com duas casas decimais"
-                            }
-                        },
-                        "discountFactor":{
-                            "type":"number",
-                            "format":"double",
-                            "description":"Fator de Acresc./Desconto%",
-                            "maxLength":11,
-                            "x-totvs":{
-                                "field":"DA1.DA1_PERDES",
-                                "length":"6",
-                                "description":"Fator",
-                                "note":"Campo com quatro casas decimais"
-                            }                            
-                        },
-                        "minimumAmount":{
-                            "type":"number",
-                            "format":"double",
-                            "description":"Quantidade Mínima",
-                            "maxLength":11
-                        },                                              
-                        "cifPrice":{
-                            "type":"number",
-                            "format":"double",
-                            "description":"Preco CIF",
-                            "maxLength":11
-                        },                                        
-                        "fobPrice":{
-                            "type":"number",
-                            "format":"double",
-                            "description":"Preco FOB",
-                            "maxLength":11
-                        },                                                                                
-                        "itemValidity":{
-                            "type":"string",
-                            "format":"date",
-                            "example":"2018-07-19",
-                            "description":"Data Vigência do item AAAA-MM-DD",
-                            "maxLength":10
-                        },
-                        "typePrice":{
-                            "type":"string",
-                            "description":"Tipo da Tabela de Preço: Preço Venda, Venda Consumidor, Atacado , Varejo, Promoção",
-                            "maxLength":1,
-                            "x-totvs":{
-                                "field":"DA1.DA1_TIPPRE",
-                                "description":"Tipo Preço",
-                                "note":"Tipo da Tabela de Preço: Preco Venda, Venda Consumidor, Atacado , Varejo, Promoção"
-                            }
-                        },
-                        "activeItemPrice":{
-                            "type":"string",
-                            "description":"Status do Item da Tabela de Preço: 1 = Sim; 2 = Não",
-                            "maxLength":1,
-                            "x-totvs":{
-                                "protheus":{
-                                    "field":"DA1_ATIVO",
-                                    "discription":"Ativo",
-                                    "type":"varchar",
-                                    "required":false,
-                                    "length":1,
-                                    "description":"",
-                                    "note":"1 = Sim; 2 = Nao",
-                                    "enum":[
-                                        "1",
-                                        "2"
-                                    ]
+                            },
+                            "discountFactor":{
+                                "type":"number",
+                                "format":"double",
+                                "description":"Fator de Acresc./Desconto%",
+                                "maxLength":11,
+                                "x-totvs":{
+                                    "field":"DA1.DA1_PERDES",
+                                    "length":"6",
+                                    "description":"Fator",
+                                    "note":"Campo com quatro casas decimais"
+                                }                            
+                            },
+                            "minimumAmount":{
+                                "type":"number",
+                                "format":"double",
+                                "description":"Quantidade Mínima",
+                                "maxLength":11
+                            },                                              
+                            "cifPrice":{
+                                "type":"number",
+                                "format":"double",
+                                "description":"Preco CIF",
+                                "maxLength":11
+                            },                                        
+                            "fobPrice":{
+                                "type":"number",
+                                "format":"double",
+                                "description":"Preco FOB",
+                                "maxLength":11
+                            },                                                                                
+                            "itemValidity":{
+                                "type":"string",
+                                "format":"date",
+                                "example":"2018-07-19",
+                                "description":"Data Vigência do item AAAA-MM-DD",
+                                "maxLength":10
+                            },
+                            "typePrice":{
+                                "type":"string",
+                                "description":"Tipo da Tabela de Preço: Preço Venda, Venda Consumidor, Atacado , Varejo, Promoção",
+                                "maxLength":1,
+                                "x-totvs":{
+                                    "field":"DA1.DA1_TIPPRE",
+                                    "description":"Tipo Preço",
+                                    "note":"Tipo da Tabela de Preço: Preco Venda, Venda Consumidor, Atacado , Varejo, Promoção"
                                 }
-                            }
-                        } 
+                            },
+                            "activeItemPrice":{
+                                "type":"string",
+                                "description":"Status do Item da Tabela de Preço: 1 = Sim; 2 = Não",
+                                "maxLength":1,
+                                "x-totvs":{
+                                    "protheus":{
+                                        "field":"DA1_ATIVO",
+                                        "discription":"Ativo",
+                                        "type":"varchar",
+                                        "required":false,
+                                        "length":1,
+                                        "description":"",
+                                        "note":"1 = Sim; 2 = Nao",
+                                        "enum":[
+                                            "1",
+                                            "2"
+                                        ]
+                                    }
+                                }
+                            } 
+                        }
                     }
                 },                
                 "Paging":{

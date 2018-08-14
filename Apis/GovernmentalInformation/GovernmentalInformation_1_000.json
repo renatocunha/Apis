@@ -49,7 +49,7 @@
             }
         },
         "schemas":{
-            "PagedAddress":{
+            "PagedGovernmentalInformation":{
                 "type":"object",
                 "allOf":[
                     {
