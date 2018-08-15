@@ -1032,10 +1032,12 @@
                                 "description":"Valor de Desconto em reais",
                                 "maxLength":12,
                                 "x-totvs":{
-                                    "field":"DA1.DA1_VLRDES",
-                                    "length":"9",
-                                    "description":"Vlr.Desconto",
-                                    "note":"Campo com duas casas decimais"
+                                    "protheus":{
+                                        "field":"DA1.DA1_VLRDES",
+                                        "length":"9",
+                                        "description":"Vlr.Desconto",
+                                        "note":"Campo com duas casas decimais"
+                                    }
                                 }
                             },
                             "discountFactor":{
@@ -1075,7 +1077,17 @@
                                 "format":"date",
                                 "example":"2018-07-19",
                                 "description":"Data Vigência do item AAAA-MM-DD",
-                                "maxLength":10
+                                "maxLength":10,
+                                "x-totvs":{
+                                    "protheus":{
+                                        "field":"DA1_DATVIG",
+                                        "discription":"Vigencia do item",
+                                        "type":"varchar",
+                                        "required":true,
+                                        "length":1,
+                                        "note":"conteúdo deve vir DD/MM/AAAA"
+                                    }
+                                }
                             },
                             "typePrice":{
                                 "type":"string",
@@ -1100,6 +1112,10 @@
                                 "type":"string",
                                 "description":"Status do Item da Tabela de Preço: 1 = Sim; 2 = Não",
                                 "maxLength":1,
+                                "enum":[
+                                    "1",
+                                    "2"
+                                ],                                
                                 "x-totvs":{
                                     "protheus":{
                                         "field":"DA1_ATIVO",
@@ -1107,12 +1123,7 @@
                                         "type":"varchar",
                                         "required":false,
                                         "length":1,
-                                        "description":"",
-                                        "note":"1 = Sim; 2 = Nao",
-                                        "enum":[
-                                            "1",
-                                            "2"
-                                        ]
+                                        "note":"1 = Sim; 2 = Nao"
                                     }
                                 }
                             } 
