@@ -59,14 +59,7 @@
             },
             "CommunicationInformation":{
 				"type":"object",
-				"properties":{
-					"items":{
-						"type":"array",
-						"items":{
-							"$ref":"#/components/schemas/CommunicationInformationInfo"
-						}
-					}
-				} 
+				"$ref":"#/components/schemas/CommunicationInformationInfo"
             },
 			"CommunicationInformationInfo":{
 				"type": "object",
