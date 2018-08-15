@@ -743,11 +743,9 @@
 						}
 					},
 					"governmentalInformation":{
-						"type":"array",
+						"type":"object",
 						"description":"Informações Governamentais",
-						"items":{
-							"$ref":"https://cdn.rawgit.com/renatocunha/Apis/951415fe/Apis/GovernmentalInformation/GovernmentalInformation_1_000.json#/components/schemas/GovernmentalInformation"	
-  						}
+						"$ref":"https://cdn.rawgit.com/renatocunha/Apis/951415fe/Apis/GovernmentalInformation/GovernmentalInformation_1_000.json#/components/schemas/GovernmentalInformation"	
 					},
 					"address":{
 						"type":"array",
@@ -761,11 +759,11 @@
 							"$ref": "https://rawgit.com/nairansilva/Apis/master/Apis/Seller/address_2_000.json#/components/schemas/AddressInfo"
 						}    
 					},										
-					"communicationInformation":{
+					"listOfCommunicationInformation":{
 						"type":"array",
 						"description":"Informações de Contato",
 						"items":{
-							"$ref":"https://cdn.rawgit.com/renatocunha/Apis/953cba95/Apis/communicationInformation/CommunicationInformation_1_002.json#/components/schemas/communicationInformation"	
+							"$ref":"https://cdn.rawgit.com/renatocunha/Apis/953cba95/Apis/communicationInformation/CommunicationInformation_1_002.json#/components/schemas/CommunicationInformation"	
 						}
 					},
 					"strategicCustomerType":{
@@ -1035,110 +1033,6 @@
 						}
 					}
 				}
-			},
-			"CommunicationInformation":{
-				"type": "object",
-				"description": "Dados para Contato",
-				"properties":{ 
-					"type":{
-						"type": "string",
-						"description": "Tipo do Telefone"
-					},
-					"phoneNumber":{
-						"type": "string",
-						"example": "3333-5555",
-						"description": "Telefone",
-						"x-totvs":{
-							"protheus":{
-								"field": "SA1.A1_TEL / SA2.A2_TEL",
-								"required": false,
-								"type": "char",
-								"length": "50",
-								"avialable": true,
-								"canUpdate": true,
-								"note": "SA1.A1_TEL tamanho 15 SA2.A2_TEL tamanho 50"
-							}
-						}
-					},
-					"phoneExtension":{
-						"type": "string",
-						"description": "Ramal"
-					},
-					"faxNumber":{
-						"type": "string",
-						"description": "Fax",
-						"x-totvs":{
-							"protheus":{
-								"field": "SA1.A1_FAX / SA2.A2_FAX",
-								"required": false,
-								"type": "char",
-								"length": "15",
-								"avialable": true,
-								"canUpdate": true
-							}
-						}
-					},
-					"faxNumberExtension":{
-						"type": "string",
-						"description": "Ramal do Fax"
-					},
-					"homePage":{
-						"type": "string",
-						"description": "Página Web",
-						"x-totvs":{
-							"protheus":{
-								"field": "SA1.A1_HPAGE / SA2.A2_HPAGE",
-								"required": false,
-								"type": "char",
-								"length": "30",
-								"avialable": true,
-								"canUpdate": true
-							}
-						}
-					},
-					"email":{
-						"type": "string",
-						"description": "Email para contato",
-						"x-totvs":{
-							"protheus":{
-								"field": "SA1.A1_EMAIL / SA2.A2_EMAIL",
-								"required": false,
-								"type": "char",
-								"length": "30",
-								"avialable": true,
-								"canUpdate": true
-							}
-						}
-					},
-					"diallingCode":{
-						"type": "string",
-						"description": "DDD",
-						"x-totvs":{
-							"protheus":{
-								"field": "SA1.A1_DDD / SA2.A2_DDD",
-								"required": false,
-								"type": "char",
-								"length": "03",
-								"avialable": true,
-								"canUpdate": true
-							}
-						}
-					},
-					"internationalDiallingCode":{
-						"type": "string",
-						"description": "DDI",
-						"x-totvs":{
-							"protheus":{
-								"field": "SA1.A1_DDI / SA2.A2_DDI",
-								"required": false,
-								"type": "char",
-								"length": "06",
-								"avialable": true,
-								"canUpdate": true
-							}
-						}
-					}
-				}	
 			},
 			"BankingInformation":{
 				"type": "object",

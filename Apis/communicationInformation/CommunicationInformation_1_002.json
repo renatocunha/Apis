@@ -57,11 +57,7 @@
                     }
                 ]
             },
-            "CommunicationInformation":{
-				"type":"object",
-				"$ref":"#/components/schemas/CommunicationInformationInfo"
-            },
-			"CommunicationInformationInfo":{
+			"CommunicationInformation":{
 				"type": "object",
 				"description": "Documentos Governamentais",
 				"properties":{ 
