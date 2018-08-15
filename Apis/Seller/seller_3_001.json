@@ -572,7 +572,7 @@
                             "datasul":{
                                 "field":"representante.cod_id_feder",
                                 "required":false,
-                                "type":"varchar",
+                                "type":"char",
                                 "lenght":"14",
                                 "available":true,
                                 "canUpdate":true

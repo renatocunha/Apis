@@ -411,7 +411,7 @@
                         "content":{ 
                             "application/json":{
                                 "schema":{
-                                    "$ref":"#/components/schemas/itensTablePrice"
+                                    "$ref":"#/components/schemas/itensTablePrices"
                                 }
                             }
                         }
@@ -534,7 +534,7 @@
                         "content":{ 
                             "application/json":{
                                 "schema":{
-                                    "$ref":"#/components/schemas/itensTablePrice"
+                                    "$ref":"#/components/schemas/itensTablePrices"
                                 }
                             }
                         }
@@ -750,9 +750,31 @@
                 "PriceListHeaderItemsInfo":{
                     "type":"object",
                     "properties":{
+                        "branchId":{
+                            "type":"string",
+                            "description":"ID Filial",
+                            "x-totvs":{
+                                "protheus":{
+                                    "required":false,
+                                    "type":"Char",
+                                    "length":"2",
+                                    "description":"Pode ter tamanho variável até 8 com Gestão de Empresa ativado"
+                                }
+                            }
+                        }, 
+                        "companyInternalId":{
+                            "type":"string",
+                            "description":"InternalId da chave completa de empresa do produto",
+                            "x-totvs":{
+                                "protheus":{
+                                    "note": "para o Protheus é esperado que com o cabeçalho da mensagem seja identificado empresa e filial já pelo Framework estando no ambiente (Empresa x Filial) correto"
+                                }
+                            }
+                        },                                               
                         "code":{
                             "type":"string",
                             "description":"Código da tabela de preço",
+                            "maxLength":4,
                             "x-totvs":{
                                 "protheus":{
                                     "field":"DA0.DA0_CODTAB",
@@ -763,7 +785,7 @@
                                 }
                             }
                         },
-                        "priceHeaderItemInternalId":{
+                        "internalId":{
                             "type":"string",
                             "description":"InternalId da chave completa da tabela de preço",
                             "x-tovs":{
@@ -806,19 +828,28 @@
                             "description":"Data Inicial da Vigência AAAA-MM-DD",
                             "maxLength":10,
                             "x-totvs":{
-                                "field":"DA0.DA0_DATDE",
-                                "description":"Data Inicial"
+                                "protheus":{
+                                    "field":"DA0.DA0_DATDE",
+                                    "required":true,
+                                    "type":"varchar",
+                                    "length":10,
+                                    "description":"o conteúdo deve vir DD/MM/AAAA"
+                                }
                             }
                         },
                         "finalDate":{
                             "type":"string",
                             "format":"date",
-                            "example":"2018-07-19",
-                            "description":"Data Final da Vigência AAAA-MM-DD",
-                            "maxLength":10,
+                            "example":"20180719",
+                            "description":"Data Final da Vigência AAAAMMDD",
                             "x-totvs":{
-                                "field":"DA0.DA0_DATATE",
-                                "description":"Data Final"
+                                "protheus":{
+                                    "field":"DA0.DA0_DATATE",
+                                    "description":"o conteúdo deve vir DD/MM/AAAA",
+                                    "required":true,
+                                    "type":"varchar",
+                                    "length":10
+                                }
                             }
                         }, 
                         "initiaHour":{
@@ -826,8 +857,13 @@
                             "format":"date-time",
                             "description":"Hora Inicial Vigencia HH:MM:SS",
                             "x-totvs":{
-                                "field":"DA0.DA0_HORADE",
-                                "description":"Hora Inicial"
+                                "protheus":{
+                                    "field":"DA0.DA0_HORADE",
+                                    "description":"Hora inicial de vigência da tabela de preço. No protheus o formato deverá ser HH:MM",
+                                    "required":true,
+                                    "type":"varchar",
+                                    "length":5
+                                }
                             }
                         },
                         "finalHour":{
@@ -835,8 +871,13 @@
                             "format":"date-time",
                             "description":"Hora Final Vigencia HH:MM:SS",
                             "x-totvs":{
-                                "field":"DA0.DA0_HORATE",
-                                "description":"Hora Final"
+                                "protheus":{
+                                    "field":"DA0.DA0_HORATE",
+                                    "description":"Hora final de vigência da tabela de preço. No protheus o formato deverá ser HH:MM",
+                                    "required":true,
+                                    "type":"varchar",
+                                    "length":5
+                                }
                             }
                         },
                         "valueDescount":{
@@ -848,15 +889,15 @@
                         "activeTablePrice":{
                             "type":"string",
                             "description":"Tabela de Preco Ativo? 1 = Sim; 2 = Nao",
+                            "enum":[
+                                "1",
+                                "2"
+                            ],
                             "x-totvs":{
                                 "protheus":{
                                     "field":"DA0.DA0_ATIVO",
                                     "decription":"Tabela Ativa",
                                     "type":"varchar",
-                                    "enum":[
-                                        "1",
-                                        "2"
-                                    ],
                                     "length":"1"
                                 }
                             }
@@ -1003,10 +1044,12 @@
                                 "description":"Fator de Acresc./Desconto%",
                                 "maxLength":11,
                                 "x-totvs":{
-                                    "field":"DA1.DA1_PERDES",
-                                    "length":"6",
-                                    "description":"Fator",
-                                    "note":"Campo com quatro casas decimais"
+                                    "protheus":{
+                                        "field":"DA1.DA1_PERDES",
+                                        "length":"6",
+                                        "description":"Fator",
+                                        "note":"Campo com quatro casas decimais"
+                                    }
                                 }                            
                             },
                             "minimumAmount":{
@@ -1036,12 +1079,21 @@
                             },
                             "typePrice":{
                                 "type":"string",
-                                "description":"Tipo da Tabela de Preço: Preço Venda, Venda Consumidor, Atacado , Varejo, Promoção",
+                                "description":"Tipo da Tabela de Preço: 1 = Preco Venda , 2 = Venda Consumidor, 3 = Atacado , 4 = Varejo, 5 = Promocao",
                                 "maxLength":1,
+                                "enum":[
+                                    "1",
+                                    "2",
+                                    "3",
+                                    "4",
+                                    "5"
+                                ],
                                 "x-totvs":{
-                                    "field":"DA1.DA1_TIPPRE",
-                                    "description":"Tipo Preço",
-                                    "note":"Tipo da Tabela de Preço: Preco Venda, Venda Consumidor, Atacado , Varejo, Promoção"
+                                    "protheus":{
+                                        "field":"DA1.DA1_TIPPRE",
+                                        "description":"Tipo Preço",
+                                        "note":"Tipo da Tabela de Preço: Preco Venda, Venda Consumidor, Atacado , Varejo, Promoção"
+                                    }
                                 }
                             },
                             "activeItemPrice":{
