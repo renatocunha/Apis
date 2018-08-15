@@ -675,17 +675,40 @@
 						}
 					},					
 					"marketsegment":{
-						"type": "string",
-						"example": "000001",
+						"type": "object",
 						"description": "Segmento de Mercado",
 						"properties":{
-                            "items":{
-                                "type":"array",
-                                "items":{
-                                    "$ref":"https://raw.githubusercontent.com/renatocunha/Apis/master/Apis/MarketSegment/marketSegment_2_000.json"
-                               }    
-                            } 
-                        } 
+							"marketSegmentCode":{
+								"type": "string",
+								"description": "Código do segmento",
+								"x-totvs":{
+									"protheus":{
+										"field": "A1_CODSEG",
+										"required": false,
+										"type": "varchar",
+										"length": "6",
+										"description":"Segmento Principal"
+									}
+								}
+							},
+							"marketSegmentInternalId":{
+								"type": "string",
+								"description": "InternalId do MarketSegmentCode"
+							},
+							"marketSegmentDescription":{
+								"type": "string",
+								"description": "Descrição do segmento",
+								"x-totvs":{
+									"protheus":{
+										"field": "A1_DESSEG",
+										"required": false,
+										"type": "varchar",
+										"length": "40",
+										"description":"Segmento Principal"
+									}
+								}
+							}
+						}	
 					},
 					"registerdate":{
 						"type": "string",
@@ -761,44 +784,46 @@
 					},										
 					"listOfCommunicationInformation":{
 						"type":"array",
+						"description":"Informações de comunicação",
+						"items":{
+							"$ref":"https://cdn.rawgit.com/renatocunha/Apis/e85aa574/Apis/communicationInformation/CommunicationInformation_1_002.json#/components/schemas/CommunicationInformation"	
+						}
+					},
+					"listOfContacts":{
+						"type":"array",
 						"description":"Informações de Contato",
 						"items":{
-							"$ref":"https://cdn.rawgit.com/renatocunha/Apis/953cba95/Apis/communicationInformation/CommunicationInformation_1_002.json#/components/schemas/CommunicationInformation"	
+							"$ref":"https://cdn.rawgit.com/renatocunha/Apis/e85aa574/Apis/ContactInformation/ContactInformation_1_000.json#/components/schemas/ContactInformation"	
 						}
 					},
-					"strategicCustomerType":{
-						"type": "string",
-						"example": "3=Revendedor",
-						"description": "Tipo estratégico da Entidade 1-Cons.Final, 2-Produtor, 3-Revendedor, 4-Solidario, 5-Exportação",
-						"enum":[
-							"1",
-							"2",
-							"3",
-							"4",
-							"5"
-						],
-						"x-totvs":{
-							"protheus":{
-								"field": "SA1.A1_TIPO / SA2.A2_TIPO",
-								"required": false,
-								"type": "Char",
-								"length": "1",
-								"avialable": true,
-								"canUpdate": true,
-								"note": "1=Cons.Final;2=ProdutorRural;3=Revendedor;4=Solidario;5=Exportação"
+					"listOfBankingInformation":{
+						"type":"array",
+						"items":{
+							"$ref":"#/components/schemas/bankingInformation"	
+						}
+					},
+					"billingInformation":{
+						"type": "object",
+						"properties":{
+							"billingCustomerCode":{
+								"type": "integer",
+								"description": "Código do usuário de cobrança",
+								"x-totvs":{
+									"-datasul":{
+										"field": "emitente.cod-cobranca ou pessoa_jurid.num_pessoa_jurid_cobr"
+									}
+								}
+							},
+							"billingCustomerInternalId":{
+								"type": "string",
+								"description": "Billing Customer InternalId"
+							},
+							"address":{
+								"type":"array",
+								"items":{
+									"$ref": "https://rawgit.com/nairansilva/Apis/master/Apis/Seller/address_2_000.json#/components/schemas/AddressInfo"
+								}    
 							}
-						}
-					},
-					"contactsInformation":{
-						"type":"array",
-						"items":{
-							"$ref":"#/components/schemas/Contacts"	
-						}
-					},
-					"bankingInformation":{
-						"type":"array",
-						"items":{
-							"$ref":"#/components/schemas/BankingInformation"	
 						}
 					},
 					"vendorInformation":{
@@ -820,10 +845,15 @@
 									}
 								}
 							}, 
+							"vendorInternalId":{
+								"type": "string",
+								"description": "InternalId do VendorTypeCode"
+							}, 								
 							"vendorDescription":{
 								"type":"string",
 								"description": "Nome/Descrição do Vendedor"
 							}   
+							
 						}
 					},
 					"fiscalInformation":{
@@ -966,6 +996,10 @@
 							}
 						}
 					},
+					"paymentConditionInternalId":{
+						"type":"string",
+						"description":"InternalId do PaymentConditionCode"
+					},
 					"priceListHeaderItemCode":{
 						"type":"string",
 						"description":"Código da Tabela de Preço",
@@ -982,6 +1016,10 @@
 							}
 						}
 					},
+					"priceListHeaderItemInternalId":{
+						"type":"string",
+						"description":"InternalId do PriceListHeaderItemCode"
+					},					
 					"carrierCode":{
 						"type":"integer",
 						"format": "int32",
@@ -997,27 +1035,65 @@
 								"canUpdate": true
 							}
 						}
-					},
-					"vendorInformationType":{
-						"type":"object",
-						"properties":{
-							"VendorClassification":{
-								"type":"string",
-								"enum":[
-									"Raw Material",
-									"Service",
-									"Both",
-									"Generic"
-								]
-							},
-							"vendorType":{
-								"type":"string"
-							},
-							"vendorTypeDescription":{
-								"type":"string"
+					},					
+					"strategicCustomerType":{
+						"type": "string",
+						"example": "3=Revendedor",
+						"description": "Tipo estratégico da Entidade 1-Cons.Final, 2-Produtor, 3-Revendedor, 4-Solidario, 5-Exportação",
+						"enum":[
+							"1",
+							"2",
+							"3",
+							"4",
+							"5"
+						],
+						"x-totvs":{
+							"protheus":{
+								"field": "SA1.A1_TIPO / SA2.A2_TIPO",
+								"required": false,
+								"type": "Char",
+								"length": "1",
+								"avialable": true,
+								"canUpdate": true,
+								"note": "1=Cons.Final;2=ProdutorRural;3=Revendedor;4=Solidario;5=Exportação"
 							}
 						}
 					},
+					"rateDiscount":{
+						"type":"number",
+						"format":"double",
+						"description":"Percentual de Desconto|Bonificação",
+						"x-totvs":{
+							"datasul":{
+								"field": "Bonificacao",
+								"required": false,
+								"type": "decimal",
+								"length": "9",
+								"description":"Desconto Padrão"
+							}
+						}
+					},					
+					"sellerCode":{
+						"type":"string",
+						"description":"Código do representante",
+						"x-totvs":{
+							"datasul":{
+								"field": "clien_financ.cdn_repre",
+								"required": true,
+								"type": "integer",
+								"length": "7"
+							}
+						}
+					},	
+					"sellerInternalId":{
+						"type":"string",
+						"description":"InternalId do SellerCode",
+						"x-totvs":{
+							"datasul":{
+								"field": "clien_financ.cod_empresa|string(clien_financ.cdn_repres)"
+							}
+						}
+					},															
 					"taxPayerType":{
 						"type":"object",
 						"properties":{
@@ -1034,7 +1110,7 @@
 					}
 				}
 			},
-			"BankingInformation":{
+			"bankingInformation":{
 				"type": "object",
 				"description": "Lista de contas Bancárias da Entidade Cliente/Fornecedor",
 				"properties":{
@@ -1211,38 +1287,6 @@
 						}     
 					}
 			
-				}
-			},
-			"Contacts":{
-				"type": "object",
-				"description": "Lista de contatos da Entidade",
-				"properties":{
-					"ContactID":{
-						"type": "string",
-						"description": "código do Contato",
-						"example": "000001",
-						"x-totvs":{
-							"protheus":{
-								"note":"No cadastro de Cliente é gravado apenas o nome do contato"
-							}
-						} 
-					},
-					"ContactFullName":{
-						"type": "string",
-						"description": "Nome do Contato",
-						"example": "Mary Smith",
-						"x-totvs":{
-							"protheus":{
-								"field": "SA1.A1_CONTATO / SA2.A2_CONTATO",
-								"note":" No Protheus atualmente no cadastros de Cliente existe apenas um Contato",
-								"required": false,
-								"type": "Char",
-								"length": "15",
-								"avialable": true,
-								"canUpdate": true
-							}
-						} 
-					}
 				}
 			},
 			"Paging":{
