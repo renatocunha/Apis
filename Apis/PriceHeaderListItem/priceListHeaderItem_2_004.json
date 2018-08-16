@@ -46,7 +46,6 @@
                         "produtcInformation":{
                             "protheus":{
                                 "avaliable":true,
-                                "note":"Este verbo está disponível com todos os parâmetros",
                                 "minimalVersion":"12.1.21"
                             }  
                         }
@@ -80,7 +79,19 @@
                                     }
                                 }
                             }
-                        }
+                        },
+                        "404":{
+                            "description":"Registro não encontrado!",
+                            "content":{
+                                "application/json":{
+                                    "schema":{
+    
+                                        "$ref":"#/components/schemas/ErrorDetails"
+    
+                                    }
+                                }
+                            }
+                        }                            
                     },
                     "security":[
                         {
@@ -333,7 +344,7 @@
                     "tags":[
                      "itensTablePrice"   
                     ],
-                    "summary":"Retorna a tabela de preço de acordo com o seu código",
+                    "summary":"Retorna os itens da tabela de preço de acordo com o seu código",
                     "operationId":"getpriceListItems",
                     "x-totvs":{
                         "produtcInformation":{
@@ -450,7 +461,7 @@
                     "tags":[
                      "itemTablePrice"   
                     ],
-                    "summary":"Retorna a tabela e um item específico de preço de acordo com o seu código",
+                    "summary":"Retorna um item específico de preço de acordo com o seu código",
                     "operationId":"getpriceListItemList",
                     "x-totvs":{
                         "produtcInformation":{

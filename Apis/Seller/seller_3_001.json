@@ -46,7 +46,7 @@
                     "produtcInformation":{
                         "protheus":{
                             "avaliable":true,
-                            "note":"Este verbo está disponível com todos os parâmetros",
+                            "note":"Este verbo não está disponível com o parâmetro code",
                             "minimalVersion":"12.1.21"
                         }  
                     }
@@ -60,6 +60,9 @@
                     {
                         "$ref": "#/components/parameters/Order"
                     },
+                    {
+                        "$ref": "#/components/parameters/Fields"
+                    },                                            
                     {
                         "$ref": "#/components/parameters/Page"
                     },
@@ -77,7 +80,19 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "404":{
+                        "description":"Registro não encontrado!",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+
+                                    "$ref":"#/components/schemas/ErrorDetails"
+
+                                }
+                            }
+                        }
+                    }                        
                 },
                 "security":[
                     {
@@ -95,7 +110,10 @@
                 "parameters":[
                     {
                         "$ref": "#/components/parameters/Authorization"
-                    }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Fields"
+                    }                    
                 ],
                 "requestBody":{
                     "description":"Vendedor a ser incluído.",
@@ -158,7 +176,10 @@
                     },
                     {
                         "$ref": "#/components/parameters/Code"
-                    }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Fields"
+                    }                    
                 ],
                 "responses":{
                     "200":{
@@ -201,7 +222,10 @@
                     },
                     {
                         "$ref": "#/components/parameters/Code"
-                    }
+                    },
+                    {
+                        "$ref": "#/components/parameters/Fields"
+                    }                    
                 ],
                 "requestBody":{
                     "description":"Vendedor a ser atualizado.",
@@ -233,7 +257,19 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "404":{
+                        "description":"Registro não encontrado!",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+
+                                    "$ref":"#/components/schemas/ErrorDetails"
+
+                                }
+                            }
+                        }
+                    }                                            
                 },
                 "security":[
                     {
@@ -276,7 +312,19 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "404":{
+                        "description":"Registro não encontrado!",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+
+                                    "$ref":"#/components/schemas/ErrorDetails"
+
+                                }
+                            }
+                        }
+                    }                                            
                 },
                 "security":[
                     {
@@ -319,6 +367,19 @@
                     "uniqueItems":true
                 }
             },
+            "Fields":{
+                "name":"fields",
+                "in":"query",
+                "description":"Campos apresentados no retorno das operações",
+                "required":false,
+                "schema":{
+                    "type":"array",
+                    "items":{
+                        "type":"string"
+                    },
+                    "uniqueItems":true
+                }
+            },                            
             "Page":{
                 "name":"page",
                 "in":"query",
